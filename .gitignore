@@ -1,0 +1,10 @@
+# Ignore everything
+*
+
+# Allow these
+!.gitignore
+!index.html
+!chapters/
+!chapters/*/
+!chapters/*/*.html
+!chapters/*/*.css
