@@ -8,3 +8,6 @@
 !chapters/*/
 !chapters/*/*.html
 !chapters/*/*.css
+!chapters/*/slides/
+!chapters/*/slides/*.html
+!chapters/*/slides/*.css

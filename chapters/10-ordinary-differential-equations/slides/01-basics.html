@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Basics — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:10%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">1 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card basics">
+      <h2>10.1–10.2 &nbsp; What is a DE? Order &amp; Degree</h2>
+
+      <div class="card-grid two-col">
+        <div class="flash">
+          <h3>Definition</h3>
+          <p>A <strong>differential equation</strong> contains at least one derivative of an unknown function.</p>
+          <div class="formula">
+            $$\frac{dy}{dx} = ky \quad \longleftarrow \text{ simplest DE}$$
+          </div>
+        </div>
+
+        <div class="flash">
+          <h3>Order &amp; Degree</h3>
+          <div class="formula">
+            $$\underbrace{\left(\frac{d^{\color{#d97706}{4}}y}{dx^4}\right)^{\color{#dc2626}{3}}}_{\substack{\text{order}={\color{#d97706}4} \\ \text{degree}={\color{#dc2626}3}}} + 4\left(\frac{dy}{dx}\right)^{7} + 6y = 5\cos 3x$$
+          </div>
+          <ul>
+            <li><strong>Order</strong> = highest derivative present <span class="tag tag-yellow">4</span></li>
+            <li><strong>Degree</strong> = power of that highest-order derivative <span class="tag tag-red">3</span></li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flash warning-box">
+        <h3>When is Degree NOT Defined?</h3>
+        <p>If the equation <strong>cannot be expressed as a polynomial in its derivatives</strong> — i.e. <em>any</em> derivative appears inside a transcendental function (<code>sin</code>, <code>cos</code>, <code>log</code>, <code>exp</code>).</p>
+        <div class="formula-row">
+          <div class="formula mini">
+            $$\underbrace{\sin\!\left(\frac{dy}{dx}\right)}_{\text{derivative in sin}} + \frac{d^2y}{dx^2} + 3x = 0$$
+            <span class="label-below">Order 2, Degree: N/A</span>
+          </div>
+          <div class="formula mini">
+            $$e^{\overbrace{\frac{d^2y}{dx^2}}^{\text{derivative in exp}}} + \sin(x)\frac{dy}{dx} = 2$$
+            <span class="label-below">Order 2, Degree: N/A</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Trick: Clear Fractional Powers First</h3>
+        <div class="formula">
+          $$\sqrt{1+\left(\frac{dy}{dx}\right)^{\!2}} = y\frac{d^3y}{dx^3} \;\;\xrightarrow{\text{square}}\;\; 1+\left(\frac{dy}{dx}\right)^{\!2} = y^2\!\left(\frac{d^3y}{dx^3}\right)^{\!2}$$
+        </div>
+        <p>Now: order = <span class="tag tag-yellow">3</span>, degree = <span class="tag tag-red">2</span></p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a class="nav-btn disabled">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot active" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="02-classification.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowRight") window.location.href = "02-classification.html";
+});
+</script>
+</body>
+</html>

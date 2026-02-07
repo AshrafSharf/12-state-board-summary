@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variables Separable — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:50%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">5 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card separable">
+      <h2>10.6.1 &nbsp; Variables Separable Method</h2>
+
+      <div class="flash">
+        <h3>Spot the Clue</h3>
+        <p>Every term is a <strong>product</strong> of a pure-$x$ piece and a pure-$y$ piece. You can divide to isolate them.</p>
+        <div class="formula">
+          $$\underbrace{f_1(x)}_{\text{only }x}\!\cdot\!\underbrace{g_1(y)}_{\text{only }y}\,dx \;+\; \underbrace{f_2(x)}_{\text{only }x}\!\cdot\!\underbrace{g_2(y)}_{\text{only }y}\,dy = 0$$
+        </div>
+        <div class="arrow-down">↓ divide by $f_2(x)\,g_1(y)$</div>
+        <div class="formula">
+          $$\overbrace{\frac{f_1(x)}{f_2(x)}\,dx}^{\text{pure } x} = \overbrace{-\frac{g_2(y)}{g_1(y)}\,dy}^{\text{pure } y}$$
+        </div>
+        <div class="arrow-down">↓ integrate both sides</div>
+        <div class="formula highlight-box">
+          $$\boxed{\int \frac{f_1(x)}{f_2(x)}\,dx = -\int \frac{g_2(y)}{g_1(y)}\,dy + c}$$
+        </div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>The Key Test: Can You Factor?</h3>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$\underbrace{(1+x^2)}_{\text{only }x}\frac{dy}{dx} = \underbrace{(1+y^2)}_{\text{only }y}$$
+            <span class="label-below">Each side is a single-variable function. Separable!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\underbrace{x^2}_{\text{only }x}\!\cdot\!\underbrace{y}_{\text{only }y}\,dx + \underbrace{(1+x^3)}_{\text{only }x}\,dy = 0$$
+            <span class="label-below">Each term = f(x) × g(y). Separable!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash example-box">
+          <h3>Ex: $(1+x^2)\dfrac{dy}{dx} = 1+y^2$</h3>
+          <div class="formula">$$\frac{dy}{1+y^2}=\frac{dx}{1+x^2}$$</div>
+          <div class="formula">$$\tan^{-1}y = \tan^{-1}x + c$$</div>
+          <div class="formula">$$\boxed{y-x = a(1+xy)}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: $(1\!+\!x^3)dy - x^2 y\,dx = 0$</h3>
+          <div class="formula">$$\frac{dy}{y}=\frac{x^2}{1+x^3}\,dx$$</div>
+          <div class="formula">$$\log y = \tfrac{1}{3}\log(1\!+\!x^3)+\log c$$</div>
+          <div class="formula">$$\boxed{y^3 = c(1+x^3)}$$</div>
+          <p class="dim">$y(1)=2 \Rightarrow c=4$</p>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Can't Separate When...</h3>
+        <p>$x$ and $y$ are <strong>added</strong> inside a term — no way to factor into $f(x)\cdot g(y)$.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\frac{dy}{dx} = \underbrace{x + y}_{\text{sum, not product}}$$
+            <span class="label-below">Can't write as $h(x)\cdot k(y)$. → Use Linear ($y'+(-1)y = x$)</span>
+          </div>
+          <div class="formula mini nope">
+            $$\frac{dy}{dx} = \underbrace{x^2 + xy + y^2}_{\text{mixed terms}}$$
+            <span class="label-below">$xy$ term couples $x,y$. → Try Homogeneous ($y=vx$)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="04-solutions.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot active" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="06-substitution.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "04-solutions.html";
+  if (e.key === "ArrowRight") window.location.href = "06-substitution.html";
+});
+</script>
+</body>
+</html>

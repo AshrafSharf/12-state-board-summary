@@ -1,0 +1,164 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Linear ODE — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:80%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">8 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card linear">
+      <h2>10.7 &nbsp; First Order Linear DEs</h2>
+
+      <div class="flash">
+        <h3>Spot the Clue</h3>
+        <p>$y$ and $y'$ appear to <strong>1st power only</strong> — no $y^2$, no $yy'$, no $(y')^2$, no $\sin y$.</p>
+        <div class="formula">
+          $$\frac{dy}{dx} + \underbrace{P(x)}_{\text{coeff of }y}\!\cdot y = \underbrace{Q(x)}_{\text{RHS: only }x}$$
+        </div>
+        <p class="dim">Divide everything by the coefficient of $y'$ first to get this standard form.</p>
+      </div>
+
+      <div class="flash">
+        <h3>Standard Form &amp; Master Formula</h3>
+        <div class="formula">
+          $$\text{I.F.} = e^{\int P(x)\,dx}$$
+        </div>
+        <div class="arrow-down">↓ multiply both sides by I.F.</div>
+        <div class="formula highlight-box">
+          $$\boxed{y \cdot \underbrace{e^{\int P\,dx}}_{\text{I.F.}} = \int Q \cdot \underbrace{e^{\int P\,dx}}_{\text{I.F.}}\,dx + c}$$
+        </div>
+        <p class="dim center">Shorthand: $y \times \text{I.F.} = \displaystyle\int Q \times \text{I.F.}\;dx + c$</p>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Spotting Linear Under Disguise</h3>
+        <p>Often the equation doesn't <em>look</em> like $y' + Py = Q$ until you <strong>divide</strong> or <strong>rearrange</strong>.</p>
+        <div class="formula">
+          $$\underbrace{(1+x^3)\frac{dy}{dx}+6x^2 y}_{\text{doesn't look standard}} = 1+x^2$$
+        </div>
+        <div class="arrow-down">↓ divide by $(1+x^3)$</div>
+        <div class="formula">
+          $$\frac{dy}{dx}+\underbrace{\frac{6x^2}{1+x^3}}_{P(x)}\,y = \underbrace{\frac{1+x^2}{1+x^3}}_{Q(x)} \quad\checkmark$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Alternate: $x$ as Dependent Variable</h3>
+        <p>If solving for $y$ is awkward, try swapping roles:</p>
+        <div class="formula">
+          $$\frac{dx}{dy}+P(y)\,x=Q(y) \;\;\Rightarrow\;\; \text{I.F.}=e^{\int P\,dy}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{x \cdot e^{\int P\,dy} = \int Q\,e^{\int P\,dy}\,dy + c}$$
+        </div>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash example-box">
+          <h3>$\dfrac{dy}{dx}+2y=e^{-x}$</h3>
+          <div class="formula">$$P\!=\!2,\;\text{I.F.}\!=\!e^{2x}$$</div>
+          <div class="formula">$$ye^{2x}=e^x+c$$</div>
+          <div class="formula">$$\boxed{y=e^{-x}+ce^{-2x}}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>$\dfrac{dy}{dx}+2y\cot x=3x^2\csc^2 x$</h3>
+          <div class="formula">$$P=2\cot x,\;\text{I.F.}=\sin^2 x$$</div>
+          <div class="formula">$$\boxed{y\sin^2 x=x^3+c}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>$(1\!+\!x^3)\dfrac{dy}{dx}+6x^2y=1\!+\!x^2$</h3>
+          <div class="formula">$$P=\frac{6x^2}{1+x^3},\;\text{I.F.}=(1\!+\!x^3)^2$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>$ye^y\,dx=(y^3\!+\!2xe^y)dy$</h3>
+          <div class="formula">$$\frac{dx}{dy}-\frac{2}{y}x=y^2 e^{-y}$$</div>
+          <div class="formula">$$\text{I.F.}=\frac{1}{y^2}$$</div>
+          <div class="formula">$$\boxed{x=-y^2 e^{-y}+cy^2}$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Can't Use Linear I.F. When...</h3>
+        <p>$y$ appears to a <strong>power other than 1</strong>, or $y$ and $y'$ are <strong>multiplied together</strong>.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\frac{dy}{dx} + \underbrace{y^2}_{\text{power 2!}} = x$$
+            <span class="label-below">$y^2$ breaks linearity. This is a Riccati equation — not solvable by I.F.</span>
+          </div>
+          <div class="formula mini nope">
+            $$\underbrace{y\frac{dy}{dx}}_{\text{product }y\!\cdot\!y'} + 2x = 0$$
+            <span class="label-below">Product $yy'$. But $y\,dy = -2x\,dx$ — it's actually Separable!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Common Integrating Factors</h3>
+        <table class="if-table">
+          <thead>
+            <tr><th>$P(x)$</th><th>$\int P\,dx$</th><th>I.F.</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$k$</td><td>$kx$</td><td>$e^{kx}$</td></tr>
+            <tr><td>$\frac{n}{x}$</td><td>$n\ln|x|$</td><td>$|x|^n$</td></tr>
+            <tr><td>$\tan x$</td><td>$-\ln|\cos x|$</td><td>$\sec x$</td></tr>
+            <tr><td>$\cot x$</td><td>$\ln|\sin x|$</td><td>$|\sin x|$</td></tr>
+            <tr><td>$\frac{2x}{1+x^2}$</td><td>$\ln(1\!+\!x^2)$</td><td>$1\!+\!x^2$</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="07-homogeneous.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot active" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="09-applications.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "07-homogeneous.html";
+  if (e.key === "ArrowRight") window.location.href = "09-applications.html";
+});
+</script>
+</body>
+</html>

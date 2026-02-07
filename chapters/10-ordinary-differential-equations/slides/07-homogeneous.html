@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Homogeneous — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:70%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">7 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card homogeneous">
+      <h2>10.6.3 &nbsp; Homogeneous DEs</h2>
+
+      <div class="flash">
+        <h3>Spot the Clue</h3>
+        <p>$\dfrac{dy}{dx} = \dfrac{M(x,y)}{N(x,y)}$ where $M$ and $N$ have the <strong>same total degree</strong> in every term.</p>
+        <div class="formula">
+          $$\frac{dy}{dx} = \frac{\overbrace{x^2 + xy + y^2}^{\text{every term: degree 2}}}{\underbrace{x^2 - y^2}_{\text{every term: degree 2}}} \quad\Rightarrow\quad \text{divide by } x^2: \quad g\!\left(\frac{y}{x}\right)$$
+        </div>
+        <p><strong>Equivalent test:</strong> replace $x\to tx,\; y\to ty$. If all $t$'s cancel from the ratio → homogeneous.</p>
+      </div>
+
+      <div class="flash">
+        <h3>The $y = vx$ Substitution</h3>
+        <div class="formula">
+          $$\frac{dy}{dx}=g\!\left(\frac{y}{x}\right) \;\xrightarrow{\;y=vx\;}\; \underbrace{v+x\frac{dv}{dx}}_{y'=v+xv'}=g(v)$$
+        </div>
+        <div class="arrow-down">↓ rearrange &amp; separate</div>
+        <div class="formula highlight-box">
+          $$\boxed{\int\frac{dv}{g(v)-v}=\int\frac{dx}{x}+c} \quad\text{then replace } v=\frac{y}{x}$$
+        </div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Quick Degree Check</h3>
+        <p>Look at <strong>each term</strong> in numerator and denominator. Add up powers of $x$ and $y$ — they must all match.</p>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$\frac{\overbrace{3y^2}^{0+2=2}-\overbrace{x^2}^{2+0=2}}{\underbrace{2xy}_{1+1=2}}$$
+            <span class="label-below">All terms degree 2. Homogeneous!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\frac{\overbrace{xy}^{1+1=2}+\overbrace{y^2}^{0+2=2}}{\underbrace{x^2}_{2+0=2}}$$
+            <span class="label-below">All terms degree 2. Homogeneous!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash example-box">
+          <h3>$(x^2\!-\!3y^2)dx+2xy\,dy=0$</h3>
+          <div class="formula">$$y=vx:\; x\frac{dv}{dx}=\frac{v^2-1}{2v}$$</div>
+          <div class="formula">$$\boxed{y^2-x^2=kx^3}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>$y^2+x^2\dfrac{dy}{dx}=xy\dfrac{dy}{dx}$</h3>
+          <div class="formula">$$y=vx:\; x\frac{dv}{dx}=\frac{v}{v-1}$$</div>
+          <div class="formula">$$\boxed{\frac{y}{x}=\log|cy|};\; y=ke^{y/x}$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Can't Use Homogeneous When...</h3>
+        <p>Terms have <strong>mismatched degrees</strong> — or a <strong>stray constant</strong> breaks the scaling.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\frac{\overbrace{x^2}^{\deg 2}+\overbrace{y}^{\deg 1}}{xy}$$
+            <span class="label-below">Numerator has degree 2 and degree 1. Not homogeneous. → Linear ($y' - \frac{y}{x}= x$)</span>
+          </div>
+          <div class="formula mini nope">
+            $$\frac{dy}{dx} = \frac{y}{\underbrace{x+1}_{\deg 1 + \text{const}}}$$
+            <span class="label-below">That $+1$ breaks scaling: $f(tx,ty)\neq t^n f(x,y)$. → Separable</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="06-substitution.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot active" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="08-linear.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "06-substitution.html";
+  if (e.key === "ArrowRight") window.location.href = "08-linear.html";
+});
+</script>
+</body>
+</html>

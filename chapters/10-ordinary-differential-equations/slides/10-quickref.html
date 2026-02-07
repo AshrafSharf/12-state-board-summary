@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Reference — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:100%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">10 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card quickref">
+      <h2>Method Selector Flowchart</h2>
+
+      <div class="flowchart">
+        <div class="flow-node flow-start">Given: first-order $\dfrac{dy}{dx}=f(x,y)$</div>
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-decision">Can you separate $x$ and $y$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method separable-bg">Variables Separable<br><span class="dim">$\int g(y)\,dy = \int h(x)\,dx + c$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO ↓</div>
+          </div>
+        </div>
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-decision">Is it $f(ax+by+c)$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method substitution-bg">Substitution<br><span class="dim">$z = ax+by+c$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO ↓</div>
+          </div>
+        </div>
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-decision">Homogeneous of degree 0?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method homogeneous-bg">Homogeneous<br><span class="dim">$y=vx$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO ↓</div>
+          </div>
+        </div>
+        <div class="flow-arrow">↓</div>
+
+        <div class="flow-decision">Is it $y'+P(x)y=Q(x)$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method linear-bg">Linear ODE<br><span class="dim">I.F. $=e^{\int P\,dx}$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO</div>
+            <div class="flow-node flow-method other-bg">Rewrite / advanced</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:1.5rem">
+        <h3>All Methods at a Glance</h3>
+        <div class="formula">
+          $$\underbrace{\frac{dy}{dx}+Py=Q}_{\text{Linear}} \;\longrightarrow\; \underbrace{y \cdot e^{\int P\,dx}}_{\text{LHS}} = \underbrace{\int Q\,e^{\int P\,dx}\,dx + c}_{\text{RHS}}$$
+        </div>
+        <div class="formula" style="margin-top:0.75rem">
+          $$\underbrace{\frac{dy}{dx}=g\!\left(\frac{y}{x}\right)}_{\text{Homogeneous}} \;\longrightarrow\; y=vx,\;\;\int\frac{dv}{g(v)-v}=\ln|x|+c$$
+        </div>
+        <div class="formula" style="margin-top:0.75rem">
+          $$\underbrace{\frac{dy}{dx}=f(ax+by+c)}_{\text{Substitution}} \;\longrightarrow\; z=ax+by+c,\;\;\text{separate in } z,x$$
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="09-applications.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot active" href="10-quickref.html"></a>
+  </div>
+  <a href="01-basics.html" class="nav-btn">&#8634; Start Over</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "09-applications.html";
+  if (e.key === "ArrowRight") window.location.href = "01-basics.html";
+});
+</script>
+</body>
+</html>

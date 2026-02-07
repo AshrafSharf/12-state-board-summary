@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Solutions — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:40%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">4 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card basics" style="border-left-color:#818cf8">
+      <h2>10.5 &nbsp; General vs Particular Solution</h2>
+      <div class="card-grid two-col">
+        <div class="flash">
+          <h3>General Solution</h3>
+          <div class="formula">$$\frac{dy}{dx}-2y=0 \;\Rightarrow\; y = \underbrace{c}_{\text{arbitrary}}e^{2x}$$</div>
+          <p>Contains as many arbitrary constants as the order.</p>
+        </div>
+        <div class="flash">
+          <h3>Particular Solution</h3>
+          <div class="formula">$$y(0)=3 \;\Rightarrow\; c=3 \;\Rightarrow\; y = 3e^{2x}$$</div>
+          <p>Substitute initial conditions to fix constants.</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="03-formation.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot active" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="05-separable.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "03-formation.html";
+  if (e.key === "ArrowRight") window.location.href = "05-separable.html";
+});
+</script>
+</body>
+</html>

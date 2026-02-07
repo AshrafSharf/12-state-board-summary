@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Formation — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:30%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">3 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card formation">
+      <h2>10.4 &nbsp; Formation of DEs</h2>
+
+      <div class="flash">
+        <h3>Why $n$ Constants Need $n$ Differentiations</h3>
+        <p>To <strong>eliminate</strong> $n$ unknowns, you need $n+1$ equations (basic algebra). You start with <strong>1</strong> (the original). Each differentiation gives <strong>1 more</strong>. So:</p>
+        <div class="formula">
+          $$\underbrace{1}_{\text{original}} + \underbrace{n}_{\text{differentiations}} = n{+}1 \text{ equations with } n \text{ unknowns} \;\;\Rightarrow\;\; \text{eliminate all constants}$$
+        </div>
+        <p>The result must contain an $n$th derivative (from the $n$th differentiation), so the DE has <strong>order $n$</strong>.</p>
+      </div>
+
+      <div class="flash example-box" style="margin-top:0.75rem">
+        <h3>Worked: $y = a\cos x + b\sin x$ (2 constants → need 2 differentiations)</h3>
+        <div class="formula">
+          $$\underbrace{y = a\cos x + b\sin x}_{\text{eq }(1):\;\text{original — has }a,b}$$
+        </div>
+        <div class="formula">
+          $$\underbrace{y' = -a\sin x + b\cos x}_{\text{eq }(2):\;\text{1st differentiation}}$$
+        </div>
+        <div class="formula">
+          $$\underbrace{y'' = -a\cos x - b\sin x}_{\text{eq }(3):\;\text{2nd differentiation}}$$
+        </div>
+        <p>Now 3 equations, 2 unknowns. Notice eq$(3) = -$eq$(1)$, so:</p>
+        <div class="formula">$$y'' = -y \;\;\Rightarrow\;\; \boxed{y''+y=0} \quad \text{(order 2, both } a,b \text{ gone)}$$</div>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash example-box">
+          <h3>Lines through origin (1 const)</h3>
+          <div class="formula">$$y=\underbrace{m}_{1\text{ const}}\!x \;\xrightarrow{\text{diff once}}\; y'=m$$</div>
+          <p>2 eqs, 1 unknown: substitute $m=y'$ into original:</p>
+          <div class="formula">$$\boxed{y=x\,y'}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>$y = c_1 e^x + c_2 e^{-x}$ (2 const)</h3>
+          <div class="formula">$$y'' = c_1 e^x + c_2 e^{-x} = y$$</div>
+          <p>eq(3) = eq(1) directly:</p>
+          <div class="formula">$$\boxed{y''-y=0}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Parabolas $y^2=4ax$</h3>
+          <div class="formula">$$2yy'=4a \;\Rightarrow\; a=\frac{yy'}{2} \;\Rightarrow\; \boxed{\frac{dy}{dx}=\frac{y}{2x}}$$</div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="02-classification.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot active" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="04-solutions.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "02-classification.html";
+  if (e.key === "ArrowRight") window.location.href = "04-solutions.html";
+});
+</script>
+</body>
+</html>

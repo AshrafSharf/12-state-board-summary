@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Applications — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:90%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">9 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card applications">
+      <h2>10.8 &nbsp; Applications</h2>
+
+      <div class="card-grid three-col">
+        <div class="flash app-card">
+          <div class="app-icon">📈</div>
+          <h3>Population Growth</h3>
+          <div class="formula">$$\frac{dN}{dt}=rN$$</div>
+          <div class="formula">$$\boxed{N=N_0 e^{rt}}$$</div>
+          <p class="dim">Malthusian law, $r>0$</p>
+        </div>
+        <div class="flash app-card">
+          <div class="app-icon">☢️</div>
+          <h3>Radioactive Decay</h3>
+          <div class="formula">$$\frac{dA}{dt}=-kA$$</div>
+          <div class="formula">$$\boxed{A=A_0 e^{-kt}}$$</div>
+          <p class="dim">Half-life $=\dfrac{\ln 2}{k}$</p>
+        </div>
+        <div class="flash app-card">
+          <div class="app-icon">🌡️</div>
+          <h3>Newton's Cooling</h3>
+          <div class="formula">$$\frac{dT}{dt}=k(T-T_m)$$</div>
+          <div class="formula">$$\boxed{T=T_m+(T_0\!-\!T_m)e^{kt}}$$</div>
+          <p class="dim">$k<0$, $T_m$ = ambient</p>
+        </div>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash app-card">
+          <div class="app-icon">🧪</div>
+          <h3>Mixing Problems</h3>
+          <div class="formula">$$\frac{dx}{dt}=\underbrace{\text{rate}_{\text{in}}}_{\text{conc}\times\text{flow}}-\underbrace{\text{rate}_{\text{out}}}_{\frac{x(t)}{V}\times\text{flow}}$$</div>
+        </div>
+        <div class="flash app-card">
+          <div class="app-icon">🦠</div>
+          <h3>Logistic Growth</h3>
+          <div class="formula">$$\frac{dN}{dL}=kN(L-N)$$</div>
+          <p class="dim">Bounded by carrying capacity $L$</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="08-linear.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot active" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="10-quickref.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "08-linear.html";
+  if (e.key === "ArrowRight") window.location.href = "10-quickref.html";
+});
+</script>
+</body>
+</html>

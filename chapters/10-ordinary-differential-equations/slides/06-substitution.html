@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Substitution — ODE Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../10-ordinary-differential-equations.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:60%"></div>
+
+<div class="slide-header">
+  <a href="../10-ordinary-differential-equations.html" class="back-link">← Full Chapter</a>
+  <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
+  <span class="slide-badge">6 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card substitution">
+      <h2>10.6.2 &nbsp; Substitution Method</h2>
+
+      <div class="flash">
+        <h3>Spot the Clue</h3>
+        <p>The RHS is a function of <strong>one single linear combination</strong> $ax+by+c$.</p>
+        <div class="formula">
+          $$\frac{dy}{dx} = f\!\Big(\;\underbrace{ax+by+c}_{\substack{\text{x and y appear ONLY} \\ \text{inside this combo}}}\;\Big)$$
+        </div>
+        <p>Put $z = ax + by + c \;\Rightarrow\; \dfrac{dy}{dx} = \dfrac{1}{b}\!\left(\dfrac{dz}{dx}-a\right)$. Now it's separable in $z, x$.</p>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>The Key Test: Is Everything Inside One $(ax+by+c)$?</h3>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$y' = \sin^2\!\underbrace{(x-y+1)}_{\text{one combo}}$$
+            <span class="label-below">$a\!=\!1, b\!=\!{-1}, c\!=\!1$. Substitution!</span>
+          </div>
+          <div class="formula mini ok">
+            $$y' = \underbrace{(3x+y+4)}_{a=3,\;b=1,\;c=4}\!^{2}$$
+            <span class="label-below">All of $x,y$ inside one combo. Substitution!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash example-box">
+          <h3>$y' = \sin^2(x-y+1)$</h3>
+          <div class="formula">$$z=x\!-\!y\!+\!1,\;\frac{dz}{dx}=\cos^2 z$$</div>
+          <div class="formula">$$\boxed{\tan(x\!-\!y\!+\!1)=x+c}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>$y' = (3x+y+4)^2$</h3>
+          <div class="formula">$$z=3x\!+\!y\!+\!4,\; z'=z^2\!+\!3$$</div>
+          <div class="formula">$$\boxed{\frac{1}{\sqrt{3}}\tan^{-1}\!\!\left(\frac{3x+y+4}{\sqrt{3}}\right)=x+c}$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Can't Use Substitution When...</h3>
+        <p>$x$ and $y$ appear <strong>separately</strong> (not locked inside one combo), or in a <strong>ratio</strong>.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\frac{dy}{dx} = \frac{\overbrace{x+y}^{\text{combo}}}{\underbrace{x-y}_{\text{different combo}}}$$
+            <span class="label-below">Two different combos in a ratio. → Homogeneous ($y=vx$)</span>
+          </div>
+          <div class="formula mini nope">
+            $$\frac{dy}{dx} = \underbrace{x^2}_{\text{alone}} + \underbrace{\sin(x+y)}_{\text{combo}}$$
+            <span class="label-below">$x^2$ sits outside the combo. Substitution won't clean up.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="05-separable.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-basics.html"></a>
+    <a class="slide-dot" href="02-classification.html"></a>
+    <a class="slide-dot" href="03-formation.html"></a>
+    <a class="slide-dot" href="04-solutions.html"></a>
+    <a class="slide-dot" href="05-separable.html"></a>
+    <a class="slide-dot active" href="06-substitution.html"></a>
+    <a class="slide-dot" href="07-homogeneous.html"></a>
+    <a class="slide-dot" href="08-linear.html"></a>
+    <a class="slide-dot" href="09-applications.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="07-homogeneous.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "05-separable.html";
+  if (e.key === "ArrowRight") window.location.href = "07-homogeneous.html";
+});
+</script>
+</body>
+</html>
