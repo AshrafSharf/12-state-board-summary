@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Reduction Formulae — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:70%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">7 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card reduction">
+      <h2>9.6 &nbsp; Reduction Formulae &mdash; Wallis &amp; Friends</h2>
+
+      <div class="flash">
+        <h3>The Big Idea</h3>
+        <p>Express $I_n$ in terms of $I_{n-2}$ (or $I_{n-1}$). Keep reducing until you reach a known base case ($I_0$ or $I_1$).</p>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Trig Power Strategy: Odd vs Even Exponent</h3>
+        <p>Before reaching for Wallis, know the <strong>general strategy</strong> for $\int\sin^n x\,dx$ or $\int\cos^n x\,dx$:</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="flash">
+            <h3>Odd Power &rarr; Split + Pythagorean</h3>
+            <p>Peel off one factor, convert the rest using $\sin^2\!=\!1\!-\!\cos^2$, then u-sub.</p>
+            <div class="formula mini">$$\int\!\cos^3\!x\,dx = \int\!\cos x(1\!-\!\sin^2\!x)\,dx$$</div>
+            <p class="dim">Let $u=\sin x$, $du=\cos x\,dx$ &rarr; $\int(1-u^2)\,du = u-\frac{u^3}{3}+C$</p>
+          </div>
+          <div class="flash">
+            <h3>Even Power &rarr; Half-Angle Identity</h3>
+            <p>Use power reduction: $\sin^2\!x = \frac{1-\cos 2x}{2}$, &nbsp; $\cos^2\!x = \frac{1+\cos 2x}{2}$</p>
+            <div class="formula mini">$$\int\!\sin^2\!x\,dx = \frac{1}{2}\!\int\!(1\!-\!\cos 2x)\,dx$$</div>
+            <p class="dim">$= \frac{x}{2}-\frac{\sin 2x}{4}+C$. For $\sin^4\!x$, apply twice.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Wallis' Formula: $\displaystyle\int_0^{\pi/2}\sin^n x\,dx = \int_0^{\pi/2}\cos^n x\,dx$</h3>
+        <div class="formula highlight-box">
+          $$\boxed{I_n = \frac{n-1}{n}\cdot I_{n-2}}$$
+        </div>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="flash">
+            <h3>$n$ even: $2,4,6,\ldots$</h3>
+            <div class="formula">$$\frac{n\!-\!1}{n}\cdot\frac{n\!-\!3}{n\!-\!2}\cdots\frac{1}{2}\cdot\frac{\pi}{2}$$</div>
+            <p class="dim">Base case $I_0=\frac{\pi}{2}$</p>
+          </div>
+          <div class="flash">
+            <h3>$n$ odd: $3,5,7,\ldots$</h3>
+            <div class="formula">$$\frac{n\!-\!1}{n}\cdot\frac{n\!-\!3}{n\!-\!2}\cdots\frac{2}{3}\cdot 1$$</div>
+            <p class="dim">Base case $I_1=1$</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Quick Examples</h3>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$\int_0^{\pi/2}\sin^5 x\,dx = \frac{4}{5}\cdot\frac{2}{3}\cdot 1 = \frac{8}{15}$$
+            <span class="label-below">Odd: ends at $1$</span>
+          </div>
+          <div class="formula mini ok">
+            $$\int_0^{\pi/2}\cos^6 x\,dx = \frac{5}{6}\cdot\frac{3}{4}\cdot\frac{1}{2}\cdot\frac{\pi}{2} = \frac{5\pi}{32}$$
+            <span class="label-below">Even: ends at $\frac{\pi}{2}$</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>$\displaystyle\int_0^{\pi/2}\sin^m x\cos^n x\,dx$ &nbsp;&mdash;&nbsp; Mixed Powers</h3>
+        <div class="formula">
+          $$I_{m,n} = \frac{n-1}{m+n}\cdot I_{m,n-2}$$
+        </div>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="flash">
+            <h3>Both $m,n$ even</h3>
+            <div class="formula mini">$$\frac{(n\!-\!1)(n\!-\!3)\cdots 1}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots}\cdot\frac{(m\!-\!1)(m\!-\!3)\cdots 1}{m(m\!-\!2)\cdots 2}\cdot\frac{\pi}{2}$$</div>
+          </div>
+          <div class="flash">
+            <h3>$n$ odd (or $m$ odd)</h3>
+            <div class="formula mini">$$\frac{(n\!-\!1)(n\!-\!3)\cdots 2}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots}\cdot\frac{1}{(m\!+\!1)}$$</div>
+            <p class="dim">No $\frac{\pi}{2}$ at the end!</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Beta Integral: $\displaystyle\int_0^1 x^m(1-x)^n\,dx = \frac{m!\cdot n!}{(m+n+1)!}$</h3>
+        <div class="formula">
+          $$I_{m,n} = \frac{n}{m+n+1}\cdot I_{m,n-1} \quad\text{or}\quad \frac{m!\cdot n!}{(m+n+1)!}$$
+        </div>
+        <div class="formula mini ok" style="margin-top:0.5rem">
+          $$\int_0^1 x^3(1-x)^4\,dx = \frac{3!\cdot 4!}{8!} = \frac{6\times 24}{40320} = \frac{1}{280}$$
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Tip: Converting to Wallis Form</h3>
+        <p>If you see $\int_0^{2a}x^2\sqrt{2ax-x^2}\,dx$ or similar, substitute $x = 2a\sin^2\theta$ (or $x=a\cos^2\theta$) to convert to $\sin^m\theta\cos^n\theta$ form, then apply reduction formulae.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="06-improper.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot active" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="08-area.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "06-improper.html";
+  if (e.key === "ArrowRight") window.location.href = "08-area.html";
+});
+</script>
+</body>
+</html>

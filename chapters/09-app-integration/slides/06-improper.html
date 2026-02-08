@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Improper Integrals &amp; Gamma — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:60%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">6 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card improper">
+      <h2>9.5 &amp; 9.7 &nbsp; Improper Integrals &amp; Gamma Function</h2>
+
+      <div class="flash">
+        <h3>What Makes an Integral "Improper"?</h3>
+        <p>At least one limit is $\pm\infty$, or the integrand blows up somewhere in $[a,b]$.</p>
+        <div class="formula">
+          $$\int_a^{\infty}f(x)\,dx = \lim_{t\to\infty}\int_a^t f(x)\,dx \qquad \int_{-\infty}^{b}f(x)\,dx = \lim_{t\to-\infty}\int_t^b f(x)\,dx$$
+        </div>
+        <p>If the limit exists (is finite) &rarr; <strong>convergent</strong>. Otherwise &rarr; <strong>divergent</strong>.</p>
+      </div>
+
+      <div class="flash example-box" style="margin-top:0.75rem">
+        <h3>Key Result: $\displaystyle\int_b^{\infty}\frac{dx}{a^2+x^2}$</h3>
+        <div class="formula">
+          $$\int_b^{\infty}\frac{dx}{a^2+x^2} = \left[\frac{1}{a}\tan^{-1}\frac{x}{a}\right]_b^{\infty} = \frac{1}{a}\left(\frac{\pi}{2}-\tan^{-1}\frac{b}{a}\right)$$
+        </div>
+        <p class="dim">Special case $b=0$: $\displaystyle\int_0^{\infty}\frac{dx}{a^2+x^2} = \frac{\pi}{2a}$ &emsp;|&emsp; $b=a$: $\displaystyle\int_a^{\infty}\frac{dx}{a^2+x^2}=\frac{\pi}{4a}$</p>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem;border-left:3px solid var(--improper)">
+        <h3>The Gamma Integral $\Gamma(n)$</h3>
+        <div class="formula highlight-box">
+          $$\boxed{\Gamma(n) = \int_0^{\infty}e^{-x}x^{n-1}\,dx = (n-1)!\;,\quad n=1,2,3,\ldots}$$
+        </div>
+        <p><strong>Key recurrence:</strong> $\Gamma(n+1) = n\,\Gamma(n)$</p>
+        <p><strong>Special values:</strong> $\Gamma(1)=1$, &nbsp; $\Gamma(2)=1$, &nbsp; $\Gamma(3)=2$, &nbsp; $\Gamma(4)=6$</p>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Generalization: $\displaystyle\int_0^{\infty}e^{-ax}x^n\,dx = \frac{n!}{a^{n+1}}$</h3>
+        <p><strong>Spot the clue:</strong> $e^{-(\text{something})x}\cdot x^n$ from $0$ to $\infty$. Substitute $t=ax$ to reduce to standard gamma.</p>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$\int_0^{\infty}e^{-3x}x^2\,dx = \frac{2!}{3^3}=\frac{2}{27}$$
+            <span class="label-below">$a=3, n=2$</span>
+          </div>
+          <div class="formula mini ok">
+            $$\Gamma(n) = 2\int_0^{\infty}e^{-x^2}x^{2n-1}\,dx$$
+            <span class="label-below">Substitute $x=\sqrt{u}$ to prove</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Convergence Check &mdash; Not All Improper Integrals Converge!</h3>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$\int_1^{\infty}\frac{dx}{x^2} = 1 \;\checkmark$$
+            <span class="label-below">$\frac{1}{x^p}$ converges for $p>1$</span>
+          </div>
+          <div class="formula mini nope">
+            $$\int_1^{\infty}\frac{dx}{x} = \infty \;\boldsymbol{\times}$$
+            <span class="label-below">$\frac{1}{x^p}$ diverges for $p\leq 1$</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="05-bernoulli.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot active" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="07-reduction.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "05-bernoulli.html";
+  if (e.key === "ArrowRight") window.location.href = "07-reduction.html";
+});
+</script>
+</body>
+</html>

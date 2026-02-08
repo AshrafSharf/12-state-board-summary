@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Indefinite Integrals — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:10%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">1 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card indefinite">
+      <h2>9.1 &nbsp; Indefinite Integrals &mdash; The Building Blocks</h2>
+
+      <div class="flash">
+        <h3>Core Idea</h3>
+        <p>If $\dfrac{d}{dx}F(x) = f(x)$, then $F(x)$ is an <strong>anti-derivative</strong> of $f(x)$.</p>
+        <div class="formula">
+          $$\int f(x)\,dx = F(x) + C \quad \longleftarrow \text{ "+C" because } \frac{d}{dx}[F(x)+C] = f(x)$$
+        </div>
+        <p><strong>Linear property:</strong> $\displaystyle\int[\alpha f(x)+\beta g(x)]\,dx = \alpha\!\int\! f(x)\,dx + \beta\!\int\! g(x)\,dx$</p>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Standard Integrals You Must Know</h3>
+        <table class="int-table">
+          <thead>
+            <tr><th>$f(x)$</th><th>$\int f(x)\,dx$</th><th>Pattern clue</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$(ax+b)^n,\;n\neq-1$</td><td>$\dfrac{1}{a}\cdot\dfrac{(ax+b)^{n+1}}{n+1}+C$</td><td>Power rule &mdash; bump power by 1</td></tr>
+            <tr><td>$\dfrac{1}{ax+b}$</td><td>$\dfrac{1}{a}\log|ax+b|+C$</td><td>$n=-1$ case &rarr; log</td></tr>
+            <tr><td>$e^{ax}$</td><td>$\dfrac{e^{ax}}{a}+C$</td><td>Exponential stays exponential</td></tr>
+            <tr><td>$\sin(ax+b)$</td><td>$-\dfrac{\cos(ax+b)}{a}+C$</td><td>sin &rarr; &minus;cos</td></tr>
+            <tr><td>$\cos(ax+b)$</td><td>$\dfrac{\sin(ax+b)}{a}+C$</td><td>cos &rarr; +sin</td></tr>
+            <tr><td>$\sec^2(ax+b)$</td><td>$\dfrac{\tan(ax+b)}{a}+C$</td><td>sec&sup2; &rarr; tan</td></tr>
+            <tr><td>$\dfrac{1}{a^2+x^2}$</td><td>$\dfrac{1}{a}\tan^{-1}\!\left(\dfrac{x}{a}\right)+C$</td><td>Sum of squares &rarr; arctan</td></tr>
+            <tr><td>$\dfrac{1}{\sqrt{a^2-x^2}}$</td><td>$\sin^{-1}\!\left(\dfrac{x}{a}\right)+C$</td><td>Root of diff of squares &rarr; arcsin</td></tr>
+            <tr><td>$\dfrac{1}{a^2-x^2}$</td><td>$\dfrac{1}{2a}\log\left|\dfrac{a+x}{a-x}\right|+C$</td><td>Partial fractions &rarr; log ratio</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Generalization Tip: The Chain Factor $\frac{1}{a}$</h3>
+        <p>Whenever the argument is <strong>$ax+b$</strong> instead of just $x$, <strong>divide by $a$</strong> (the coefficient of $x$). This comes from the chain rule in reverse.</p>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$\int\cos(3x+1)\,dx = \frac{\sin(3x+1)}{\color{#059669}{3}}+C$$
+            <span class="label-below">Divide by coefficient of $x$</span>
+          </div>
+          <div class="formula mini nope">
+            $$\int\cos(x^2)\,dx \neq \frac{\sin(x^2)}{2x}+C$$
+            <span class="label-below">Argument is $x^2$ not $ax+b$. Need substitution!</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>When the $\frac{1}{a}$ Trick Fails</h3>
+        <p>The $\frac{1}{a}$ shortcut works <strong>only</strong> when the inner function is <strong>linear</strong> ($ax+b$). If the argument is nonlinear ($x^2$, $\sqrt{x}$, $\sin x$, etc.), you must use <strong>substitution</strong>.</p>
+        <div class="formula-row">
+          <div class="formula mini nope">
+            $$\int e^{x^2}\,dx$$
+            <span class="label-below">No closed form! Can't pull out "$\frac{1}{2x}$"</span>
+          </div>
+          <div class="formula mini ok">
+            $$\int 2x\,e^{x^2}\,dx = e^{x^2}+C$$
+            <span class="label-below">The derivative of $x^2$ is sitting outside &rarr; substitution works</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>U-Substitution: The Most Important Method</h3>
+        <p><strong>Spot the clue:</strong> Part of the integrand is the <strong>derivative of another part</strong>. If you see $f(g(x))\cdot g'(x)$, let $u=g(x)$.</p>
+        <div class="formula highlight-box">
+          $$\int f\!\big(g(x)\big)\cdot g'(x)\,dx \;\xrightarrow{u\,=\,g(x)}\; \int f(u)\,du$$
+        </div>
+        <p><strong>Steps:</strong> (1) Pick $u$ = inner function &nbsp; (2) Find $du = g'(x)\,dx$ &nbsp; (3) Replace everything in terms of $u$ &nbsp; (4) Integrate &nbsp; (5) <strong>Substitute back</strong> to $x$</p>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int x(x^2+1)^5\,dx$</h3>
+          <p>$u=x^2+1 \Rightarrow du=2x\,dx \Rightarrow x\,dx=\tfrac{du}{2}$</p>
+          <div class="formula mini">$$= \frac{1}{2}\int u^5\,du = \frac{u^6}{12}+C = \frac{(x^2+1)^6}{12}+C$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int\frac{1}{3x+1}\,dx$</h3>
+          <p>$u=3x+1 \Rightarrow du=3\,dx \Rightarrow dx=\tfrac{du}{3}$</p>
+          <div class="formula mini">$$= \frac{1}{3}\int\frac{du}{u} = \frac{1}{3}\ln|u|+C = \frac{1}{3}\ln|3x+1|+C$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>U-Sub Fails When...</h3>
+        <p>The derivative of the inner function is <strong>nowhere in the integrand</strong>. If $g'(x)$ (or a constant multiple of it) is missing, u-sub won't work &mdash; try integration by parts instead.</p>
+        <div class="formula-row">
+          <div class="formula mini nope">
+            $$\int x\sin x\,dx$$
+            <span class="label-below">$\frac{d}{dx}[\sin x]=\cos x \neq x$. Neither is the derivative of the other. Use IBP.</span>
+          </div>
+          <div class="formula mini ok">
+            $$\int x\cos(x^2)\,dx$$
+            <span class="label-below">$\frac{d}{dx}[x^2]=2x$ &mdash; and $x$ is right there! Let $u=x^2$.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a class="nav-btn disabled">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot active" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="02-riemann.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowRight") window.location.href = "02-riemann.html";
+});
+</script>
+</body>
+</html>

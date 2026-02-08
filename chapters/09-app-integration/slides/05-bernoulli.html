@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bernoulli's Formula — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:50%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">5 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card bernoulli">
+      <h2>9.4 &nbsp; Bernoulli's Formula &mdash; Fast Integration by Parts</h2>
+
+      <div class="flash">
+        <h3>Spot the Clue</h3>
+        <p>The integrand is a <strong>polynomial $u(x)$ times a function $v(x)$ that can be integrated repeatedly</strong> (sin, cos, $e^{ax}$).</p>
+        <div class="formula">
+          $$\int \underbrace{u(x)}_{\text{polynomial}}\!\cdot\!\underbrace{v(x)}_{\substack{\text{can integrate} \\ \text{repeatedly}}}\,dx$$
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>LIATE Rule: How to Choose $u$ in Integration by Parts</h3>
+        <p>When you have a product of two functions and u-sub doesn't work, use IBP. Choose $u$ as the function that <strong>simplifies when differentiated</strong>. Priority order:</p>
+        <div class="formula highlight-box" style="text-align:center">
+          $$\boxed{\underset{\text{Log}}{\mathbf{L}} \;\succ\; \underset{\text{Inverse trig}}{\mathbf{I}} \;\succ\; \underset{\text{Algebraic (poly)}}{\mathbf{A}} \;\succ\; \underset{\text{Trig}}{\mathbf{T}} \;\succ\; \underset{\text{Exponential}}{\mathbf{E}}}$$
+        </div>
+        <p><strong>Higher on list = choose as $u$.</strong> Everything remaining becomes $dv$.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini ok">
+            $$\int \underbrace{x^2}_{\mathbf{A}\to u}\!\cdot\!\underbrace{e^x}_{\mathbf{E}\to dv}\,dx$$
+            <span class="label-below">A before E &rarr; $u=x^2$, $dv=e^x\,dx$</span>
+          </div>
+          <div class="formula mini ok">
+            $$\int \underbrace{\ln x}_{\mathbf{L}\to u}\!\cdot\!\underbrace{x^2}_{\mathbf{A}\to dv}\,dx$$
+            <span class="label-below">L before A &rarr; $u=\ln x$, $dv=x^2\,dx$</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>The Formula</h3>
+        <p>Let $u^{(k)}$ = $k$th derivative of $u$, and $v_{(k)}$ = $k$th integral of $v$:</p>
+        <div class="formula highlight-box">
+          $$\boxed{\int uv\,dx = u\,v_{(1)} - u^{(1)}v_{(2)} + u^{(2)}v_{(3)} - u^{(3)}v_{(4)} + \cdots}$$
+        </div>
+        <p><strong>Signs alternate:</strong> $+, -, +, -, \ldots$ &nbsp; <strong>Terminates</strong> because $u$ is a polynomial &mdash; eventually $u^{(k)}=0$.</p>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>How to Apply: The Two-Column Method</h3>
+        <p>Write derivatives of $u$ going down, integrals of $v$ going down. Multiply diagonally with alternating signs.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div>
+            <p><strong>Differentiate $u$:</strong></p>
+            <p>$u \to u' \to u'' \to \cdots \to 0$</p>
+          </div>
+          <div>
+            <p><strong>Integrate $v$:</strong></p>
+            <p>$v \to v_{(1)} \to v_{(2)} \to \cdots$</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int_0^{\pi} x^2\cos nx\,dx$</h3>
+          <p>$u=x^2$, $v=\cos nx$</p>
+          <div class="formula mini">$$= \left[x^2\!\cdot\!\frac{\sin nx}{n} - 2x\!\cdot\!\left(-\frac{\cos nx}{n^2}\right) + 2\!\cdot\!\left(-\frac{\sin nx}{n^3}\right)\right]_0^{\pi}$$</div>
+          <div class="formula">$$= \frac{2\pi(-1)^n}{n^2}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int_0^1 e^{-2x}(1+x-2x^3)\,dx$</h3>
+          <p>$u=1+x-2x^3$, $v=e^{-2x}$</p>
+          <div class="formula mini">$$u' = 1-6x^2,\; u''=-12x,\; u'''=-12,\; u^{(4)}=0$$</div>
+          <p class="dim">Each integral of $e^{-2x}$ just divides by $-2$. Terminates in 4 terms.</p>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Bernoulli Fails When...</h3>
+        <p>Neither factor is a polynomial &mdash; derivatives never terminate.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\int e^x \sin x\,dx$$
+            <span class="label-below">Both $e^x$ and $\sin x$ cycle forever. Use standard IBP (twice + solve for $I$).</span>
+          </div>
+          <div class="formula mini nope">
+            $$\int \log x\cdot\sin x\,dx$$
+            <span class="label-below">$\log x$ is not a polynomial. Derivatives don't terminate.</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="04-properties.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot active" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="06-improper.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "04-properties.html";
+  if (e.key === "ArrowRight") window.location.href = "06-improper.html";
+});
+</script>
+</body>
+</html>

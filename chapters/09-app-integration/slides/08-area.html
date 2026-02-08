@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Area by Integration — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:80%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">8 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card area">
+      <h2>9.8 &nbsp; Area by Integration</h2>
+
+      <div class="flash">
+        <h3>The Core Principle</h3>
+        <p>Area = sum of infinitely thin strips. Choose <strong>vertical strips</strong> ($dx$) or <strong>horizontal strips</strong> ($dy$) based on which is simpler.</p>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.5rem">
+        <div class="flash">
+          <h3>Vertical Strips ($dx$)</h3>
+          <div class="formula">$$A = \int_a^b y\,dx = \int_a^b f(x)\,dx$$</div>
+          <p><strong>Use when:</strong> curve given as $y=f(x)$, boundaries are vertical lines $x=a, x=b$.</p>
+        </div>
+        <div class="flash">
+          <h3>Horizontal Strips ($dy$)</h3>
+          <div class="formula">$$A = \int_c^d x\,dy = \int_c^d g(y)\,dy$$</div>
+          <p><strong>Use when:</strong> curve given as $x=g(y)$, or boundaries are horizontal lines $y=c, y=d$.</p>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Decision: Vertical vs Horizontal Strips?</h3>
+        <ul>
+          <li>If each vertical line crosses the region boundary <strong>exactly twice</strong> &rarr; use <strong>vertical</strong> strips</li>
+          <li>If each horizontal line crosses the region boundary <strong>exactly twice</strong> &rarr; use <strong>horizontal</strong> strips</li>
+          <li>If vertical strips would require <strong>splitting</strong> the region, try horizontal (and vice versa)</li>
+        </ul>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch for Sign Changes!</h3>
+        <p>If $f(x)$ changes sign in $[a,b]$, the definite integral gives <strong>signed area</strong> (positive above, negative below $x$-axis). For <strong>geometric area</strong>, split at zeros and take absolute values:</p>
+        <div class="formula">
+          $$\text{Geometric area} = \left|\int_a^c f(x)\,dx\right| + \left|\int_c^b f(x)\,dx\right|$$
+        </div>
+        <div class="formula mini nope" style="margin-top:0.5rem">
+          $$\int_0^{2\pi}\sin x\,dx = 0 \neq \text{area}$$
+          <span class="label-below">Integral = 0, but geometric area = $2+2 = 4$!</span>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Area Between Two Curves</h3>
+        <div class="formula highlight-box">
+          $$\boxed{A = \int_a^b [f(x)-g(x)]\,dx \quad\text{where } f(x)\geq g(x) \text{ on } [a,b]}$$
+        </div>
+        <p>Think: $A = \int(\text{top curve} - \text{bottom curve})\,dx$ or $\int(\text{right curve} - \text{left curve})\,dy$</p>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash example-box">
+          <h3>Ex: Parabola $y^2=4x$ vs line $y^2=4y$</h3>
+          <p>$y_U = 2\sqrt{x}$, $y_L = \frac{x^2}{4}$, intersection at $(0,0)$ and $(4,4)$.</p>
+          <div class="formula mini">$$A = \int_0^4\left(2\sqrt{x}-\frac{x^2}{4}\right)dx = \frac{16}{3}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: Ellipse $\frac{x^2}{a^2}+\frac{y^2}{b^2}=1$</h3>
+          <p>By symmetry: $A = 4\int_0^a \frac{b}{a}\sqrt{a^2-x^2}\,dx$</p>
+          <div class="formula mini">$$= 4\cdot\frac{b}{a}\cdot\frac{\pi a^2}{4} = \boxed{\pi ab}$$</div>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Quick Area Formulas Worth Memorizing</h3>
+        <ul>
+          <li><strong>Parabola $y^2=4ax$</strong> with latus rectum ($x=a$): $A = \dfrac{8a^2}{3}$</li>
+          <li><strong>Ellipse:</strong> $A = \pi ab$</li>
+          <li><strong>Circle:</strong> $A = \pi a^2$ (set $b=a$)</li>
+        </ul>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="07-reduction.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot active" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="09-volume.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "07-reduction.html";
+  if (e.key === "ArrowRight") window.location.href = "09-volume.html";
+});
+</script>
+</body>
+</html>

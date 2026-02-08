@@ -1,0 +1,224 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Reference — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:100%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">10 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card quickref">
+      <h2>Method Selector &mdash; "Which Technique Do I Use?"</h2>
+
+      <div class="flowchart">
+        <div class="flow-node flow-start">Given: $\displaystyle\int_a^b f(x)\,dx$</div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Symmetric limits $[-a,a]$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method properties-bg">Check even/odd (P8/P9)<br><span class="dim">odd &rarr; $0$, even &rarr; $2\int_0^a$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Ratio $\frac{f(x)}{f(x)+f(a\!+\!b\!-\!x)}$ or $x\cdot g(x)$ with $g(a-x)=g(x)$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method properties-bg">Property P6 or P12<br><span class="dim">$I=\frac{b-a}{2}$ or remove $x$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">$\sin^m x\cos^n x$ on $[0,\pi/2]$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method reduction-bg">Wallis / Reduction<br><span class="dim">$I_n = \frac{n-1}{n}I_{n-2}$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Polynomial $\times$ ($\sin$, $\cos$, $e^{ax}$)?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method bernoulli-bg">Bernoulli's Formula<br><span class="dim">Differentiate poly, integrate the other</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Limit is $\infty$ or $e^{-ax}x^n$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method improper-bg">Improper / Gamma<br><span class="dim">$\int_0^{\infty}e^{-ax}x^n\,dx = \frac{n!}{a^{n+1}}$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO</div>
+            <div class="flow-node flow-method ftc-bg">Direct anti-derivative + FTC<br><span class="dim">$[F(x)]_a^b = F(b)-F(a)$</span></div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:1.5rem">
+        <h3>Indefinite Integral Toolkit &mdash; Pattern Recognition</h3>
+        <div class="card-grid two-col" style="margin-top:0.75rem">
+          <div class="flash tip-box">
+            <h3>U-Substitution</h3>
+            <p><strong>Clue:</strong> $f(g(x))\cdot g'(x)$ &mdash; derivative of inner function is present</p>
+            <p><strong>Action:</strong> Let $u=g(x)$, replace, integrate, sub back</p>
+          </div>
+          <div class="flash tip-box">
+            <h3>Integration by Parts (LIATE)</h3>
+            <p><strong>Clue:</strong> Product of unrelated functions, u-sub fails</p>
+            <p><strong>Choose $u$:</strong> L &succ; I &succ; A &succ; T &succ; E</p>
+          </div>
+        </div>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="flash tip-box">
+            <h3>Partial Fractions</h3>
+            <p><strong>Clue:</strong> $\frac{P(x)}{Q(x)}$ where $Q(x)$ factors into linear/quadratic terms</p>
+            <p><strong>Decompose:</strong> $\frac{1}{(x-a)(x-b)} = \frac{A}{x-a}+\frac{B}{x-b}$</p>
+          </div>
+          <div class="flash tip-box">
+            <h3>Completing the Square</h3>
+            <p><strong>Clue:</strong> $\frac{1}{ax^2+bx+c}$ where quadratic doesn't factor nicely</p>
+            <p><strong>Rewrite:</strong> $(x-h)^2 \pm k^2$ &rarr; use $\arctan$ or log forms</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Trig Substitution Table</h3>
+        <p><strong>Clue:</strong> Integrand has $\sqrt{a^2-x^2}$, $\sqrt{a^2+x^2}$, or $\sqrt{x^2-a^2}$ and u-sub can't remove the root.</p>
+        <table class="int-table">
+          <thead>
+            <tr><th>If you see</th><th>Substitute</th><th>Identity used</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>$\sqrt{a^2-x^2}$</td><td>$x = a\sin\theta$, &nbsp; $dx = a\cos\theta\,d\theta$</td><td>$1-\sin^2\!\theta = \cos^2\!\theta$</td></tr>
+            <tr><td>$\sqrt{a^2+x^2}$</td><td>$x = a\tan\theta$, &nbsp; $dx = a\sec^2\!\theta\,d\theta$</td><td>$1+\tan^2\!\theta = \sec^2\!\theta$</td></tr>
+            <tr><td>$\sqrt{x^2-a^2}$</td><td>$x = a\sec\theta$, &nbsp; $dx = a\sec\theta\tan\theta\,d\theta$</td><td>$\sec^2\!\theta-1 = \tan^2\!\theta$</td></tr>
+          </tbody>
+        </table>
+        <div class="formula mini ok" style="margin-top:0.5rem">
+          $$\int\!\sqrt{4-x^2}\,dx \;\xrightarrow{x=2\sin\theta}\; \int 4\cos^2\!\theta\,d\theta \;\longrightarrow\; 2\theta+\sin 2\theta + C$$
+          <span class="label-below">Square root eliminated! Then use half-angle identity. Finally sub back $\theta = \sin^{-1}(x/2)$.</span>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Partial Fractions: The Setup</h3>
+        <p>Factor the denominator, then decompose. Each fraction integrates to a $\ln$ or power.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="flash example-box">
+            <h3>Distinct linear factors</h3>
+            <div class="formula mini">$$\frac{1}{(x\!-\!2)(x\!-\!3)} = \frac{A}{x-2}+\frac{B}{x-3}$$</div>
+            <p class="dim">Solve: $A=-1, B=1$ &rarr; $\int = \ln\left|\frac{x-3}{x-2}\right|+C$</p>
+          </div>
+          <div class="flash example-box">
+            <h3>Repeated linear factor</h3>
+            <div class="formula mini">$$\frac{1}{(x\!-\!1)^2(x\!+\!2)} = \frac{A}{x-1}+\frac{B}{(x-1)^2}+\frac{C}{x+2}$$</div>
+            <p class="dim">Repeated factors need one fraction per power.</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Completing the Square: Non-Factorable Quadratics</h3>
+        <p>If $ax^2+bx+c$ doesn't factor, rewrite as $(x-h)^2\pm k^2$ and use standard forms:</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini ok">
+            $$\int\!\frac{dx}{x^2-5x+6} \;\xrightarrow{\text{factor}}\; \int\!\frac{dx}{(x-2)(x-3)}$$
+            <span class="label-below">Factors &rarr; partial fractions</span>
+          </div>
+          <div class="formula mini ok">
+            $$\int\!\frac{dx}{x^2-5x+7} \;\xrightarrow{\text{complete}}\; \int\!\frac{dx}{(x-\frac{5}{2})^2+\frac{3}{4}}$$
+            <span class="label-below">Doesn't factor &rarr; $\arctan$ form</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:1.5rem">
+        <h3>All Key Formulas at a Glance</h3>
+        <div class="formula">
+          $$\underbrace{\int_a^b f(x)\,dx = F(b)-F(a)}_{\text{Second FTC}} \qquad \underbrace{\int_a^b f(x)\,dx = \int_a^b f(a+b-x)\,dx}_{\text{P6: Mirror}}$$
+        </div>
+        <div class="formula" style="margin-top:0.75rem">
+          $$\underbrace{\int_{-a}^{a}f(x)\,dx = \begin{cases}2\int_0^a f & \text{even}\\0 & \text{odd}\end{cases}}_{\text{P8/P9}} \qquad \underbrace{\int_0^a x\,f(x)\,dx = \frac{a}{2}\int_0^a f(x)\,dx}_{\text{P12, if } f(a-x)=f(x)}$$
+        </div>
+        <div class="formula" style="margin-top:0.75rem">
+          $$\underbrace{\int_0^{\pi/2}\sin^n\!x\,dx = \int_0^{\pi/2}\cos^n\!x\,dx}_{\text{Wallis}} \qquad \underbrace{\Gamma(n)=\int_0^{\infty}e^{-x}x^{n-1}\,dx=(n\!-\!1)!}_{\text{Gamma}}$$
+        </div>
+        <div class="formula" style="margin-top:0.75rem">
+          $$\underbrace{A = \int_a^b[y_U-y_L]\,dx}_{\text{Area between curves}} \qquad \underbrace{V = \pi\int_a^b y^2\,dx}_{\text{Volume about } x\text{-axis}}$$
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="09-volume.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot active" href="10-quickref.html"></a>
+  </div>
+  <a class="nav-btn disabled">&#8634; Start Over</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "09-volume.html";
+});
+</script>
+</body>
+</html>

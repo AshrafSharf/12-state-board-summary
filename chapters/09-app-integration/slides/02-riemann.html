@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Riemann Sums — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:20%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">2 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card riemann">
+      <h2>9.2 &nbsp; Definite Integral as Limit of a Sum</h2>
+
+      <div class="flash">
+        <h3>The Big Idea</h3>
+        <p>Chop $[a,b]$ into $n$ equal strips of width $h = \dfrac{b-a}{n}$. Sum up rectangle areas. Let $n\to\infty$.</p>
+        <div class="formula highlight-box">
+          $$\boxed{\int_a^b f(x)\,dx = \lim_{n\to\infty}\frac{b-a}{n}\sum_{r=1}^{n}f\!\left(a+(b-a)\frac{r}{n}\right)}$$
+        </div>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash">
+          <h3>Special Case: $a=0,\;b=1$</h3>
+          <div class="formula">
+            $$\int_0^1 f(x)\,dx = \lim_{n\to\infty}\frac{1}{n}\sum_{r=1}^{n}f\!\left(\frac{r}{n}\right)$$
+          </div>
+          <p class="dim">Most textbook problems use this form.</p>
+        </div>
+        <div class="flash">
+          <h3>Three Approximation Rules</h3>
+          <ul>
+            <li><strong>Left-end:</strong> use $f(x_{i-1})$</li>
+            <li><strong>Right-end:</strong> use $f(x_i)$</li>
+            <li><strong>Mid-point:</strong> use $f\!\left(\frac{x_{i-1}+x_i}{2}\right)$</li>
+          </ul>
+          <p class="dim">All three converge to same value as $n\to\infty$</p>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Tip: Recognizing a Limit-of-Sum Problem</h3>
+        <p>If you see $\displaystyle\lim_{n\to\infty}\frac{1}{n}\sum f\!\left(\frac{r}{n}\right)$, it is asking you to <strong>convert to $\int_0^1$</strong>.</p>
+        <p>Replace $\frac{r}{n}\to x$ and $\frac{1}{n}\to dx$.</p>
+        <div class="formula">
+          $$\lim_{n\to\infty}\frac{1}{n}\sum_{r=1}^{n}\frac{r}{n} = \int_0^1 x\,dx = \frac{1}{2}$$
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Key Summation Formulae You'll Need</h3>
+        <div class="formula">$$\sum_{r=1}^{n}r = \frac{n(n+1)}{2}, \quad \sum_{r=1}^{n}r^2 = \frac{n(n+1)(2n+1)}{6}, \quad \sum_{r=1}^{n}r^3 = \left[\frac{n(n+1)}{2}\right]^2$$</div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="01-indefinite.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot active" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="03-ftc.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "01-indefinite.html";
+  if (e.key === "ArrowRight") window.location.href = "03-ftc.html";
+});
+</script>
+</body>
+</html>

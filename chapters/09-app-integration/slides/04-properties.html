@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Properties of Definite Integrals — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:40%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">4 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card properties">
+      <h2>9.3 &nbsp; Properties of Definite Integrals &mdash; The Power Tools</h2>
+
+      <div class="flash">
+        <h3>When to Use Which Property? (The Decision Guide)</h3>
+        <p>These properties let you <strong>simplify or transform</strong> integrals that look impossible to compute directly. The key is <strong>pattern recognition</strong>.</p>
+      </div>
+
+      <!-- P1-P5 basic -->
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Basic Properties (P1&ndash;P5)</h3>
+        <div class="formula mini">$$\text{P1: }\int_a^b f(x)\,dx = \int_a^b f(u)\,du \quad\text{(dummy variable &mdash; name doesn't matter)}$$</div>
+        <div class="formula mini">$$\text{P2: }\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx \quad\text{(swap limits = flip sign)}$$</div>
+        <div class="formula mini">$$\text{P3: }\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx \quad\text{(split at any point } c \text{)}$$</div>
+        <div class="formula mini">$$\text{P4: Linearity} \quad\text{P5: Substitution}$$</div>
+      </div>
+
+      <!-- P6 -->
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>P6: $\displaystyle\int_a^b f(x)\,dx = \int_a^b f(a+b-x)\,dx$ &nbsp;&mdash;&nbsp; The Mirror Property</h3>
+        <p><strong>Spot the clue:</strong> The integrand is a <strong>ratio</strong> of the form $\dfrac{f(x)}{f(x)+f(a+b-x)}$ or the integral has <strong>symmetric limits</strong>.</p>
+        <div class="formula">
+          $$I = \int_a^b \frac{f(x)}{f(x)+f(a+b-x)}\,dx \;\xrightarrow{\text{apply P6}}\; I = \int_a^b \frac{f(a+b-x)}{f(a+b-x)+f(x)}\,dx$$
+        </div>
+        <div class="arrow-down">&darr; add both</div>
+        <div class="formula highlight-box">
+          $$\boxed{2I = \int_a^b 1\,dx = b-a \;\;\Rightarrow\;\; I = \frac{b-a}{2}}$$
+        </div>
+        <p class="dim">Works whenever numerator and denominator "swap" under $x\to a+b-x$.</p>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int_2^3\frac{\sqrt{x}}{\sqrt{5-x}+\sqrt{x}}\,dx$</h3>
+          <p>Here $a+b=5$. Applying P6: $x\to 5-x$.</p>
+          <div class="formula">$$I = \int_2^3\frac{\sqrt{5-x}}{\sqrt{x}+\sqrt{5-x}}\,dx$$</div>
+          <p>Add: $2I = \int_2^3 1\,dx = 1 \Rightarrow \boxed{I=\frac{1}{2}}$</p>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int_0^{\pi/4}\log(1+\tan x)\,dx$</h3>
+          <p>Apply P6 with $a=0, b=\frac{\pi}{4}$: $x\to\frac{\pi}{4}-x$.</p>
+          <div class="formula mini">$$\tan\!\left(\frac{\pi}{4}-x\right)=\frac{1-\tan x}{1+\tan x}$$</div>
+          <p>$\Rightarrow 2I = \frac{\pi}{4}\log 2 \Rightarrow \boxed{I=\frac{\pi}{8}\log 2}$</p>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>P6 Fails When...</h3>
+        <p>The integrand does NOT have a symmetric structure under $x\to a+b-x$. If $f(x)+f(a+b-x)$ doesn't simplify to a constant, P6 won't help.</p>
+        <div class="formula mini nope">
+          $$\int_0^1 e^x \sin x\,dx$$
+          <span class="label-below">$e^x\sin x + e^{1-x}\sin(1-x)$ doesn't simplify. Use integration by parts instead.</span>
+        </div>
+      </div>
+
+      <!-- P7: 2a property -->
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>P7: $\displaystyle\int_0^{2a}f(x)\,dx = \int_0^a [f(x)+f(2a-x)]\,dx$ &nbsp;&mdash;&nbsp; The Folding Property</h3>
+        <p><strong>Spot the clue:</strong> Upper limit is $2a$ (often $2\pi$, $\pi$, $2$). <strong>Check if $f(2a-x)$ simplifies</strong>.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini ok">
+            $$\text{If }f(2a-x)=f(x):$$
+            $$\int_0^{2a}f(x)\,dx = 2\int_0^a f(x)\,dx$$
+            <span class="label-below">P10: Functions that "repeat" &mdash; $\sin^2 x$ on $[0,\pi]$</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{If }f(2a-x)=-f(x):$$
+            $$\int_0^{2a}f(x)\,dx = 0$$
+            <span class="label-below">P11: Functions that "cancel" &mdash; $\sin x$ on $[0,2\pi]$</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P8, P9: Even/Odd -->
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>P8 &amp; P9: Even/Odd Functions &nbsp;&mdash;&nbsp; Symmetric Limits $[-a, a]$</h3>
+        <p><strong>Spot the clue:</strong> Limits are $[-a, a]$ (e.g. $[-\pi, \pi]$, $[-1, 1]$).</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="flash">
+            <h3>Even: $f(-x)=f(x)$</h3>
+            <div class="formula highlight-box">$$\int_{-a}^a f(x)\,dx = 2\int_0^a f(x)\,dx$$</div>
+            <p>Examples: $x^2$, $\cos x$, $|x|$, $e^{-|x|}$</p>
+          </div>
+          <div class="flash">
+            <h3>Odd: $f(-x)=-f(x)$</h3>
+            <div class="formula highlight-box">$$\int_{-a}^a f(x)\,dx = 0$$</div>
+            <p>Examples: $x^3$, $\sin x$, $x\cos x$, $x e^{x^2}$</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Even/Odd Check is Your First Move with $[-a,a]$ Limits</h3>
+        <p>Always <strong>test $f(-x)$</strong> first. Many "hard" integrals become trivial:</p>
+        <div class="formula-row">
+          <div class="formula mini ok">
+            $$\int_{-\pi/2}^{\pi/2}x\cos x\,dx = 0$$
+            <span class="label-below">$f(-x)=(-x)\cos(-x)=-x\cos x=-f(x)$ &rarr; odd!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\int_{-1}^{1}e^{-|x|}\,dx = 2\int_0^1 e^{-x}\,dx = 2(1-e^{-1})$$
+            <span class="label-below">$f(-x)=e^{-|-x|}=e^{-|x|}=f(x)$ &rarr; even!</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- P12 -->
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>P12: $\displaystyle\int_0^a x\,f(x)\,dx = \frac{a}{2}\int_0^a f(x)\,dx$ &nbsp; if $f(a-x)=f(x)$</h3>
+        <p><strong>Spot the clue:</strong> Integrand has a <strong>stray $x$ multiplied</strong> by a function symmetric about $x=\frac{a}{2}$.</p>
+        <p>This property <strong>removes the $x$ factor</strong>, making the integral much simpler!</p>
+        <div class="flash example-box" style="margin-top:0.5rem">
+          <h3>Ex: $\displaystyle\int_0^{\pi}\frac{x}{1+\sin x}\,dx$</h3>
+          <p>$f(x)=\frac{1}{1+\sin x}$. Check: $f(\pi-x)=\frac{1}{1+\sin(\pi-x)}=\frac{1}{1+\sin x}=f(x)$ &checkmark;</p>
+          <div class="formula">$$I = \frac{\pi}{2}\int_0^{\pi}\frac{dx}{1+\sin x} = \frac{\pi}{2}\!\cdot\!2\int_0^{\pi/2}\frac{dx}{1+\cos x}=\pi$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>P12 Fails When...</h3>
+        <p>$f(a-x)\neq f(x)$ &mdash; i.e. the function part is <strong>not symmetric</strong> about the midpoint.</p>
+        <div class="formula mini nope">
+          $$\int_0^1 x\,e^x\,dx$$
+          <span class="label-below">$f(x)=e^x$, but $f(1-x)=e^{1-x}\neq e^x$. Use integration by parts.</span>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="03-ftc.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot active" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="05-bernoulli.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "03-ftc.html";
+  if (e.key === "ArrowRight") window.location.href = "05-bernoulli.html";
+});
+</script>
+</body>
+</html>

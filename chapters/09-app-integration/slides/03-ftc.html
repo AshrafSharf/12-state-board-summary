@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Fundamental Theorems — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:30%"></div>
+
+<div class="slide-header">
+  <a href="../09-app-integration.html" class="back-link">&larr; Full Chapter</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">3 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card ftc">
+      <h2>9.3 &nbsp; Fundamental Theorems of Integral Calculus</h2>
+
+      <div class="card-grid two-col">
+        <div class="flash">
+          <h3>First FTC (Differentiation undoes Integration)</h3>
+          <p>If $F(x) = \displaystyle\int_a^x f(u)\,du$, then</p>
+          <div class="formula highlight-box">
+            $$\boxed{\frac{d}{dx}F(x) = f(x)}$$
+          </div>
+          <p class="dim">The derivative of a cumulative integral gives back the original function.</p>
+        </div>
+        <div class="flash">
+          <h3>Second FTC (Evaluation Formula)</h3>
+          <p>If $F(x)$ is <em>any</em> anti-derivative of $f(x)$, then</p>
+          <div class="formula highlight-box">
+            $$\boxed{\int_a^b f(x)\,dx = F(b) - F(a) = \Big[F(x)\Big]_a^b}$$
+          </div>
+          <p class="dim">No need for Riemann sums! Just find the anti-derivative and plug in limits.</p>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Why "+C" Disappears in Definite Integrals</h3>
+        <div class="formula">
+          $$[F(x)+C]_a^b = \big(F(b)+C\big) - \big(F(a)+C\big) = F(b)-F(a)$$
+        </div>
+        <p>The constant cancels. So for definite integrals, <strong>never write $+C$</strong>.</p>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int_0^3(3x^2-4x+5)\,dx$</h3>
+          <div class="formula">$$= \Big[x^3-2x^2+5x\Big]_0^3 = (27-18+15)-0 = 24$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: $\displaystyle\int_0^1\dfrac{2x+7}{5x^2+9}\,dx$</h3>
+          <div class="formula">$$= \tfrac{1}{5}\log[5x^2\!+\!9]_0^1 + \tfrac{7}{5}\!\cdot\!\tfrac{1}{3}\tan^{-1}\!\tfrac{x}{3/\sqrt{5}}\Big|_0^1$$</div>
+          <p class="dim">Split into $\frac{f'(x)}{f(x)}$ part + $\frac{1}{a^2+x^2}$ part</p>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="02-riemann.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot active" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="04-properties.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "02-riemann.html";
+  if (e.key === "ArrowRight") window.location.href = "04-properties.html";
+});
+</script>
+</body>
+</html>
