@@ -188,27 +188,29 @@ body {
 
 /* ─── RESPONSIVE ─── */
 @media (max-width: 700px) {
-  .slide-container {
-    padding: 1rem 0.75rem 5rem;
-  }
+  .slide-container { padding: 0.75rem 0.5rem 4.5rem; }
+  .slide-content > .card { padding: 1rem; }
 
-  .slide-content > .card {
-    padding: 1.25rem;
-  }
+  .slide-header { padding: 0.5rem 0.75rem; }
+  .slide-header .back-link { font-size: 0.75rem; padding: 0.35rem 0.5rem; min-height: 36px; display: inline-flex; align-items: center; }
+  .slide-header .chapter-title { display: none; }
+  .slide-header .slide-badge { font-size: 0.68rem; }
 
-  .nav-btn {
-    padding: 0.4rem 0.75rem;
-    min-width: 90px;
-    font-size: 0.82rem;
-  }
+  .slide-nav { padding: 0.5rem 0.6rem; }
+  .nav-btn { padding: 0.55rem 0.65rem; min-width: unset; font-size: 0.8rem; min-height: 40px; }
+  .nav-btn kbd { display: none; }
 
-  .nav-btn kbd {
-    display: none;
-  }
+  .slide-dots { gap: 0.3rem; }
+  .slide-dot { width: 12px; height: 12px; }
+  .slide-dot.active { width: 30px; height: 12px; }
+}
 
-  .slide-header .chapter-title {
-    display: none;
-  }
+@media (max-width: 400px) {
+  .slide-container { padding: 0.5rem 0.35rem 4rem; }
+  .slide-content > .card { padding: 0.75rem; }
+  .nav-btn { padding: 0.45rem 0.5rem; font-size: 0.75rem; }
+  .slide-dot { width: 10px; height: 10px; }
+  .slide-dot.active { width: 26px; height: 10px; }
 }
 
 /* ─── PRINT ─── */

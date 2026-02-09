@@ -201,7 +201,52 @@ main {
 .three-col { grid-template-columns: 1fr 1fr 1fr; }
 
 @media (max-width: 700px) {
+  body { font-size: 16px; }
+
   .two-col, .three-col { grid-template-columns: 1fr; }
+
+  header { padding: 0.6rem 0.75rem; }
+  .header-top h1 { font-size: 1.2rem; }
+  .toc { gap: 0.3rem; }
+  .toc-pill { font-size: 0.72rem; padding: 0.25rem 0.55rem; }
+  main { padding: 1rem 0.5rem 2rem; gap: 1.25rem; }
+
+  .card { padding: 1rem; }
+  .card h2 { font-size: 1.15rem; }
+
+  .flash { padding: 0.8rem 0.9rem; }
+  .flash h3 { font-size: 0.92rem; margin-bottom: 0.5rem; }
+  .flash p, .flash ul li { font-size: 0.9rem; }
+  .flash ul { padding-left: 1.1rem; }
+
+  .katex { font-size: 1.1em; }
+  .formula .katex { font-size: 1.15em; }
+  .formula.mini .katex { font-size: 1.05em; }
+  .int-table .katex { font-size: 1em; }
+
+  .formula, .highlight-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .highlight-box { padding: 0.6rem; }
+
+  .int-table { font-size: 0.82rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+  .int-table th, .int-table td { padding: 0.35rem 0.5rem; white-space: nowrap; }
+
+  .flow-node { max-width: 100%; font-size: 0.82rem; padding: 0.5rem 0.7rem; }
+  .flow-decision { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
+  .flow-branches { flex-direction: column; align-items: center; gap: 0.6rem; }
+  .flow-method .dim { font-size: 0.75rem; }
+
+  .formula-row { gap: 0.5rem; }
+  .label-below { font-size: 0.72rem; }
+  .dim { font-size: 0.8rem; }
+}
+
+@media (max-width: 400px) {
+  body { font-size: 15px; }
+  .card { padding: 0.75rem; }
+  .flash { padding: 0.65rem 0.7rem; }
+  .katex { font-size: 1em; }
+  .formula .katex { font-size: 1.05em; }
+  main { padding: 0.75rem 0.35rem 1.5rem; }
 }
 
 /* ─── FORMULAS ─── */
