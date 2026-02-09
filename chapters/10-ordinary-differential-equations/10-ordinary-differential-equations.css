@@ -3,24 +3,24 @@
    ═══════════════════════════════════════════════════════════════ */
 
 :root {
-  --bg: #f8f9fc;
+  --bg: #fafaf8;
   --surface: #ffffff;
-  --surface2: #f0f2f7;
-  --border: #d8dce6;
-  --text: #1a1d2e;
-  --text-dim: #5c6178;
-  --accent: #5b63d3;
+  --surface2: #f5f3ef;
+  --border: #ddd8cd;
+  --text: #1e293b;
+  --text-dim: #64748b;
+  --accent: #d97706;
 
-  /* Section colors — deeper for white bg readability */
+  /* Section colors — warm educational palette, no violet/purple */
   --basics: #2563eb;
-  --classify: #7c3aed;
+  --classify: #0369a1;
   --formation: #059669;
-  --separable: #d97706;
-  --substitution: #ea580c;
-  --homogeneous: #db2777;
+  --separable: #b45309;
+  --substitution: #c2410c;
+  --homogeneous: #be123c;
   --linear: #0284c7;
   --applications: #16a34a;
-  --quickref: #c026d3;
+  --quickref: #9f1239;
 
   --radius: 10px;
   --radius-sm: 6px;
@@ -42,7 +42,7 @@ header {
   position: sticky;
   top: 0;
   z-index: 100;
-  background: rgba(248, 249, 252, 0.92);
+  background: rgba(250, 250, 248, 0.95);
   backdrop-filter: blur(12px);
   border-bottom: 1px solid var(--border);
   padding: 0.85rem 1.5rem;
@@ -287,8 +287,8 @@ main {
 }
 
 .highlight-box {
-  background: rgba(2, 132, 199, 0.06);
-  border: 1px solid rgba(2, 132, 199, 0.25);
+  background: rgba(217, 119, 6, 0.06);
+  border: 1px solid rgba(217, 119, 6, 0.25);
   border-radius: var(--radius-sm);
   padding: 0.85rem;
   margin: 0.75rem 0;
