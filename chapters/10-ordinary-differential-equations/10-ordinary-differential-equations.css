@@ -9,18 +9,18 @@
   --border: #ddd8cd;
   --text: #1e293b;
   --text-dim: #64748b;
-  --accent: #d97706;
+  --accent: #ea580c;
 
-  /* Section colors — warm educational palette, no violet/purple */
-  --basics: #2563eb;
-  --classify: #0369a1;
-  --formation: #059669;
-  --separable: #b45309;
-  --substitution: #c2410c;
-  --homogeneous: #be123c;
+  /* Section colors — light green, yellow, orange, light blue */
+  --basics: #3b82f6;
+  --classify: #0ea5e9;
+  --formation: #16a34a;
+  --separable: #ca8a04;
+  --substitution: #ea580c;
+  --homogeneous: #d97706;
   --linear: #0284c7;
-  --applications: #16a34a;
-  --quickref: #9f1239;
+  --applications: #15803d;
+  --quickref: #a16207;
 
   --radius: 10px;
   --radius-sm: 6px;
@@ -287,8 +287,8 @@ main {
 }
 
 .highlight-box {
-  background: rgba(217, 119, 6, 0.06);
-  border: 1px solid rgba(217, 119, 6, 0.25);
+  background: rgba(234, 88, 12, 0.06);
+  border: 1px solid rgba(234, 88, 12, 0.2);
   border-radius: var(--radius-sm);
   padding: 0.85rem;
   margin: 0.75rem 0;
