@@ -36,8 +36,11 @@
 
         <div class="flash">
           <h3>Order &amp; Degree</h3>
-          <div class="formula">
+          <div class="formula formula-desktop">
             $$\underbrace{\left(\frac{d^{\color{#d97706}{4}}y}{dx^4}\right)^{\color{#dc2626}{3}}}_{\substack{\text{order}={\color{#d97706}4} \\ \text{degree}={\color{#dc2626}3}}} + 4\left(\frac{dy}{dx}\right)^{7} + 6y = 5\cos 3x$$
+          </div>
+          <div class="formula formula-mobile">
+            $$\begin{aligned} &\left(\frac{d^{\color{#d97706}{4}}y}{dx^4}\right)^{\!\color{#dc2626}{3}} + 4\left(\frac{dy}{dx}\right)^{\!7} \\ &\quad+ 6y = 5\cos 3x \end{aligned}$$
           </div>
           <ul>
             <li><strong>Order</strong> = highest derivative present <span class="tag tag-yellow">4</span></li>
@@ -63,12 +66,15 @@
 
       <div class="flash tip-box">
         <h3>Trick: Clear Fractional Powers First</h3>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\sqrt{1+\left(\frac{dy}{dx}\right)^{\!2}} = y\frac{d^3y}{dx^3} \;\;\xrightarrow{\text{square}}\;\; 1+\left(\frac{dy}{dx}\right)^{\!2} = y^2\!\left(\frac{d^3y}{dx^3}\right)^{\!2}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\sqrt{1+\left(\frac{dy}{dx}\right)^{\!2}} = y\frac{d^3y}{dx^3} \\ &\quad\xrightarrow{\text{square}} \\ &1+\left(\frac{dy}{dx}\right)^{\!2} = y^2\!\left(\frac{d^3y}{dx^3}\right)^{\!2} \end{aligned}$$
         </div>
         <p>Now: order = <span class="tag tag-yellow">3</span>, degree = <span class="tag tag-red">2</span></p>
       </div>
-    </section>
+</section>
   </div>
 </div>
 

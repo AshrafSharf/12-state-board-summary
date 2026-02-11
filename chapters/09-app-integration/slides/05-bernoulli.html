@@ -36,8 +36,11 @@
       <div class="flash tip-box" style="margin-top:0.75rem">
         <h3>LIATE Rule: How to Choose $u$ in Integration by Parts</h3>
         <p>When you have a product of two functions and u-sub doesn't work, use IBP. Choose $u$ as the function that <strong>simplifies when differentiated</strong>. Priority order:</p>
-        <div class="formula highlight-box" style="text-align:center">
+        <div class="formula highlight-box formula-desktop" style="text-align:center">
           $$\boxed{\underset{\text{Log}}{\mathbf{L}} \;\succ\; \underset{\text{Inverse trig}}{\mathbf{I}} \;\succ\; \underset{\text{Algebraic (poly)}}{\mathbf{A}} \;\succ\; \underset{\text{Trig}}{\mathbf{T}} \;\succ\; \underset{\text{Exponential}}{\mathbf{E}}}$$
+        </div>
+        <div class="formula highlight-box formula-mobile" style="text-align:center">
+          $$\boxed{\begin{gathered} \underset{\text{Log}}{\mathbf{L}} \;\succ\; \underset{\text{Inv trig}}{\mathbf{I}} \;\succ\; \underset{\text{Alg}}{\mathbf{A}} \\ \succ\; \underset{\text{Trig}}{\mathbf{T}} \;\succ\; \underset{\text{Exp}}{\mathbf{E}} \end{gathered}}$$
         </div>
         <p><strong>Higher on list = choose as $u$.</strong> Everything remaining becomes $dv$.</p>
         <div class="card-grid two-col" style="margin-top:0.5rem">
@@ -55,8 +58,11 @@
       <div class="flash" style="margin-top:0.75rem">
         <h3>The Formula</h3>
         <p>Let $u^{(k)}$ = $k$th derivative of $u$, and $v_{(k)}$ = $k$th integral of $v$:</p>
-        <div class="formula highlight-box">
+        <div class="formula highlight-box formula-desktop">
           $$\boxed{\int uv\,dx = u\,v_{(1)} - u^{(1)}v_{(2)} + u^{(2)}v_{(3)} - u^{(3)}v_{(4)} + \cdots}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\begin{aligned} \int uv\,dx &= u\,v_{(1)} - u^{(1)}v_{(2)} \\ &+ u^{(2)}v_{(3)} - \cdots \end{aligned}}$$
         </div>
         <p><strong>Signs alternate:</strong> $+, -, +, -, \ldots$ &nbsp; <strong>Terminates</strong> because $u$ is a polynomial &mdash; eventually $u^{(k)}=0$.</p>
       </div>
@@ -80,13 +86,15 @@
         <div class="flash example-box">
           <h3>Ex: $\displaystyle\int_0^{\pi} x^2\cos nx\,dx$</h3>
           <p>$u=x^2$, $v=\cos nx$</p>
-          <div class="formula mini">$$= \left[x^2\!\cdot\!\frac{\sin nx}{n} - 2x\!\cdot\!\left(-\frac{\cos nx}{n^2}\right) + 2\!\cdot\!\left(-\frac{\sin nx}{n^3}\right)\right]_0^{\pi}$$</div>
+          <div class="formula mini formula-desktop">$$= \left[x^2\!\cdot\!\frac{\sin nx}{n} - 2x\!\cdot\!\left(-\frac{\cos nx}{n^2}\right) + 2\!\cdot\!\left(-\frac{\sin nx}{n^3}\right)\right]_0^{\pi}$$</div>
+          <div class="formula mini formula-mobile">$$= \Big[x^2\tfrac{\sin nx}{n} + \tfrac{2x\cos nx}{n^2} - \tfrac{2\sin nx}{n^3}\Big]_0^{\pi}$$</div>
           <div class="formula">$$= \frac{2\pi(-1)^n}{n^2}$$</div>
         </div>
         <div class="flash example-box">
           <h3>Ex: $\displaystyle\int_0^1 e^{-2x}(1+x-2x^3)\,dx$</h3>
           <p>$u=1+x-2x^3$, $v=e^{-2x}$</p>
-          <div class="formula mini">$$u' = 1-6x^2,\; u''=-12x,\; u'''=-12,\; u^{(4)}=0$$</div>
+          <div class="formula mini formula-desktop">$$u' = 1-6x^2,\; u''=-12x,\; u'''=-12,\; u^{(4)}=0$$</div>
+          <div class="formula mini formula-mobile">$$\begin{aligned} &u' = 1\!-\!6x^2,\; u''=\!-12x \\ &u'''=\!-12,\; u^{(4)}=0 \end{aligned}$$</div>
           <p class="dim">Each integral of $e^{-2x}$ just divides by $-2$. Terminates in 4 terms.</p>
         </div>
       </div>
