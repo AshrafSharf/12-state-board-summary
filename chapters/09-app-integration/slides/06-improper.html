@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:60%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">&larr; All Chapters</a>
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
   <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
   <span class="slide-badge">6 / 10</span>
 </div>
@@ -28,16 +28,22 @@
       <div class="flash">
         <h3>What Makes an Integral "Improper"?</h3>
         <p>At least one limit is $\pm\infty$, or the integrand blows up somewhere in $[a,b]$.</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\int_a^{\infty}f(x)\,dx = \lim_{t\to\infty}\int_a^t f(x)\,dx \qquad \int_{-\infty}^{b}f(x)\,dx = \lim_{t\to-\infty}\int_t^b f(x)\,dx$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\int_a^{\infty}f(x)\,dx = \lim_{t\to\infty}\int_a^t f(x)\,dx \\[6pt] &\int_{-\infty}^{b}f(x)\,dx = \lim_{t\to-\infty}\int_t^b f(x)\,dx \end{aligned}$$
         </div>
         <p>If the limit exists (is finite) &rarr; <strong>convergent</strong>. Otherwise &rarr; <strong>divergent</strong>.</p>
       </div>
 
       <div class="flash example-box" style="margin-top:0.75rem">
         <h3>Key Result: $\displaystyle\int_b^{\infty}\frac{dx}{a^2+x^2}$</h3>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\int_b^{\infty}\frac{dx}{a^2+x^2} = \left[\frac{1}{a}\tan^{-1}\frac{x}{a}\right]_b^{\infty} = \frac{1}{a}\left(\frac{\pi}{2}-\tan^{-1}\frac{b}{a}\right)$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\int_b^{\infty}\frac{dx}{a^2+x^2} = \left[\frac{1}{a}\tan^{-1}\frac{x}{a}\right]_b^{\infty} \\[4pt] &= \frac{1}{a}\left(\frac{\pi}{2}-\tan^{-1}\frac{b}{a}\right) \end{aligned}$$
         </div>
         <p class="dim">Special case $b=0$: $\displaystyle\int_0^{\infty}\frac{dx}{a^2+x^2} = \frac{\pi}{2a}$ &emsp;|&emsp; $b=a$: $\displaystyle\int_a^{\infty}\frac{dx}{a^2+x^2}=\frac{\pi}{4a}$</p>
       </div>
@@ -84,7 +90,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="05-bernoulli.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="05-bernoulli.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-indefinite.html"></a>
     <a class="slide-dot" href="02-riemann.html"></a>
@@ -97,7 +103,7 @@
     <a class="slide-dot" href="09-volume.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="07-reduction.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="07-reduction.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

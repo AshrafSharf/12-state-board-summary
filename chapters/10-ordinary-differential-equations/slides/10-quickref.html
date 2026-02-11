@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:100%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">← All Chapters</a>
+  <a href="../../../index.html" class="back-link">← All Chapters</a>
   <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
   <span class="slide-badge">10 / 10</span>
 </div>
@@ -80,14 +80,23 @@
 
       <div class="flash" style="margin-top:1.5rem">
         <h3>All Methods at a Glance</h3>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\underbrace{\frac{dy}{dx}+Py=Q}_{\text{Linear}} \;\longrightarrow\; \underbrace{y \cdot e^{\int P\,dx}}_{\text{LHS}} = \underbrace{\int Q\,e^{\int P\,dx}\,dx + c}_{\text{RHS}}$$
         </div>
-        <div class="formula" style="margin-top:0.75rem">
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\underbrace{\frac{dy}{dx}+Py=Q}_{\text{Linear}} \\[4pt] &\longrightarrow\; y \cdot e^{\int P\,dx} = \int Q\,e^{\int P\,dx}\,dx + c \end{aligned}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
           $$\underbrace{\frac{dy}{dx}=g\!\left(\frac{y}{x}\right)}_{\text{Homogeneous}} \;\longrightarrow\; y=vx,\;\;\int\frac{dv}{g(v)-v}=\ln|x|+c$$
         </div>
-        <div class="formula" style="margin-top:0.75rem">
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{aligned} &\underbrace{\frac{dy}{dx}=g\!\left(\frac{y}{x}\right)}_{\text{Homogeneous}} \\[4pt] &\longrightarrow\; y=vx,\;\int\frac{dv}{g(v)-v}=\ln|x|+c \end{aligned}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
           $$\underbrace{\frac{dy}{dx}=f(ax+by+c)}_{\text{Substitution}} \;\longrightarrow\; z=ax+by+c,\;\;\text{separate in } z,x$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{aligned} &\underbrace{\frac{dy}{dx}=f(ax+by+c)}_{\text{Substitution}} \\[4pt] &\longrightarrow\; z=ax+by+c,\;\text{separate in } z,x \end{aligned}$$
         </div>
       </div>
     </section>
@@ -95,7 +104,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="09-applications.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="09-applications.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-basics.html"></a>
     <a class="slide-dot" href="02-classification.html"></a>

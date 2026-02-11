@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:100%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">&larr; All Chapters</a>
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
   <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
   <span class="slide-badge">10 / 10</span>
 </div>
@@ -131,8 +131,12 @@
             <tr><td>$\sqrt{x^2-a^2}$</td><td>$x = a\sec\theta$, &nbsp; $dx = a\sec\theta\tan\theta\,d\theta$</td><td>$\sec^2\!\theta-1 = \tan^2\!\theta$</td></tr>
           </tbody>
         </table>
-        <div class="formula mini ok" style="margin-top:0.5rem">
+        <div class="formula mini ok formula-desktop" style="margin-top:0.5rem">
           $$\int\!\sqrt{4-x^2}\,dx \;\xrightarrow{x=2\sin\theta}\; \int 4\cos^2\!\theta\,d\theta \;\longrightarrow\; 2\theta+\sin 2\theta + C$$
+          <span class="label-below">Square root eliminated! Then use half-angle identity. Finally sub back $\theta = \sin^{-1}(x/2)$.</span>
+        </div>
+        <div class="formula mini ok formula-mobile" style="margin-top:0.5rem">
+          $$\begin{aligned} &\int\!\sqrt{4-x^2}\,dx \;\xrightarrow{x=2\sin\theta} \\[4pt] &\int 4\cos^2\!\theta\,d\theta \;\longrightarrow\; 2\theta+\sin 2\theta + C \end{aligned}$$
           <span class="label-below">Square root eliminated! Then use half-angle identity. Finally sub back $\theta = \sin^{-1}(x/2)$.</span>
         </div>
       </div>
@@ -148,7 +152,8 @@
           </div>
           <div class="flash example-box">
             <h3>Repeated linear factor</h3>
-            <div class="formula mini">$$\frac{1}{(x\!-\!1)^2(x\!+\!2)} = \frac{A}{x-1}+\frac{B}{(x-1)^2}+\frac{C}{x+2}$$</div>
+            <div class="formula mini formula-desktop">$$\frac{1}{(x\!-\!1)^2(x\!+\!2)} = \frac{A}{x-1}+\frac{B}{(x-1)^2}+\frac{C}{x+2}$$</div>
+            <div class="formula mini formula-mobile">$$\begin{aligned} &\frac{1}{(x\!-\!1)^2(x\!+\!2)} \\ &= \frac{A}{x\!-\!1}+\frac{B}{(x\!-\!1)^2}+\frac{C}{x\!+\!2} \end{aligned}$$</div>
             <p class="dim">Repeated factors need one fraction per power.</p>
           </div>
         </div>
@@ -171,17 +176,29 @@
 
       <div class="flash" style="margin-top:1.5rem">
         <h3>All Key Formulas at a Glance</h3>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\underbrace{\int_a^b f(x)\,dx = F(b)-F(a)}_{\text{Second FTC}} \qquad \underbrace{\int_a^b f(x)\,dx = \int_a^b f(a+b-x)\,dx}_{\text{P6: Mirror}}$$
         </div>
-        <div class="formula" style="margin-top:0.75rem">
+        <div class="formula formula-mobile">
+          $$\begin{gathered} \underbrace{\int_a^b f(x)\,dx = F(b)-F(a)}_{\text{Second FTC}} \\[8pt] \underbrace{\int_a^b f(x)\,dx = \int_a^b f(a+b-x)\,dx}_{\text{P6: Mirror}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
           $$\underbrace{\int_{-a}^{a}f(x)\,dx = \begin{cases}2\int_0^a f & \text{even}\\0 & \text{odd}\end{cases}}_{\text{P8/P9}} \qquad \underbrace{\int_0^a x\,f(x)\,dx = \frac{a}{2}\int_0^a f(x)\,dx}_{\text{P12, if } f(a-x)=f(x)}$$
         </div>
-        <div class="formula" style="margin-top:0.75rem">
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{\int_{-a}^{a}f(x)\,dx = \begin{cases}2\int_0^a f & \text{even}\\0 & \text{odd}\end{cases}}_{\text{P8/P9}} \\[8pt] \underbrace{\int_0^a x\,f(x)\,dx = \frac{a}{2}\int_0^a f(x)\,dx}_{\text{P12, if } f(a\!-\!x)=f(x)} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
           $$\underbrace{\int_0^{\pi/2}\sin^n\!x\,dx = \int_0^{\pi/2}\cos^n\!x\,dx}_{\text{Wallis}} \qquad \underbrace{\Gamma(n)=\int_0^{\infty}e^{-x}x^{n-1}\,dx=(n\!-\!1)!}_{\text{Gamma}}$$
         </div>
-        <div class="formula" style="margin-top:0.75rem">
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{\int_0^{\pi/2}\sin^n\!x\,dx = \int_0^{\pi/2}\cos^n\!x\,dx}_{\text{Wallis}} \\[8pt] \underbrace{\Gamma(n)=\int_0^{\infty}e^{-x}x^{n-1}\,dx=(n\!-\!1)!}_{\text{Gamma}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
           $$\underbrace{A = \int_a^b[y_U-y_L]\,dx}_{\text{Area between curves}} \qquad \underbrace{V = \pi\int_a^b y^2\,dx}_{\text{Volume about } x\text{-axis}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{A = \int_a^b[y_U-y_L]\,dx}_{\text{Area between curves}} \\[8pt] \underbrace{V = \pi\int_a^b y^2\,dx}_{\text{Volume about } x\text{-axis}} \end{gathered}$$
         </div>
       </div>
     </section>
@@ -189,7 +206,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="09-volume.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="09-volume.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-indefinite.html"></a>
     <a class="slide-dot" href="02-riemann.html"></a>

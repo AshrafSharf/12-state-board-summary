@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:80%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">&larr; All Chapters</a>
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
   <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
   <span class="slide-badge">8 / 10</span>
 </div>
@@ -55,8 +55,11 @@
       <div class="flash warning-box" style="margin-top:0.75rem">
         <h3>Watch for Sign Changes!</h3>
         <p>If $f(x)$ changes sign in $[a,b]$, the definite integral gives <strong>signed area</strong> (positive above, negative below $x$-axis). For <strong>geometric area</strong>, split at zeros and take absolute values:</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\text{Geometric area} = \left|\int_a^c f(x)\,dx\right| + \left|\int_c^b f(x)\,dx\right|$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\text{Geometric area} \\ &= \left|\int_a^c f(x)\,dx\right| + \left|\int_c^b f(x)\,dx\right| \end{aligned}$$
         </div>
         <div class="formula mini nope" style="margin-top:0.5rem">
           $$\int_0^{2\pi}\sin x\,dx = 0 \neq \text{area}$$
@@ -67,7 +70,7 @@
       <div class="flash" style="margin-top:0.75rem">
         <h3>Area Between Two Curves</h3>
         <div class="formula highlight-box">
-          $$\boxed{A = \int_a^b [f(x)-g(x)]\,dx \quad\text{where } f(x)\geq g(x) \text{ on } [a,b]}$$
+          $$\boxed{A = \int_a^b [f(x)\!-\!g(x)]\,dx \;\;\text{where } f(x)\!\geq\!g(x)}$$
         </div>
         <p>Think: $A = \int(\text{top curve} - \text{bottom curve})\,dx$ or $\int(\text{right curve} - \text{left curve})\,dy$</p>
       </div>
@@ -98,7 +101,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="07-reduction.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="07-reduction.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-indefinite.html"></a>
     <a class="slide-dot" href="02-riemann.html"></a>
@@ -111,7 +114,7 @@
     <a class="slide-dot" href="09-volume.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="09-volume.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="09-volume.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

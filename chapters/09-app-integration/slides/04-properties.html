@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:40%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">&larr; All Chapters</a>
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
   <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
   <span class="slide-badge">4 / 10</span>
 </div>
@@ -33,9 +33,12 @@
       <!-- P1-P5 basic -->
       <div class="flash" style="margin-top:0.75rem">
         <h3>Basic Properties (P1&ndash;P5)</h3>
-        <div class="formula mini">$$\text{P1: }\int_a^b f(x)\,dx = \int_a^b f(u)\,du \quad\text{(dummy variable &mdash; name doesn't matter)}$$</div>
-        <div class="formula mini">$$\text{P2: }\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx \quad\text{(swap limits = flip sign)}$$</div>
-        <div class="formula mini">$$\text{P3: }\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx \quad\text{(split at any point } c \text{)}$$</div>
+        <div class="formula mini formula-desktop">$$\text{P1: }\int_a^b f(x)\,dx = \int_a^b f(u)\,du \quad\text{(dummy variable &mdash; name doesn't matter)}$$</div>
+        <div class="formula mini formula-mobile">$$\begin{aligned} &\text{P1: }\int_a^b f(x)\,dx = \int_a^b f(u)\,du \\ &\quad\text{(dummy var — name doesn't matter)} \end{aligned}$$</div>
+        <div class="formula mini formula-desktop">$$\text{P2: }\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx \quad\text{(swap limits = flip sign)}$$</div>
+        <div class="formula mini formula-mobile">$$\begin{aligned} &\text{P2: }\int_a^b f(x)\,dx = -\int_b^a f(x)\,dx \\ &\quad\text{(swap limits = flip sign)} \end{aligned}$$</div>
+        <div class="formula mini formula-desktop">$$\text{P3: }\int_a^b f(x)\,dx = \int_a^c f(x)\,dx + \int_c^b f(x)\,dx \quad\text{(split at any point } c \text{)}$$</div>
+        <div class="formula mini formula-mobile">$$\begin{aligned} &\text{P3: }\int_a^b f(x)\,dx = \int_a^c f(x)\,dx \\ &\quad+ \int_c^b f(x)\,dx \;\;\text{(split at } c \text{)} \end{aligned}$$</div>
         <div class="formula mini">$$\text{P4: Linearity} \quad\text{P5: Substitution}$$</div>
       </div>
 
@@ -43,12 +46,18 @@
       <div class="flash tip-box" style="margin-top:0.75rem">
         <h3>P6: $\displaystyle\int_a^b f(x)\,dx = \int_a^b f(a+b-x)\,dx$ &nbsp;&mdash;&nbsp; The Mirror Property</h3>
         <p><strong>Spot the clue:</strong> The integrand is a <strong>ratio</strong> of the form $\dfrac{f(x)}{f(x)+f(a+b-x)}$ or the integral has <strong>symmetric limits</strong>.</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$I = \int_a^b \frac{f(x)}{f(x)+f(a+b-x)}\,dx \;\xrightarrow{\text{apply P6}}\; I = \int_a^b \frac{f(a+b-x)}{f(a+b-x)+f(x)}\,dx$$
         </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} I &= \int_a^b \frac{f(x)}{f(x)+f(a\!+\!b\!-\!x)}\,dx \\[4pt] &\quad\xrightarrow{\text{apply P6}} \\[4pt] I &= \int_a^b \frac{f(a\!+\!b\!-\!x)}{f(a\!+\!b\!-\!x)+f(x)}\,dx \end{aligned}$$
+        </div>
         <div class="arrow-down">&darr; add both</div>
-        <div class="formula highlight-box">
+        <div class="formula highlight-box formula-desktop">
           $$\boxed{2I = \int_a^b 1\,dx = b-a \;\;\Rightarrow\;\; I = \frac{b-a}{2}}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\begin{aligned} 2I &= \int_a^b 1\,dx = b-a \\ &\Rightarrow\; I = \frac{b-a}{2} \end{aligned}}$$
         </div>
         <p class="dim">Works whenever numerator and denominator "swap" under $x\to a+b-x$.</p>
       </div>
@@ -136,7 +145,8 @@
         <div class="flash example-box" style="margin-top:0.5rem">
           <h3>Ex: $\displaystyle\int_0^{\pi}\frac{x}{1+\sin x}\,dx$</h3>
           <p>$f(x)=\frac{1}{1+\sin x}$. Check: $f(\pi-x)=\frac{1}{1+\sin(\pi-x)}=\frac{1}{1+\sin x}=f(x)$ &checkmark;</p>
-          <div class="formula">$$I = \frac{\pi}{2}\int_0^{\pi}\frac{dx}{1+\sin x} = \frac{\pi}{2}\!\cdot\!2\int_0^{\pi/2}\frac{dx}{1+\cos x}=\pi$$</div>
+          <div class="formula formula-desktop">$$I = \frac{\pi}{2}\int_0^{\pi}\frac{dx}{1+\sin x} = \frac{\pi}{2}\!\cdot\!2\int_0^{\pi/2}\frac{dx}{1+\cos x}=\pi$$</div>
+          <div class="formula formula-mobile">$$\begin{aligned} I &= \tfrac{\pi}{2}\int_0^{\pi}\frac{dx}{1+\sin x} \\ &= \tfrac{\pi}{2}\!\cdot\!2\int_0^{\pi/2}\frac{dx}{1+\cos x}=\pi \end{aligned}$$</div>
         </div>
       </div>
 
@@ -153,7 +163,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="03-ftc.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="03-ftc.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-indefinite.html"></a>
     <a class="slide-dot" href="02-riemann.html"></a>
@@ -166,7 +176,7 @@
     <a class="slide-dot" href="09-volume.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="05-bernoulli.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="05-bernoulli.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

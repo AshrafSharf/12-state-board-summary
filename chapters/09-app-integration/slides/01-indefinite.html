@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:10%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">&larr; All Chapters</a>
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
   <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
   <span class="slide-badge">1 / 10</span>
 </div>
@@ -28,8 +28,11 @@
       <div class="flash">
         <h3>Core Idea</h3>
         <p>If $\dfrac{d}{dx}F(x) = f(x)$, then $F(x)$ is an <strong>anti-derivative</strong> of $f(x)$.</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\int f(x)\,dx = F(x) + C \quad \longleftarrow \text{ "+C" because } \frac{d}{dx}[F(x)+C] = f(x)$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\int f(x)\,dx = F(x) + C \\ &\longleftarrow \text{"+C" because } \tfrac{d}{dx}[F(x)+C] = f(x) \end{aligned}$$
         </div>
         <p><strong>Linear property:</strong> $\displaystyle\int[\alpha f(x)+\beta g(x)]\,dx = \alpha\!\int\! f(x)\,dx + \beta\!\int\! g(x)\,dx$</p>
       </div>
@@ -87,8 +90,11 @@
       <div class="flash tip-box" style="margin-top:0.75rem">
         <h3>U-Substitution: The Most Important Method</h3>
         <p><strong>Spot the clue:</strong> Part of the integrand is the <strong>derivative of another part</strong>. If you see $f(g(x))\cdot g'(x)$, let $u=g(x)$.</p>
-        <div class="formula highlight-box">
+        <div class="formula highlight-box formula-desktop">
           $$\int f\!\big(g(x)\big)\cdot g'(x)\,dx \;\xrightarrow{u\,=\,g(x)}\; \int f(u)\,du$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\begin{aligned} &\int f\!\big(g(x)\big)\cdot g'(x)\,dx \\[4pt] &\quad\xrightarrow{u\,=\,g(x)}\; \int f(u)\,du \end{aligned}$$
         </div>
         <p><strong>Steps:</strong> (1) Pick $u$ = inner function &nbsp; (2) Find $du = g'(x)\,dx$ &nbsp; (3) Replace everything in terms of $u$ &nbsp; (4) Integrate &nbsp; (5) <strong>Substitute back</strong> to $x$</p>
       </div>
@@ -97,12 +103,14 @@
         <div class="flash example-box">
           <h3>Ex: $\displaystyle\int x(x^2+1)^5\,dx$</h3>
           <p>$u=x^2+1 \Rightarrow du=2x\,dx \Rightarrow x\,dx=\tfrac{du}{2}$</p>
-          <div class="formula mini">$$= \frac{1}{2}\int u^5\,du = \frac{u^6}{12}+C = \frac{(x^2+1)^6}{12}+C$$</div>
+          <div class="formula mini formula-desktop">$$= \frac{1}{2}\int u^5\,du = \frac{u^6}{12}+C = \frac{(x^2+1)^6}{12}+C$$</div>
+          <div class="formula mini formula-mobile">$$\begin{aligned} &= \tfrac{1}{2}\int u^5\,du = \tfrac{u^6}{12}+C \\ &= \tfrac{(x^2+1)^6}{12}+C \end{aligned}$$</div>
         </div>
         <div class="flash example-box">
           <h3>Ex: $\displaystyle\int\frac{1}{3x+1}\,dx$</h3>
           <p>$u=3x+1 \Rightarrow du=3\,dx \Rightarrow dx=\tfrac{du}{3}$</p>
-          <div class="formula mini">$$= \frac{1}{3}\int\frac{du}{u} = \frac{1}{3}\ln|u|+C = \frac{1}{3}\ln|3x+1|+C$$</div>
+          <div class="formula mini formula-desktop">$$= \frac{1}{3}\int\frac{du}{u} = \frac{1}{3}\ln|u|+C = \frac{1}{3}\ln|3x+1|+C$$</div>
+          <div class="formula mini formula-mobile">$$\begin{aligned} &= \tfrac{1}{3}\int\tfrac{du}{u} = \tfrac{1}{3}\ln|u|+C \\ &= \tfrac{1}{3}\ln|3x\!+\!1|+C \end{aligned}$$</div>
         </div>
       </div>
 
@@ -125,7 +133,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a class="nav-btn disabled">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a class="nav-btn disabled">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot active" href="01-indefinite.html"></a>
     <a class="slide-dot" href="02-riemann.html"></a>
@@ -138,7 +146,7 @@
     <a class="slide-dot" href="09-volume.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="02-riemann.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="02-riemann.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

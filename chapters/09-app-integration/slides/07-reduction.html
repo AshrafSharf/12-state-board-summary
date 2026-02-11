@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:70%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">&larr; All Chapters</a>
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
   <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
   <span class="slide-badge">7 / 10</span>
 </div>
@@ -75,8 +75,12 @@
             $$\int_0^{\pi/2}\sin^5 x\,dx = \frac{4}{5}\cdot\frac{2}{3}\cdot 1 = \frac{8}{15}$$
             <span class="label-below">Odd: ends at $1$</span>
           </div>
-          <div class="formula mini ok">
+          <div class="formula mini ok formula-desktop">
             $$\int_0^{\pi/2}\cos^6 x\,dx = \frac{5}{6}\cdot\frac{3}{4}\cdot\frac{1}{2}\cdot\frac{\pi}{2} = \frac{5\pi}{32}$$
+            <span class="label-below">Even: ends at $\frac{\pi}{2}$</span>
+          </div>
+          <div class="formula mini ok formula-mobile">
+            $$\begin{aligned} \int_0^{\pi/2}\!\cos^6 x\,dx &= \tfrac{5}{6}\!\cdot\!\tfrac{3}{4}\!\cdot\!\tfrac{1}{2}\!\cdot\!\tfrac{\pi}{2} \\ &= \tfrac{5\pi}{32} \end{aligned}$$
             <span class="label-below">Even: ends at $\frac{\pi}{2}$</span>
           </div>
         </div>
@@ -90,11 +94,13 @@
         <div class="card-grid two-col" style="margin-top:0.5rem">
           <div class="flash">
             <h3>Both $m,n$ even</h3>
-            <div class="formula mini">$$\frac{(n\!-\!1)(n\!-\!3)\cdots 1}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots}\cdot\frac{(m\!-\!1)(m\!-\!3)\cdots 1}{m(m\!-\!2)\cdots 2}\cdot\frac{\pi}{2}$$</div>
+            <div class="formula mini formula-desktop">$$\frac{(n\!-\!1)(n\!-\!3)\cdots 1}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots}\cdot\frac{(m\!-\!1)(m\!-\!3)\cdots 1}{m(m\!-\!2)\cdots 2}\cdot\frac{\pi}{2}$$</div>
+            <div class="formula mini formula-mobile">$$\begin{aligned} &\frac{(n\!-\!1)(n\!-\!3)\cdots 1}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots} \\[4pt] &\;\cdot\frac{(m\!-\!1)(m\!-\!3)\cdots 1}{m(m\!-\!2)\cdots 2}\cdot\frac{\pi}{2} \end{aligned}$$</div>
           </div>
           <div class="flash">
             <h3>$n$ odd (or $m$ odd)</h3>
-            <div class="formula mini">$$\frac{(n\!-\!1)(n\!-\!3)\cdots 2}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots}\cdot\frac{1}{(m\!+\!1)}$$</div>
+            <div class="formula mini formula-desktop">$$\frac{(n\!-\!1)(n\!-\!3)\cdots 2}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots}\cdot\frac{1}{(m\!+\!1)}$$</div>
+            <div class="formula mini formula-mobile">$$\frac{(n\!-\!1)(n\!-\!3)\cdots 2}{(m\!+\!n)(m\!+\!n\!-\!2)\cdots}\cdot\frac{1}{m\!+\!1}$$</div>
             <p class="dim">No $\frac{\pi}{2}$ at the end!</p>
           </div>
         </div>
@@ -102,11 +108,17 @@
 
       <div class="flash" style="margin-top:0.75rem">
         <h3>Beta Integral: $\displaystyle\int_0^1 x^m(1-x)^n\,dx = \frac{m!\cdot n!}{(m+n+1)!}$</h3>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$I_{m,n} = \frac{n}{m+n+1}\cdot I_{m,n-1} \quad\text{or}\quad \frac{m!\cdot n!}{(m+n+1)!}$$
         </div>
-        <div class="formula mini ok" style="margin-top:0.5rem">
+        <div class="formula formula-mobile">
+          $$\begin{aligned} I_{m,n} &= \frac{n}{m+n+1}\cdot I_{m,n-1} \\ &\text{or}\quad \frac{m!\cdot n!}{(m+n+1)!} \end{aligned}$$
+        </div>
+        <div class="formula mini ok formula-desktop" style="margin-top:0.5rem">
           $$\int_0^1 x^3(1-x)^4\,dx = \frac{3!\cdot 4!}{8!} = \frac{6\times 24}{40320} = \frac{1}{280}$$
+        </div>
+        <div class="formula mini ok formula-mobile" style="margin-top:0.5rem">
+          $$\begin{aligned} \int_0^1 x^3(1\!-\!x)^4\,dx &= \frac{3!\cdot 4!}{8!} \\ &= \frac{6\times 24}{40320} = \frac{1}{280} \end{aligned}$$
         </div>
       </div>
 
@@ -119,7 +131,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="06-improper.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="06-improper.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-indefinite.html"></a>
     <a class="slide-dot" href="02-riemann.html"></a>
@@ -132,7 +144,7 @@
     <a class="slide-dot" href="09-volume.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="08-area.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="08-area.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

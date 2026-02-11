@@ -11,11 +11,12 @@
 <link rel="stylesheet" href="slides.css">
 </head>
 <body>
+  
 
 <div class="slide-progress" style="width:20%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">← All Chapters</a>
+  <a href="../../../index.html" class="back-link">← All Chapters</a>
   <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
   <span class="slide-badge">2 / 10</span>
 </div>
@@ -39,17 +40,21 @@
             <div class="tree-node pde-node">
               <strong>PDE</strong>
               <span>Partial derivatives, 2+ independent variables</span>
-              <div class="formula mini">$$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0$$</div>
+              <div class="formula mini formula-desktop">$$\frac{\partial^2 u}{\partial x^2}+\frac{\partial^2 u}{\partial y^2}=0$$</div>
+              <div class="formula mini formula-mobile">$$u_{xx}+u_{yy}=0$$</div>
             </div>
           </div>
         </div>
       </div>
 
-      <div class="card-grid two-col" style="margin-top:1.5rem">
+      <div class="card-grid two-col">
         <div class="flash">
           <h3>Linear ODE</h3>
-          <div class="formula">
+          <div class="formula formula-desktop">
             $$\overbrace{a_n(x)\,y^{(n)} + \cdots + a_1(x)\,y' + a_0(x)\,y}^{\text{no products of } y,\,y',\,y''\ldots} = g(x)$$
+          </div>
+          <div class="formula formula-mobile">
+            $$a_n y^{(n)} + \cdots + a_1 y' + a_0 y = g(x)$$
           </div>
           <ul>
             <li>$y$ and derivatives appear to <strong>1st power only</strong></li>
@@ -73,16 +78,19 @@
           <p><strong>Every term</strong> involves $y$ or its derivatives. Nothing "standalone" in $x$.</p>
           <div class="formula mini">$$y''+2y'+y=0$$</div>
           <p>If $y$ is a solution, so is $cy$ for any constant $c$:</p>
-          <div class="formula mini">$$(cy)''+2(cy)'+(cy) = c\underbrace{(y''+2y'+y)}_{=\,0}=0\;\checkmark$$</div>
+          <div class="formula mini formula-desktop">$$(cy)''+2(cy)'+(cy) = c\underbrace{(y''+2y'+y)}_{=\,0}=0\;\checkmark$$</div>
+          <div class="formula mini formula-mobile">$$\begin{aligned} &(cy)''\!+\!2(cy)'\!+\!(cy) \\ &= c(y''\!+\!2y'\!+\!y)=0\;\checkmark \end{aligned}$$</div>
         </div>
         <div class="flash warning-box">
           <h3>Non-homogeneous ($g(x)\neq 0$)</h3>
           <p>Has a term that is <strong>purely a function of $x$</strong> — not attached to $y$.</p>
           <div class="formula mini">$$y''+2y'+y = \underbrace{e^{-x}}_{\text{no } y \text{ here}}$$</div>
           <p>"But can't I move $e^{-x}$ to LHS and call it 0 on RHS?"</p>
-          <div class="formula mini">$$y''+2y'+y\underbrace{{}-e^{-x}}_{\text{not a term in }y}=0$$</div>
+          <div class="formula mini formula-desktop">$$y''+2y'+y\underbrace{{}-e^{-x}}_{\text{not a term in }y}=0$$</div>
+          <div class="formula mini formula-mobile">$$y''+2y'+y - e^{-x} = 0$$</div>
           <p>No — that $-e^{-x}$ <strong>doesn't involve $y$</strong> at all. The scaling test fails:</p>
-          <div class="formula mini">$$(2y)''+2(2y)'+(2y)=2e^{-x}\neq e^{-x}\;\boldsymbol{\times}$$</div>
+          <div class="formula mini formula-desktop">$$(2y)''+2(2y)'+(2y)=2e^{-x}\neq e^{-x}\;\boldsymbol{\times}$$</div>
+          <div class="formula mini formula-mobile">$$\begin{aligned} &(2y)''\!+\!2(2y)'\!+\!(2y) \\ &= 2e^{-x}\neq e^{-x}\;\boldsymbol{\times} \end{aligned}$$</div>
           <p class="dim">If $y$ is a solution, $2y$ is NOT. That's what non-homogeneous means.</p>
         </div>
       </div>
@@ -91,7 +99,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="01-basics.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="01-basics.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-basics.html"></a>
     <a class="slide-dot active" href="02-classification.html"></a>
@@ -104,7 +112,7 @@
     <a class="slide-dot" href="09-applications.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="03-formation.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="03-formation.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

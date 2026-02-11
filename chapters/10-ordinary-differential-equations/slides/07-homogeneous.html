@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:70%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">← All Chapters</a>
+  <a href="../../../index.html" class="back-link">← All Chapters</a>
   <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
   <span class="slide-badge">7 / 10</span>
 </div>
@@ -28,20 +28,29 @@
       <div class="flash">
         <h3>Spot the Clue</h3>
         <p>$\dfrac{dy}{dx} = \dfrac{M(x,y)}{N(x,y)}$ where $M$ and $N$ have the <strong>same total degree</strong> in every term.</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\frac{dy}{dx} = \frac{\overbrace{x^2 + xy + y^2}^{\text{every term: degree 2}}}{\underbrace{x^2 - y^2}_{\text{every term: degree 2}}} \quad\Rightarrow\quad \text{divide by } x^2: \quad g\!\left(\frac{y}{x}\right)$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\frac{dy}{dx} = \frac{\overbrace{x^2 + xy + y^2}^{\text{deg 2}}}{\underbrace{x^2 - y^2}_{\text{deg 2}}} \\[6pt] &\Rightarrow\; \text{divide by } x^2:\; g\!\left(\frac{y}{x}\right) \end{aligned}$$
         </div>
         <p><strong>Equivalent test:</strong> replace $x\to tx,\; y\to ty$. If all $t$'s cancel from the ratio → homogeneous.</p>
       </div>
 
       <div class="flash">
         <h3>The $y = vx$ Substitution</h3>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\frac{dy}{dx}=g\!\left(\frac{y}{x}\right) \;\xrightarrow{\;y=vx\;}\; \underbrace{v+x\frac{dv}{dx}}_{y'=v+xv'}=g(v)$$
         </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\frac{dy}{dx}=g\!\left(\frac{y}{x}\right) \\[4pt] &\xrightarrow{\;y=vx\;} \\[4pt] &\underbrace{v+x\frac{dv}{dx}}_{y'=v+xv'}=g(v) \end{aligned}$$
+        </div>
         <div class="arrow-down">↓ rearrange &amp; separate</div>
-        <div class="formula highlight-box">
+        <div class="formula highlight-box formula-desktop">
           $$\boxed{\int\frac{dv}{g(v)-v}=\int\frac{dx}{x}+c} \quad\text{then replace } v=\frac{y}{x}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\begin{aligned} &\boxed{\int\frac{dv}{g(v)-v}=\int\frac{dx}{x}+c} \\[4pt] &\text{then replace } v=\tfrac{y}{x} \end{aligned}$$
         </div>
       </div>
 
@@ -92,7 +101,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="06-substitution.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="06-substitution.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-basics.html"></a>
     <a class="slide-dot" href="02-classification.html"></a>
@@ -105,7 +114,7 @@
     <a class="slide-dot" href="09-applications.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="08-linear.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="08-linear.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

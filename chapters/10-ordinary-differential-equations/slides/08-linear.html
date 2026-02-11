@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:80%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">← All Chapters</a>
+  <a href="../../../index.html" class="back-link">← All Chapters</a>
   <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
   <span class="slide-badge">8 / 10</span>
 </div>
@@ -40,8 +40,11 @@
           $$\text{I.F.} = e^{\int P(x)\,dx}$$
         </div>
         <div class="arrow-down">↓ multiply both sides by I.F.</div>
-        <div class="formula highlight-box">
+        <div class="formula highlight-box formula-desktop">
           $$\boxed{y \cdot \underbrace{e^{\int P\,dx}}_{\text{I.F.}} = \int Q \cdot \underbrace{e^{\int P\,dx}}_{\text{I.F.}}\,dx + c}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{y \cdot e^{\int P\,dx} = \int Q \cdot e^{\int P\,dx}\,dx + c}$$
         </div>
         <p class="dim center">Shorthand: $y \times \text{I.F.} = \displaystyle\int Q \times \text{I.F.}\;dx + c$</p>
       </div>
@@ -49,20 +52,29 @@
       <div class="flash tip-box">
         <h3>Spotting Linear Under Disguise</h3>
         <p>Often the equation doesn't <em>look</em> like $y' + Py = Q$ until you <strong>divide</strong> or <strong>rearrange</strong>.</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\underbrace{(1+x^3)\frac{dy}{dx}+6x^2 y}_{\text{doesn't look standard}} = 1+x^2$$
         </div>
+        <div class="formula formula-mobile">
+          $$(1\!+\!x^3)\frac{dy}{dx}+6x^2 y = 1+x^2$$
+        </div>
         <div class="arrow-down">↓ divide by $(1+x^3)$</div>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\frac{dy}{dx}+\underbrace{\frac{6x^2}{1+x^3}}_{P(x)}\,y = \underbrace{\frac{1+x^2}{1+x^3}}_{Q(x)} \quad\checkmark$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\frac{dy}{dx}+\frac{6x^2}{1\!+\!x^3}\,y = \frac{1\!+\!x^2}{1\!+\!x^3} \;\checkmark$$
         </div>
       </div>
 
       <div class="flash" style="margin-top:0.75rem">
         <h3>Alternate: $x$ as Dependent Variable</h3>
         <p>If solving for $y$ is awkward, try swapping roles:</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\frac{dx}{dy}+P(y)\,x=Q(y) \;\;\Rightarrow\;\; \text{I.F.}=e^{\int P\,dy}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\frac{dx}{dy}+P(y)\,x=Q(y) \\ &\Rightarrow\; \text{I.F.}=e^{\int P\,dy} \end{aligned}$$
         </div>
         <div class="formula highlight-box">
           $$\boxed{x \cdot e^{\int P\,dy} = \int Q\,e^{\int P\,dy}\,dy + c}$$
@@ -128,7 +140,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="07-homogeneous.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="07-homogeneous.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-basics.html"></a>
     <a class="slide-dot" href="02-classification.html"></a>
@@ -141,7 +153,7 @@
     <a class="slide-dot" href="09-applications.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="09-applications.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="09-applications.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

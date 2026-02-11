@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:30%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">← All Chapters</a>
+  <a href="../../../index.html" class="back-link">← All Chapters</a>
   <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
   <span class="slide-badge">3 / 10</span>
 </div>
@@ -28,8 +28,11 @@
       <div class="flash">
         <h3>Why $n$ Constants Need $n$ Differentiations</h3>
         <p>To <strong>eliminate</strong> $n$ unknowns, you need $n+1$ equations (basic algebra). You start with <strong>1</strong> (the original). Each differentiation gives <strong>1 more</strong>. So:</p>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\underbrace{1}_{\text{original}} + \underbrace{n}_{\text{differentiations}} = n{+}1 \text{ equations with } n \text{ unknowns} \;\;\Rightarrow\;\; \text{eliminate all constants}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\underbrace{1}_{\text{original}} + \underbrace{n}_{\text{diff'ns}} = n{+}1 \text{ equations,} \\ &n \text{ unknowns} \;\Rightarrow\; \text{eliminate all constants} \end{aligned}$$
         </div>
         <p>The result must contain an $n$th derivative (from the $n$th differentiation), so the DE has <strong>order $n$</strong>.</p>
       </div>
@@ -46,7 +49,8 @@
           $$\underbrace{y'' = -a\cos x - b\sin x}_{\text{eq }(3):\;\text{2nd differentiation}}$$
         </div>
         <p>Now 3 equations, 2 unknowns. Notice eq$(3) = -$eq$(1)$, so:</p>
-        <div class="formula">$$y'' = -y \;\;\Rightarrow\;\; \boxed{y''+y=0} \quad \text{(order 2, both } a,b \text{ gone)}$$</div>
+        <div class="formula formula-desktop">$$y'' = -y \;\;\Rightarrow\;\; \boxed{y''+y=0} \quad \text{(order 2, both } a,b \text{ gone)}$$</div>
+        <div class="formula formula-mobile">$$y'' = -y \;\Rightarrow\; \boxed{y''+y=0}$$</div>
       </div>
 
       <div class="card-grid two-col">
@@ -64,7 +68,8 @@
         </div>
         <div class="flash example-box">
           <h3>Parabolas $y^2=4ax$</h3>
-          <div class="formula">$$2yy'=4a \;\Rightarrow\; a=\frac{yy'}{2} \;\Rightarrow\; \boxed{\frac{dy}{dx}=\frac{y}{2x}}$$</div>
+          <div class="formula formula-desktop">$$2yy'=4a \;\Rightarrow\; a=\frac{yy'}{2} \;\Rightarrow\; \boxed{\frac{dy}{dx}=\frac{y}{2x}}$$</div>
+          <div class="formula formula-mobile">$$\begin{aligned} &2yy'=4a \;\Rightarrow\; a=\tfrac{yy'}{2} \\[4pt] &\Rightarrow\; \boxed{\frac{dy}{dx}=\frac{y}{2x}} \end{aligned}$$</div>
         </div>
       </div>
     </section>
@@ -72,7 +77,7 @@
 </div>
 
 <nav class="slide-nav">
-  <a href="02-classification.html" class="nav-btn">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a href="02-classification.html" class="nav-btn">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot" href="01-basics.html"></a>
     <a class="slide-dot" href="02-classification.html"></a>
@@ -85,7 +90,7 @@
     <a class="slide-dot" href="09-applications.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="04-solutions.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="04-solutions.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

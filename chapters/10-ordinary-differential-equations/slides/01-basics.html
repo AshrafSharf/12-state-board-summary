@@ -15,7 +15,7 @@
 <div class="slide-progress" style="width:10%"></div>
 
 <div class="slide-header">
-  <a href="../../index.html" class="back-link">← All Chapters</a>
+  <a href="../../../index.html" class="back-link">← All Chapters</a>
   <span class="chapter-title">Ch 10 — Ordinary Differential Equations</span>
   <span class="slide-badge">1 / 10</span>
 </div>
@@ -36,8 +36,11 @@
 
         <div class="flash">
           <h3>Order &amp; Degree</h3>
-          <div class="formula">
+          <div class="formula formula-desktop">
             $$\underbrace{\left(\frac{d^{\color{#d97706}{4}}y}{dx^4}\right)^{\color{#dc2626}{3}}}_{\substack{\text{order}={\color{#d97706}4} \\ \text{degree}={\color{#dc2626}3}}} + 4\left(\frac{dy}{dx}\right)^{7} + 6y = 5\cos 3x$$
+          </div>
+          <div class="formula formula-mobile">
+            $$\begin{aligned} &\left(\frac{d^{\color{#d97706}{4}}y}{dx^4}\right)^{\!\color{#dc2626}{3}} + 4\left(\frac{dy}{dx}\right)^{\!7} \\ &\quad+ 6y = 5\cos 3x \end{aligned}$$
           </div>
           <ul>
             <li><strong>Order</strong> = highest derivative present <span class="tag tag-yellow">4</span></li>
@@ -63,17 +66,20 @@
 
       <div class="flash tip-box">
         <h3>Trick: Clear Fractional Powers First</h3>
-        <div class="formula">
+        <div class="formula formula-desktop">
           $$\sqrt{1+\left(\frac{dy}{dx}\right)^{\!2}} = y\frac{d^3y}{dx^3} \;\;\xrightarrow{\text{square}}\;\; 1+\left(\frac{dy}{dx}\right)^{\!2} = y^2\!\left(\frac{d^3y}{dx^3}\right)^{\!2}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\sqrt{1+\left(\frac{dy}{dx}\right)^{\!2}} = y\frac{d^3y}{dx^3} \\ &\quad\xrightarrow{\text{square}} \\ &1+\left(\frac{dy}{dx}\right)^{\!2} = y^2\!\left(\frac{d^3y}{dx^3}\right)^{\!2} \end{aligned}$$
         </div>
         <p>Now: order = <span class="tag tag-yellow">3</span>, degree = <span class="tag tag-red">2</span></p>
       </div>
-    </section>
+</section>
   </div>
 </div>
 
 <nav class="slide-nav">
-  <a class="nav-btn disabled">&#8592; Prev <kbd>&#8592;</kbd></a>
+  <a class="nav-btn disabled">&#8592; Prev</a>
   <div class="slide-dots">
     <a class="slide-dot active" href="01-basics.html"></a>
     <a class="slide-dot" href="02-classification.html"></a>
@@ -86,7 +92,7 @@
     <a class="slide-dot" href="09-applications.html"></a>
     <a class="slide-dot" href="10-quickref.html"></a>
   </div>
-  <a href="02-classification.html" class="nav-btn">Next &#8594; <kbd>&#8594;</kbd></a>
+  <a href="02-classification.html" class="nav-btn">Next &#8594;</a>
 </nav>
 
 <script>

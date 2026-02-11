@@ -148,9 +148,15 @@ main {
 .card.applications{ border-left-color: var(--applications); }
 .card.quickref    { border-left-color: var(--quickref); }
 
+.card {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
 .card h2 {
   font-size: 1.5rem;
-  margin-bottom: 1.1rem;
+  margin-bottom: 0.35rem;
   padding-bottom: 0.5rem;
   border-bottom: 1px solid var(--border);
 }
@@ -211,6 +217,7 @@ main {
   body { font-size: 16px; }
 
   .two-col, .three-col { grid-template-columns: 1fr; }
+  .card-grid { gap: 0.5rem; margin-top: 0.5rem; }
 
   header { padding: 0.6rem 0.75rem; }
   .header-top h1 { font-size: 1.2rem; }
@@ -236,9 +243,6 @@ main {
 
   .if-table { font-size: 0.82rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .if-table th, .if-table td { padding: 0.35rem 0.5rem; white-space: nowrap; }
-
-  .tree-branches { flex-direction: column; gap: 0.75rem; align-items: center; }
-  .tree-branch { flex: 0 1 100%; width: 100%; }
 
   .flow-node { max-width: 100%; font-size: 0.82rem; padding: 0.5rem 0.7rem; }
   .flow-decision { font-size: 0.8rem; padding: 0.4rem 0.7rem; }
@@ -375,6 +379,15 @@ main {
 
 .ode-node { border-left: 3px solid var(--basics); }
 .pde-node { border-left: 3px solid var(--classify); }
+
+@media (max-width: 700px) {
+  .tree { margin: 0.25rem 0; }
+  .tree-branches { flex-direction: column; gap: 0.5rem; align-items: center; margin-top: 0.5rem; }
+  .tree-branches::before { display: none; }
+  .tree-branch { flex: 0 1 auto; width: 100%; }
+  .tree-node { padding: 0.6rem 0.8rem; font-size: 0.9rem; }
+  .tree-node .formula { margin: 0.3rem 0 0; }
+}
 
 /* ─── ARROWS ─── */
 .arrow-down {
