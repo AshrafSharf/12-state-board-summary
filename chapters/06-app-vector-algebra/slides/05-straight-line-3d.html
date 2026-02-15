@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Straight Line in 3D &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:50%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">5 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card straight-line-3d">
+      <h2>6.5 &nbsp; Equation of a Straight Line in 3D</h2>
+
+      <div class="flash">
+        <h3>Core Idea</h3>
+        <p>A straight line in 3D is determined by either (a) a <strong>point and a direction</strong>, or (b) <strong>two points</strong>. The equation can be expressed in parametric, non-parametric (vector), or Cartesian form.</p>
+        <div class="formula highlight-box">
+          $$\boxed{\text{Parametric: } \vec{r} = \vec{a} + t\vec{b}, \; t \in \mathbb{R}}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{\text{Cartesian: } \frac{x - x_1}{b_1} = \frac{y - y_1}{b_2} = \frac{z - z_1}{b_3}}$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem;text-align:center">
+        <h3>Visual: Line Through Point $A$ in Direction $\vec{b}$</h3>
+        <svg viewBox="0 0 360 180" width="340" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="ap" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#3b82f6"/></marker>
+            <marker id="ad" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#ea580c"/></marker>
+          </defs>
+          <line x1="30" y1="155" x2="340" y2="45" stroke="#334155" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <line x1="30" y1="165" x2="145" y2="117" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#ap)"/>
+          <line x1="150" y1="115" x2="265" y2="74" stroke="#ea580c" stroke-width="2.8" marker-end="url(#ad)"/>
+          <circle cx="30" cy="165" r="3.5" fill="#334155"/>
+          <text x="16" y="178" fill="#334155" font-size="15" font-weight="bold" font-family="Georgia,serif">O</text>
+          <circle cx="150" cy="115" r="4.5" fill="#3b82f6"/>
+          <text x="150" y="103" fill="#3b82f6" font-size="15" font-weight="bold" font-family="Georgia,serif" text-anchor="middle">A</text>
+          <text x="78" y="153" fill="#3b82f6" font-size="16" font-weight="bold" font-style="italic" font-family="Georgia,serif">a</text>
+          <text x="215" y="86" fill="#ea580c" font-size="16" font-weight="bold" font-style="italic" font-family="Georgia,serif">b</text>
+          <text x="290" y="52" fill="#64748b" font-size="12" font-family="Georgia,serif">t &gt; 0</text>
+          <text x="48" y="148" fill="#64748b" font-size="12" font-family="Georgia,serif">t &lt; 0</text>
+          <text x="270" y="70" fill="#ea580c" font-size="12" font-family="Georgia,serif" font-style="italic">r = a + tb</text>
+        </svg>
+        <p class="dim">The line passes through $A$ (position vector $\vec{a}$) and extends in direction $\vec{b}$. Parameter $t$ traces the whole line.</p>
+      </div>
+
+      <div class="flash">
+        <h3>Other Forms</h3>
+        <div class="formula">$$\text{Non-parametric: } (\vec{r} - \vec{a}) \times \vec{b} = \vec{0}$$</div>
+        <div class="formula">$$\text{Through two points: } \vec{r} = \vec{a} + t(\vec{b} - \vec{a}), \; t \in \mathbb{R}$$</div>
+        <div class="formula formula-desktop">$$\text{Cartesian (two points): } \frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1} = \frac{z - z_1}{z_2 - z_1}$$</div>
+        <div class="formula formula-mobile">$$\frac{x - x_1}{x_2 - x_1} = \frac{y - y_1}{y_2 - y_1} = \frac{z - z_1}{z_2 - z_1}$$</div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>"Line passing through ... and parallel to ..." &rarr; point-direction form</li>
+          <li>"Line through two points" &rarr; direction = difference of position vectors</li>
+          <li>"Direction ratios" or "direction cosines" tell you the $\vec{b}$ vector</li>
+          <li>"Parallel to a given line" &rarr; use the SAME direction vector, not the point on that line</li>
+        </ul>
+      </div>
+
+      <div class="flash example-box">
+        <h3>Ex: Line Through a Point, Parallel to a Vector (Ex 6.24)</h3>
+        <p>Line passes through $(1,2,-3)$, parallel to $4\hat{i}+5\hat{j}-7\hat{k}$.</p>
+        <p><strong>Parametric:</strong> $\vec{r} = (\hat{i}+2\hat{j}-3\hat{k}) + t(4\hat{i}+5\hat{j}-7\hat{k})$</p>
+        <p><strong>Non-parametric:</strong> $(\vec{r} - (\hat{i}+2\hat{j}-3\hat{k})) \times (4\hat{i}+5\hat{j}-7\hat{k}) = \vec{0}$</p>
+        <div class="formula highlight-box">$$\boxed{\frac{x-1}{4} = \frac{y-2}{5} = \frac{z+3}{-7}}$$</div>
+      </div>
+
+      <div class="flash warning-box">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col">
+          <div class="formula mini nope">
+            $$\frac{x-1}{0} \text{ is undefined}$$
+            <span class="label-below">Don't panic at zero denominators</span>
+          </div>
+          <div class="formula mini ok">
+            $$b_3=0 \Rightarrow z - z_1 = 0$$
+            <span class="label-below">Zero denominator means that variable is constant</span>
+          </div>
+        </div>
+        <p style="margin-top:0.5rem" class="dim">Trap: When reading direction ratios from $\frac{-x-2}{4} = \frac{y+3}{-2} = \frac{2z-6}{3}$, rewrite as $\frac{x+2}{-4} = \frac{y+3}{-2} = \frac{z-3}{3/2}$ first.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="04-vector-triple-product.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot active" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="06-angle-distance-between-lines.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "04-vector-triple-product.html";
+  if (e.key === "ArrowRight") window.location.href = "06-angle-distance-between-lines.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

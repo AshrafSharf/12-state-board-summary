@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Scalar &amp; Vector Products &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:20%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">2 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card dot-cross-products">
+      <h2>6.1&ndash;6.2 &nbsp; Scalar Product, Vector Product &amp; Geometry</h2>
+
+      <div class="flash">
+        <h3>Core Idea</h3>
+        <p>The <strong>dot product</strong> $\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta$ measures projection (result is a <strong>scalar</strong>). The <strong>cross product</strong> $\vec{a} \times \vec{b}$ gives a vector perpendicular to both with magnitude $|\vec{a}||\vec{b}|\sin\theta$ (result is a <strong>vector</strong>).</p>
+        <div class="formula highlight-box">
+          $$\boxed{\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3}$$
+        </div>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\vec{a} \times \vec{b} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \end{vmatrix}}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\vec{a} \times \vec{b} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \end{vmatrix}}$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Visual: Dot Product vs Cross Product</h3>
+        <div class="card-grid two-col">
+          <div style="text-align:center">
+            <svg viewBox="0 0 280 190" width="260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="ab" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#3b82f6"/></marker>
+                <marker id="ag" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#059669"/></marker>
+              </defs>
+              <line x1="40" y1="140" x2="240" y2="140" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#ab)"/>
+              <line x1="40" y1="140" x2="170" y2="45" stroke="#059669" stroke-width="2.5" marker-end="url(#ag)"/>
+              <line x1="170" y1="45" x2="170" y2="140" stroke="#ca8a04" stroke-width="1.5" stroke-dasharray="5,3"/>
+              <line x1="40" y1="147" x2="170" y2="147" stroke="#ca8a04" stroke-width="3.5" opacity="0.4"/>
+              <path d="M 72,140 A 32,32 0 0,0 64,122" fill="none" stroke="#ca8a04" stroke-width="2"/>
+              <text x="78" y="126" font-size="14" font-style="italic" fill="#ca8a04" font-family="Georgia,serif">θ</text>
+              <text x="145" y="165" fill="#3b82f6" font-weight="bold" font-size="17" font-style="italic" font-family="Georgia,serif" text-anchor="middle">a</text>
+              <text x="90" y="78" fill="#059669" font-weight="bold" font-size="17" font-style="italic" font-family="Georgia,serif">b</text>
+              <text x="105" y="162" fill="#ca8a04" font-size="11" font-family="Georgia,serif" text-anchor="middle">|b| cos θ</text>
+              <circle cx="40" cy="140" r="3" fill="#334155"/>
+              <text x="28" y="155" fill="#334155" font-size="13" font-family="Georgia,serif">O</text>
+            </svg>
+            <p class="dim" style="margin-top:0.3rem"><strong>Dot product</strong> = projection of $\vec{b}$ onto $\vec{a}$ times $|\vec{a}|$<br>Result: <strong>scalar</strong></p>
+          </div>
+          <div style="text-align:center">
+            <svg viewBox="0 0 280 210" width="260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="ab2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#3b82f6"/></marker>
+                <marker id="ag2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#059669"/></marker>
+                <marker id="ao2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#ea580c"/></marker>
+              </defs>
+              <polygon points="60,175 200,175 270,85 130,85" fill="rgba(59,130,246,0.07)" stroke="#94a3b8" stroke-width="1" stroke-dasharray="4,3"/>
+              <line x1="60" y1="175" x2="200" y2="175" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#ab2)"/>
+              <line x1="60" y1="175" x2="130" y2="85" stroke="#059669" stroke-width="2.5" marker-end="url(#ag2)"/>
+              <line x1="60" y1="175" x2="60" y2="28" stroke="#ea580c" stroke-width="2.8" marker-end="url(#ao2)"/>
+              <polyline points="60,157 76,157 76,175" fill="none" stroke="#94a3b8" stroke-width="1.3"/>
+              <path d="M 92,175 A 32,32 0 0,0 84,157" fill="none" stroke="#ca8a04" stroke-width="2"/>
+              <text x="96" y="161" font-size="14" font-style="italic" fill="#ca8a04" font-family="Georgia,serif">θ</text>
+              <text x="135" y="195" fill="#3b82f6" font-weight="bold" font-size="17" font-style="italic" font-family="Georgia,serif" text-anchor="middle">a</text>
+              <text x="80" y="122" fill="#059669" font-weight="bold" font-size="17" font-style="italic" font-family="Georgia,serif">b</text>
+              <text x="38" y="24" fill="#ea580c" font-weight="bold" font-size="14" font-family="Georgia,serif">a&times;b</text>
+              <text x="168" y="136" fill="#64748b" font-size="11" font-style="italic" font-family="Georgia,serif" text-anchor="middle">Area = |a&times;b|</text>
+              <circle cx="60" cy="175" r="3" fill="#334155"/>
+              <text x="48" y="190" fill="#334155" font-size="13" font-family="Georgia,serif">O</text>
+            </svg>
+            <p class="dim" style="margin-top:0.3rem"><strong>Cross product</strong> = perpendicular vector<br>Magnitude = parallelogram area. <strong>Result: vector</strong></p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash">
+        <h3>Supporting Formulas</h3>
+        <div class="formula">$$\theta = \cos^{-1}\!\left(\frac{\vec{a} \cdot \vec{b}}{|\vec{a}||\vec{b}|}\right)$$</div>
+        <div class="formula">$$|\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin\theta$$</div>
+        <div class="formula">$$\text{Area of } \triangle ABC = \tfrac{1}{2}|\overrightarrow{AB} \times \overrightarrow{AC}|$$</div>
+        <div class="formula-row">
+          <div class="formula mini">$$W = \vec{F} \cdot \vec{d}$$<span class="label-below">Work done</span></div>
+          <div class="formula mini">$$\vec{\tau} = \vec{r} \times \vec{F}$$<span class="label-below">Torque</span></div>
+        </div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>"Prove by vector method" with trig identities like $\cos(\alpha+\beta)$, sine rule, cosine rule</li>
+          <li>Force + displacement given together &rarr; work = dot product</li>
+          <li>Force at a point with position vector &rarr; torque = cross product</li>
+          <li>"Find the angle between" two vectors &rarr; use $\cos^{-1}$</li>
+        </ul>
+      </div>
+
+      <div class="flash example-box">
+        <h3>Ex: Total Work Done (Ex 6.9)</h3>
+        <p>Forces $2\hat{i}+5\hat{j}+6\hat{k}$ and $-\hat{i}-2\hat{j}-\hat{k}$ displace a particle from $(4,-3,-2)$ to $(6,1,-3)$.</p>
+        <p><strong>Step 1:</strong> $\vec{F} = (2-1)\hat{i}+(5-2)\hat{j}+(6-1)\hat{k} = \hat{i}+3\hat{j}+5\hat{k}$</p>
+        <p><strong>Step 2:</strong> $\vec{d} = (6-4)\hat{i}+(1+3)\hat{j}+(-3+2)\hat{k} = 2\hat{i}+4\hat{j}-\hat{k}$</p>
+        <div class="formula">$$W = \vec{F} \cdot \vec{d} = 2+12-5 = 9$$</div>
+        <div class="formula highlight-box">$$\boxed{W = 9 \text{ units}}$$</div>
+      </div>
+
+      <div class="flash warning-box">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col">
+          <div class="formula mini nope">
+            $$\vec{a} \times \vec{b} = \vec{b} \times \vec{a}$$
+            <span class="label-below">Cross product is NOT commutative</span>
+          </div>
+          <div class="formula mini ok">
+            $$\vec{a} \times \vec{b} = -(\vec{b} \times \vec{a})$$
+            <span class="label-below">Anti-commutative: swap = flip sign</span>
+          </div>
+        </div>
+        <p style="margin-top:0.5rem" class="dim">Also remember: $\vec{a} \cdot \vec{b}$ is a <strong>scalar</strong>, $\vec{a} \times \vec{b}$ is a <strong>vector</strong>. Don't mix them up.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="01-overview.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot active" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="03-scalar-triple-product.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "01-overview.html";
+  if (e.key === "ArrowRight") window.location.href = "03-scalar-triple-product.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

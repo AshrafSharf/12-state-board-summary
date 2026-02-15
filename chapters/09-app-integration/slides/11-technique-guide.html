@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Technique Guide — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+<style>
+  .int-table { font-size: 1.1rem; }
+  .int-table th { font-size: 1rem; padding: 0.8rem 1rem; }
+  .int-table td { padding: 0.9rem 1rem; line-height: 1.7; }
+  .int-table .dim { font-size: 0.95rem; }
+  .int-table .katex { font-size: 1.3em; }
+  .int-table td strong { font-size: 1.15rem; }
+</style>
+</head>
+<body>
+
+<div class="slide-progress" style="width:100%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">11 / 11</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card quickref">
+      <h2>Technique Guide &mdash; "Which Method Fits This Integral?"</h2>
+
+      <div class="flash">
+        <h3>Decision Table: Spot the Pattern, Pick the Tool</h3>
+        <table class="int-table">
+          <thead>
+            <tr><th>You see this pattern</th><th>Technique</th><th>The clue / why it works</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$f\!\big(g(x)\big)\cdot g'(x)$<br><span class="dim">composite &times; its derivative</span></td>
+              <td><strong>U-Substitution</strong></td>
+              <td>One factor is the <strong>derivative</strong> (or scaled version) of the inner function. It's the chain rule in reverse.<br><span class="dim">$\int 2x\cos(x^2)\,dx$ &mdash; $g(x)=x^2,\;g'(x)=2x$ is right there!</span></td>
+            </tr>
+            <tr>
+              <td>$\ln x,\;\sin^{-1}\!x,\;\tan^{-1}\!x$ as a factor<br><span class="dim">"non-destructible" &mdash; hard to integrate directly</span></td>
+              <td><strong>Integration by Parts</strong></td>
+              <td>The factor is <strong>easy to differentiate but hard to integrate</strong>. It <em>must</em> be chosen as $u$. Differentiation simplifies it; integration doesn't.<br><span class="dim">$\int \ln x\,dx$, $\;\int x\tan^{-1}\!x\,dx$ &mdash; log / inverse-trig &rarr; $u$</span></td>
+            </tr>
+            <tr>
+              <td>Polynomial $\times$ ($\sin$, $\cos$, $e^{ax}$)<br><span class="dim">one factor "dies", the other repeats</span></td>
+              <td><strong>Bernoulli's Formula</strong></td>
+              <td>The polynomial "dies" (&rarr; 0) on repeated differentiation; the trig/exponential can be integrated <strong>forever</strong>.<br><span class="dim">$\int x^2 e^{3x}\,dx$ &mdash; differentiate $x^2$ (dies), integrate $e^{3x}$ (repeats)</span></td>
+            </tr>
+            <tr>
+              <td>$\sqrt{a^2-x^2}$, $\;\sqrt{a^2+x^2}$, $\;\sqrt{x^2-a^2}$<br><span class="dim">square root of sum/difference of squares</span></td>
+              <td><strong>Trig Substitution</strong></td>
+              <td>A <strong>right triangle hides inside</strong>. The substitution eliminates the root via a Pythagorean identity.<br><span class="dim">See triangle diagrams below &darr;</span></td>
+            </tr>
+            <tr>
+              <td>$\dfrac{P(x)}{Q(x)}$ where $Q$ factors<br><span class="dim">rational function</span></td>
+              <td><strong>Partial Fractions</strong></td>
+              <td>Factor the denominator, decompose into simpler fractions, each integrates to $\ln$ or a power.<br><span class="dim">$\int\!\frac{dx}{(x-1)(x+2)}$ &mdash; decompose then integrate</span></td>
+            </tr>
+            <tr>
+              <td>$\dfrac{1}{ax^2+bx+c}$ &mdash; doesn't factor<br><span class="dim">irreducible quadratic</span></td>
+              <td><strong>Complete the Square</strong></td>
+              <td>Rewrite as $(x\!-\!h)^2 \pm k^2$ to match $\arctan$ or $\arcsin$ standard forms.<br><span class="dim">$\int\!\frac{dx}{x^2+4x+8} \to \int\!\frac{dx}{(x+2)^2+4}$ &rarr; $\arctan$</span></td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <!-- ─── TRIG SUBSTITUTION TRIANGLES ─── -->
+      <div class="flash" style="margin-top:1.5rem">
+        <h3>Trig Substitution &mdash; The Right Triangle That Hides Inside</h3>
+        <p>Every trig substitution comes from a <strong>right triangle</strong>. Place $\theta$ at one vertex. The Pythagorean theorem connects the three sides &mdash; and <strong style="color:#059669">one side is your square root</strong>!</p>
+
+        <div class="card-grid three-col" style="margin-top:1rem">
+
+          <!-- ── Case 1: √(a²−x²) ── -->
+          <div class="flash example-box" style="text-align:center;padding:1rem">
+            <h3 style="color:var(--indefinite)">$\sqrt{a^2 - x^2}$</h3>
+            <svg viewBox="0 0 260 210" width="220" style="margin:0.5rem auto;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="40,175 220,175 220,40" fill="rgba(59,130,246,0.05)" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+              <line x1="40" y1="175" x2="220" y2="175" stroke="#059669" stroke-width="3.5" stroke-linecap="round"/>
+              <polyline points="202,175 202,157 220,157" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+              <path d="M 72,175 A 32,32 0 0,0 64,158" fill="none" stroke="#ea580c" stroke-width="2.2"/>
+              <text x="78" y="164" font-size="16" font-style="italic" fill="#ea580c" font-family="Georgia,serif">θ</text>
+              <text x="112" y="97" font-size="22" font-weight="bold" fill="#334155" font-family="Georgia,serif" text-anchor="middle" transform="rotate(-36,112,97)">a</text>
+              <text x="236" y="115" font-size="22" font-weight="bold" fill="#3b82f6" font-family="Georgia,serif">x</text>
+              <text x="130" y="198" font-size="14" font-weight="bold" fill="#059669" font-family="Georgia,serif" text-anchor="middle">√(a² − x²)</text>
+            </svg>
+            <div class="formula mini">$$x = a\sin\theta, \quad dx = a\cos\theta\,d\theta$$</div>
+            <p class="dim" style="margin-top:0.3rem">$\sin\theta = \dfrac{x}{a}$ &nbsp;&rarr;&nbsp; $\theta = \sin^{-1}\!\!\left(\dfrac{x}{a}\right)$</p>
+            <p class="dim">$a^2 - a^2\sin^2\!\theta = a^2\cos^2\!\theta$ &nbsp;&check;</p>
+          </div>
+
+          <!-- ── Case 2: √(a²+x²) ── -->
+          <div class="flash example-box" style="text-align:center;padding:1rem">
+            <h3 style="color:var(--indefinite)">$\sqrt{a^2 + x^2}$</h3>
+            <svg viewBox="0 0 260 210" width="220" style="margin:0.5rem auto;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="40,175 220,175 220,40" fill="rgba(59,130,246,0.05)" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+              <line x1="40" y1="175" x2="220" y2="40" stroke="#059669" stroke-width="3.5" stroke-linecap="round"/>
+              <polyline points="202,175 202,157 220,157" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+              <path d="M 72,175 A 32,32 0 0,0 64,158" fill="none" stroke="#ea580c" stroke-width="2.2"/>
+              <text x="78" y="164" font-size="16" font-style="italic" fill="#ea580c" font-family="Georgia,serif">θ</text>
+              <text x="102" y="92" font-size="13" font-weight="bold" fill="#059669" font-family="Georgia,serif" text-anchor="middle" transform="rotate(-36,102,92)">√(a²+x²)</text>
+              <text x="236" y="115" font-size="22" font-weight="bold" fill="#3b82f6" font-family="Georgia,serif">x</text>
+              <text x="130" y="198" font-size="22" font-weight="bold" fill="#334155" font-family="Georgia,serif" text-anchor="middle">a</text>
+            </svg>
+            <div class="formula mini">$$x = a\tan\theta, \quad dx = a\sec^2\!\theta\,d\theta$$</div>
+            <p class="dim" style="margin-top:0.3rem">$\tan\theta = \dfrac{x}{a}$ &nbsp;&rarr;&nbsp; $\theta = \tan^{-1}\!\!\left(\dfrac{x}{a}\right)$</p>
+            <p class="dim">$a^2 + a^2\tan^2\!\theta = a^2\sec^2\!\theta$ &nbsp;&check;</p>
+          </div>
+
+          <!-- ── Case 3: √(x²−a²) ── -->
+          <div class="flash example-box" style="text-align:center;padding:1rem">
+            <h3 style="color:var(--indefinite)">$\sqrt{x^2 - a^2}$</h3>
+            <svg viewBox="0 0 260 210" width="220" style="margin:0.5rem auto;display:block" xmlns="http://www.w3.org/2000/svg">
+              <polygon points="40,175 220,175 220,40" fill="rgba(59,130,246,0.05)" stroke="#334155" stroke-width="2" stroke-linejoin="round"/>
+              <line x1="220" y1="175" x2="220" y2="40" stroke="#059669" stroke-width="3.5" stroke-linecap="round"/>
+              <polyline points="202,175 202,157 220,157" fill="none" stroke="#94a3b8" stroke-width="1.5"/>
+              <path d="M 72,175 A 32,32 0 0,0 64,158" fill="none" stroke="#ea580c" stroke-width="2.2"/>
+              <text x="78" y="164" font-size="16" font-style="italic" fill="#ea580c" font-family="Georgia,serif">θ</text>
+              <text x="112" y="97" font-size="22" font-weight="bold" fill="#3b82f6" font-family="Georgia,serif" text-anchor="middle" transform="rotate(-36,112,97)">x</text>
+              <text x="240" y="112" font-size="13" font-weight="bold" fill="#059669" font-family="Georgia,serif" text-anchor="start" transform="rotate(-90,240,112)">√(x² − a²)</text>
+              <text x="130" y="198" font-size="22" font-weight="bold" fill="#334155" font-family="Georgia,serif" text-anchor="middle">a</text>
+            </svg>
+            <div class="formula mini">$$x = a\sec\theta, \quad dx = a\sec\theta\tan\theta\,d\theta$$</div>
+            <p class="dim" style="margin-top:0.3rem">$\sec\theta = \dfrac{x}{a}$ &nbsp;&rarr;&nbsp; $\theta = \sec^{-1}\!\!\left(\dfrac{x}{a}\right)$</p>
+            <p class="dim">$a^2\sec^2\!\theta - a^2 = a^2\tan^2\!\theta$ &nbsp;&check;</p>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- ─── WHY THE TRIANGLE MATTERS ─── -->
+      <div class="flash tip-box" style="margin-top:1rem">
+        <h3>Why the Triangle? &mdash; Converting Back to $x$</h3>
+        <p>After integrating in $\theta$, you must <strong>substitute back</strong> to $x$. The triangle gives you <em>every</em> trig function of $\theta$ in terms of $x$ and $a$ &mdash; just read the sides!</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\int\!\frac{dx}{\sqrt{a^2+x^2}} \;\xrightarrow{x=a\tan\theta}\; \int\!\frac{a\sec^2\!\theta\,d\theta}{a\sec\theta} = \int\sec\theta\,d\theta = \ln|\sec\theta+\tan\theta|+C$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\begin{aligned} &\int\!\frac{dx}{\sqrt{a^2+x^2}} \;\xrightarrow{x=a\tan\theta} \\[4pt] &\int\sec\theta\,d\theta = \ln|\sec\theta\!+\!\tan\theta|+C \end{aligned}$$
+        </div>
+        <p>Read from triangle: $\tan\theta = \frac{x}{a}$, &nbsp;$\sec\theta = \frac{\sqrt{a^2+x^2}}{a}$. Substitute back:</p>
+        <div class="formula mini ok">
+          $$= \ln\!\left|\frac{\sqrt{a^2+x^2}}{a}+\frac{x}{a}\right|+C = \ln\!\left|\sqrt{a^2+x^2}+x\right| + C'$$
+        </div>
+      </div>
+
+      <!-- ─── KEY INSIGHT BOX ─── -->
+      <div class="flash warning-box" style="margin-top:1rem">
+        <h3>Common Pitfall: Don't Forget to Substitute Back!</h3>
+        <p>The <strong>#1 mistake</strong> with trig substitution is leaving the answer in $\theta$. Always use the triangle to convert every $\sin\theta$, $\cos\theta$, $\tan\theta$, etc. back to expressions in $x$.</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\int\!\sqrt{4-x^2}\,dx = 2\theta + \sin 2\theta + C$$
+            <span class="label-below">Left answer in $\theta$ &mdash; incomplete!</span>
+          </div>
+          <div class="formula mini ok">
+            $$= 2\sin^{-1}\!\frac{x}{2} + \frac{x\sqrt{4-x^2}}{2} + C$$
+            <span class="label-below">Substituted back using triangle &check;</span>
+          </div>
+        </div>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="10-quickref.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+    <a class="slide-dot active" href="11-technique-guide.html"></a>
+  </div>
+  <a class="nav-btn disabled">&#8634; Start Over</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "10-quickref.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

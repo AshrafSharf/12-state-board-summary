@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overview &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:10%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">1 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card overview">
+      <h2>6 &nbsp; Applications of Vector Algebra &mdash; Overview</h2>
+
+      <div class="flash">
+        <h3>What This Chapter Covers</h3>
+        <p>This chapter applies vector algebra to <strong>3-dimensional geometry</strong> &mdash; computing volumes via scalar triple products, simplifying expressions with vector triple products, and deriving equations of lines and planes in multiple forms (parametric, non-parametric, Cartesian).</p>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Why It Matters for Exams</h3>
+        <p>Exam questions heavily test:</p>
+        <ul>
+          <li><strong>Shortest distance</strong> between skew and parallel lines</li>
+          <li><strong>Angle computations</strong> between lines, between planes, and between a line and a plane</li>
+          <li><strong>Plane equations</strong> through various conditions (3 points, normal + point, intercepts)</li>
+          <li><strong>Image of a point</strong> in a plane and foot of perpendicular</li>
+          <li><strong>Coplanarity</strong> checks for vectors and lines</li>
+        </ul>
+      </div>
+
+      <div class="flash">
+        <h3>Topics at a Glance</h3>
+        <div class="card-grid two-col">
+          <div class="flash" style="border-left: 3px solid var(--dot-cross-products);">
+            <p><strong>6.1&ndash;6.2</strong> &nbsp; Scalar &amp; Vector Products</p>
+            <p class="dim">Dot product, cross product, work, torque, area</p>
+          </div>
+          <div class="flash" style="border-left: 3px solid var(--scalar-triple-product);">
+            <p><strong>6.3</strong> &nbsp; Scalar Triple Product</p>
+            <p class="dim">Volume, coplanarity, determinant form</p>
+          </div>
+          <div class="flash" style="border-left: 3px solid var(--vector-triple-product);">
+            <p><strong>6.4</strong> &nbsp; Vector Triple Product</p>
+            <p class="dim">BAC-CAB rule, Lagrange &amp; Jacobi identities</p>
+          </div>
+          <div class="flash" style="border-left: 3px solid var(--straight-line-3d);">
+            <p><strong>6.5</strong> &nbsp; Straight Lines in 3D</p>
+            <p class="dim">Parametric, non-parametric, Cartesian forms</p>
+          </div>
+          <div class="flash" style="border-left: 3px solid var(--angle-distance-between-lines);">
+            <p><strong>6.6</strong> &nbsp; Angle &amp; Distance Between Lines</p>
+            <p class="dim">Skew lines, parallel distance, intersection</p>
+          </div>
+          <div class="flash" style="border-left: 3px solid var(--equation-of-plane);">
+            <p><strong>6.7</strong> &nbsp; Equation of a Plane</p>
+            <p class="dim">Normal form, 3-point form, intercept form</p>
+          </div>
+          <div class="flash" style="border-left: 3px solid var(--angles-distances-planes);">
+            <p><strong>6.8</strong> &nbsp; Angles &amp; Distances with Planes</p>
+            <p class="dim">Plane-plane angle, line-plane angle, point-plane distance</p>
+          </div>
+          <div class="flash" style="border-left: 3px solid var(--coplanarity-intersection-image);">
+            <p><strong>6.9</strong> &nbsp; Coplanarity, Intersection &amp; Image</p>
+            <p class="dim">Coplanar lines, plane families, image of a point, line-plane meeting</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a class="nav-btn disabled">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot active" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="02-dot-cross-products.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowRight") window.location.href = "02-dot-cross-products.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

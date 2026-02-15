@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Coplanarity, Intersection &amp; Image &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:90%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">9 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card coplanarity-intersection-image">
+      <h2>6.9 &nbsp; Coplanarity, Intersection &amp; Image</h2>
+
+      <div class="flash">
+        <h3>Core Idea</h3>
+        <p>Two lines are <strong>coplanar</strong> iff $(\vec{c}-\vec{a}) \cdot (\vec{b} \times \vec{d}) = 0$. The line of intersection of two planes has direction $\vec{n}_1 \times \vec{n}_2$. The <strong>image</strong> of a point in a plane uses a reflection formula. The <strong>meeting point</strong> of a line and a plane is found by substituting the line into the plane equation.</p>
+      </div>
+
+      <div class="flash">
+        <h3>Key Formulas</h3>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\text{Coplanarity: } (\vec{c}-\vec{a}) \cdot (\vec{b} \times \vec{d}) = 0 \;\text{ or }\; \begin{vmatrix} x_2-x_1 & y_2-y_1 & z_2-z_1 \\ b_1 & b_2 & b_3 \\ d_1 & d_2 & d_3 \end{vmatrix} = 0}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{(\vec{c}\!-\!\vec{a}) \cdot (\vec{b} \!\times\! \vec{d}) = 0}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{\text{Image: } \vec{v} = \vec{u} + \frac{2[p - (\vec{u} \cdot \vec{n})]}{|\vec{n}|^2}\vec{n}}$$
+        </div>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\text{Line-plane intersection: } \vec{u} = \vec{a} + \left(\frac{p - \vec{a} \cdot \vec{n}}{\vec{b} \cdot \vec{n}}\right)\vec{b}, \quad \vec{b} \cdot \vec{n} \neq 0}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\vec{u} = \vec{a} + \frac{p - \vec{a} \cdot \vec{n}}{\vec{b} \cdot \vec{n}}\,\vec{b}}$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem;text-align:center">
+        <h3>Visual: Image (Reflection) of a Point in a Plane</h3>
+        <svg viewBox="0 0 320 260" width="300" xmlns="http://www.w3.org/2000/svg">
+          <defs>
+            <marker id="anr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#059669"/></marker>
+          </defs>
+          <rect x="30" y="118" width="260" height="24" rx="4" fill="rgba(59,130,246,0.10)" stroke="#94a3b8" stroke-width="1.5"/>
+          <text x="270" y="134" fill="#64748b" font-size="11" font-style="italic" font-family="Georgia,serif">plane &pi;</text>
+          <circle cx="160" cy="40" r="6" fill="#3b82f6"/>
+          <text x="175" y="38" fill="#3b82f6" font-size="16" font-weight="bold" font-family="Georgia,serif">P</text>
+          <text x="178" y="50" fill="#3b82f6" font-size="11" font-family="Georgia,serif">(original)</text>
+          <circle cx="160" cy="130" r="5" fill="#ca8a04"/>
+          <text x="175" y="128" fill="#ca8a04" font-size="15" font-weight="bold" font-family="Georgia,serif">F</text>
+          <text x="178" y="140" fill="#ca8a04" font-size="10" font-family="Georgia,serif">(foot)</text>
+          <circle cx="160" cy="220" r="6" fill="#ea580c"/>
+          <text x="175" y="218" fill="#ea580c" font-size="16" font-weight="bold" font-family="Georgia,serif">P&prime;</text>
+          <text x="178" y="230" fill="#ea580c" font-size="11" font-family="Georgia,serif">(image)</text>
+          <line x1="160" y1="46" x2="160" y2="214" stroke="#334155" stroke-width="1.8" stroke-dasharray="6,4"/>
+          <line x1="95" y1="85" x2="95" y2="40" stroke="#059669" stroke-width="1.5" marker-end="url(#anr)"/>
+          <text x="78" y="32" fill="#059669" font-weight="bold" font-size="14" font-style="italic" font-family="Georgia,serif">n</text>
+          <line x1="120" y1="80" x2="145" y2="80" stroke="#ea580c" stroke-width="1.5"/>
+          <line x1="120" y1="84" x2="120" y2="76" stroke="#ea580c" stroke-width="1.5"/>
+          <line x1="145" y1="84" x2="145" y2="76" stroke="#ea580c" stroke-width="1.5"/>
+          <line x1="120" y1="180" x2="145" y2="180" stroke="#ea580c" stroke-width="1.5"/>
+          <line x1="120" y1="184" x2="120" y2="176" stroke="#ea580c" stroke-width="1.5"/>
+          <line x1="145" y1="184" x2="145" y2="176" stroke="#ea580c" stroke-width="1.5"/>
+          <text x="105" y="84" fill="#ea580c" font-size="11" font-weight="bold" font-family="Georgia,serif">d</text>
+          <text x="105" y="184" fill="#ea580c" font-size="11" font-weight="bold" font-family="Georgia,serif">d</text>
+          <polyline points="150,130 150,118 160,118" fill="none" stroke="#94a3b8" stroke-width="1.3"/>
+        </svg>
+        <p class="dim">The foot $F$ is the perpendicular projection. The image $P'$ is at <strong>equal distance</strong> on the other side: $\vec{v} = \vec{u} + \frac{2[p - \vec{u}\cdot\vec{n}]}{|\vec{n}|^2}\vec{n}$</p>
+      </div>
+
+      <div class="flash">
+        <h3>More Formulas</h3>
+        <div class="formula">$$\text{Plane of coplanar lines: } (\vec{r}-\vec{a}) \cdot (\vec{b} \times \vec{d}) = 0$$</div>
+        <div class="formula">$$\text{Direction of intersection line: } \vec{n}_1 \times \vec{n}_2$$</div>
+        <div class="formula formula-desktop">$$\text{Family of planes: } (\vec{r} \cdot \vec{n}_1 - d_1) + \lambda(\vec{r} \cdot \vec{n}_2 - d_2) = 0$$</div>
+        <div class="formula formula-mobile">$$(\vec{r}\!\cdot\!\vec{n}_1 \!-\! d_1) + \lambda(\vec{r}\!\cdot\!\vec{n}_2 \!-\! d_2) = 0$$</div>
+        <div class="formula">$$\text{Foot of perpendicular: } \vec{r}_1 = \vec{u} + \frac{p - \vec{u} \cdot \vec{n}}{|\vec{n}|^2}\vec{n}$$</div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>"Show two lines are coplanar" &rarr; compute the $3 \times 3$ determinant</li>
+          <li>"Plane containing two lines" &rarr; $(\vec{r}-\vec{a}) \cdot (\vec{b} \times \vec{d}) = 0$</li>
+          <li>"Plane through intersection of two planes" &rarr; use $\lambda$-family, apply extra condition to find $\lambda$</li>
+          <li>"Image of a point in a plane" or "foot of perpendicular" &rarr; reflection formula</li>
+          <li>"Find where the line meets the plane" &rarr; substitute parametric line into plane equation</li>
+        </ul>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash example-box">
+          <h3>Ex: Image of a Point (Ex 6.55)</h3>
+          <p>Point: $\hat{i}+2\hat{j}+3\hat{k}$, Plane: $\vec{r} \cdot (\hat{i}+2\hat{j}+4\hat{k}) = 38$</p>
+          <p><strong>Step 1:</strong> $\vec{u} \cdot \vec{n} = 1+4+12 = 17$</p>
+          <p><strong>Step 2:</strong> $|\vec{n}|^2 = 1+4+16 = 21$</p>
+          <div class="formula">$$\vec{v} = \vec{u} + \frac{2(38-17)}{21}\vec{n} = \vec{u} + 2\vec{n}$$</div>
+          <div class="formula highlight-box">$$\boxed{\vec{v} = 3\hat{i}+6\hat{j}+11\hat{k}}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: Line Meets Plane (Ex 6.56)</h3>
+          <p>Line: $\vec{r} = (2\hat{i}-\hat{j}+2\hat{k})+t(3\hat{i}+4\hat{j}+2\hat{k})$<br>Plane: $x-y+z-5 = 0$</p>
+          <p><strong>Step 1:</strong> $\vec{a} \cdot \vec{n} = 2+1+2 = 5$</p>
+          <p><strong>Step 2:</strong> $\vec{b} \cdot \vec{n} = 3-4+2 = 1$</p>
+          <p><strong>Step 3:</strong> $t = \frac{5-5}{1} = 0$</p>
+          <div class="formula highlight-box">$$\boxed{(2,-1,2)}$$</div>
+        </div>
+      </div>
+
+      <div class="flash example-box" style="margin-top:0.75rem">
+        <h3>Ex: Distance from Point to Intersection (Ex 6.50)</h3>
+        <p>Find distance from $(5,-5,-10)$ to where line through $A(4,1,2)$, $B(7,5,4)$ meets $x-y+z=5$.</p>
+        <p><strong>Step 1:</strong> Direction $(3,4,2)$. Parametric point: $(3t+4,\;4t+1,\;2t+2)$.</p>
+        <p><strong>Step 2:</strong> Substitute: $(3t+4)-(4t+1)+(2t+2) = 5 \Rightarrow t = 0$. Point: $(4,1,2)$.</p>
+        <div class="formula highlight-box">$$\boxed{d = \sqrt{1+36+144} = \sqrt{181} \text{ units}}$$</div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col">
+          <div class="formula mini nope">
+            $$\vec{b} \cdot \vec{n} = 0 \;\text{and divide}$$
+            <span class="label-below">If $\vec{b} \cdot \vec{n} = 0$, line is parallel &mdash; no intersection!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{Check } \vec{b} \cdot \vec{n} \neq 0 \text{ first}$$
+            <span class="label-below">If $= 0$ and $\vec{a} \cdot \vec{n} = p$: line lies in plane</span>
+          </div>
+        </div>
+        <p style="margin-top:0.5rem" class="dim">Trap: A line lies IN a plane only if BOTH $\vec{b} \cdot \vec{n} = 0$ AND the point satisfies the plane. Checking only one condition is insufficient.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="08-angles-distances-planes.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot active" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="10-quickref.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "08-angles-distances-planes.html";
+  if (e.key === "ArrowRight") window.location.href = "10-quickref.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

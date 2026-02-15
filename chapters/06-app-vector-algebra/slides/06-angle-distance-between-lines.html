@@ -1,0 +1,186 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angle &amp; Distance Between Lines &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:60%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">6 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card angle-distance-between-lines">
+      <h2>6.6 &nbsp; Angle, Intersection &amp; Shortest Distance</h2>
+
+      <div class="flash">
+        <h3>Core Idea</h3>
+        <p>The angle between two lines equals the angle between their direction vectors. Two lines in 3D can be <strong>intersecting</strong>, <strong>parallel</strong>, or <strong>skew</strong>. Skew lines are non-parallel and non-intersecting; their shortest distance is measured along the common perpendicular.</p>
+        <div class="formula highlight-box">
+          $$\boxed{\cos\theta = \frac{|\vec{b} \cdot \vec{d}|}{|\vec{b}||\vec{d}|}}$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Visual: Skew Lines vs Parallel Lines</h3>
+        <div class="card-grid two-col">
+          <div style="text-align:center">
+            <svg viewBox="0 0 280 200" width="260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="as1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#3b82f6"/></marker>
+                <marker id="as2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#059669"/></marker>
+              </defs>
+              <line x1="15" y1="150" x2="255" y2="125" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#as1)"/>
+              <line x1="50" y1="45" x2="245" y2="72" stroke="#059669" stroke-width="2.5" marker-end="url(#as2)"/>
+              <line x1="145" y1="138" x2="155" y2="58" stroke="#ea580c" stroke-width="2.8"/>
+              <circle cx="145" cy="138" r="4" fill="#3b82f6"/>
+              <circle cx="155" cy="58" r="4" fill="#059669"/>
+              <polyline points="136,131 140,122 149,126" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+              <polyline points="164,65 160,74 151,70" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+              <text x="168" y="103" fill="#ea580c" font-size="16" font-weight="bold" font-style="italic" font-family="Georgia,serif">δ</text>
+              <text x="220" y="118" fill="#3b82f6" font-size="13" font-family="Georgia,serif" font-style="italic">r = a + tb</text>
+              <text x="195" y="42" fill="#059669" font-size="13" font-family="Georgia,serif" font-style="italic">r = c + sd</text>
+              <text x="140" y="190" fill="#64748b" font-size="12" font-family="Georgia,serif" text-anchor="middle">Skew: not parallel, don't meet</text>
+            </svg>
+            <p class="dim" style="margin-top:0.3rem">Common perpendicular = shortest path<br>$\delta = \dfrac{|(\vec{c}-\vec{a})\cdot(\vec{b}\times\vec{d})|}{|\vec{b}\times\vec{d}|}$</p>
+          </div>
+          <div style="text-align:center">
+            <svg viewBox="0 0 280 200" width="260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="ap1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#3b82f6"/></marker>
+                <marker id="ap2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="6" markerHeight="6" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#059669"/></marker>
+              </defs>
+              <line x1="20" y1="125" x2="260" y2="125" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#ap1)"/>
+              <line x1="20" y1="60" x2="260" y2="60" stroke="#059669" stroke-width="2.5" marker-end="url(#ap2)"/>
+              <line x1="140" y1="125" x2="140" y2="60" stroke="#ea580c" stroke-width="2.8"/>
+              <polyline points="140,112 153,112 153,125" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+              <polyline points="140,73 153,73 153,60" fill="none" stroke="#94a3b8" stroke-width="1.2"/>
+              <circle cx="140" cy="125" r="4" fill="#3b82f6"/>
+              <circle cx="140" cy="60" r="4" fill="#059669"/>
+              <text x="156" y="98" fill="#ea580c" font-size="16" font-weight="bold" font-style="italic" font-family="Georgia,serif">d</text>
+              <text x="220" y="145" fill="#3b82f6" font-size="13" font-family="Georgia,serif" font-style="italic">Line 1</text>
+              <text x="220" y="52" fill="#059669" font-size="13" font-family="Georgia,serif" font-style="italic">Line 2</text>
+              <text x="140" y="190" fill="#64748b" font-size="12" font-family="Georgia,serif" text-anchor="middle">Parallel: same direction, constant gap</text>
+            </svg>
+            <p class="dim" style="margin-top:0.3rem">Perpendicular from any point works<br>$d = \dfrac{|(\vec{c}-\vec{a})\times\vec{b}|}{|\vec{b}|}$</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash">
+        <h3>Distance Formulas</h3>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\text{Skew lines: } \delta = \frac{|(\vec{c}-\vec{a}) \cdot (\vec{b} \times \vec{d})|}{|\vec{b} \times \vec{d}|}}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\delta_{\text{skew}} = \frac{|(\vec{c}\!-\!\vec{a}) \cdot (\vec{b} \!\times\! \vec{d})|}{|\vec{b} \!\times\! \vec{d}|}}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{\text{Parallel lines: } d = \frac{|(\vec{c}-\vec{a}) \times \vec{b}|}{|\vec{b}|}}$$
+        </div>
+      </div>
+
+      <div class="flash">
+        <h3>Relationship Summary</h3>
+        <table class="if-table">
+          <thead>
+            <tr><th>Relationship</th><th>Test</th><th>Formula</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Parallel</td><td>$\vec{b} = \lambda\vec{d}$</td><td>$d = \frac{|(\vec{c}-\vec{a}) \times \vec{b}|}{|\vec{b}|}$</td></tr>
+            <tr><td>Perpendicular</td><td>$\vec{b} \cdot \vec{d} = 0$</td><td>Angle $= \frac{\pi}{2}$</td></tr>
+            <tr><td>Intersecting</td><td>$(\vec{c}\!-\!\vec{a}) \cdot (\vec{b} \!\times\! \vec{d}) = 0$</td><td>Distance $= 0$</td></tr>
+            <tr><td>Skew</td><td>$(\vec{c}\!-\!\vec{a}) \cdot (\vec{b} \!\times\! \vec{d}) \neq 0$</td><td>Use skew distance formula</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>"Find shortest distance between two lines" &rarr; check parallel or skew first</li>
+          <li>"Show that the lines intersect" &rarr; show shortest distance = 0 (scalar triple product in numerator = 0)</li>
+          <li>"Find point of intersection" &rarr; equate parametric forms, solve for $s$ and $t$, verify with third equation</li>
+        </ul>
+      </div>
+
+      <div class="flash example-box">
+        <h3>Ex: Distance Between Parallel Lines (Ex 6.36)</h3>
+        <p>$\vec{r} = (2\hat{i}+3\hat{j}+4\hat{k}) + t(-2\hat{i}+\hat{j}-2\hat{k})$ and $\frac{x-3}{2} = \frac{y}{-1} = \frac{z+2}{2}$</p>
+        <p><strong>Step 1:</strong> Second line: $\vec{c} = 3\hat{i}-2\hat{k}$, $\vec{d} = 2\hat{i}-\hat{j}+2\hat{k}$. Since $\vec{b} = -\vec{d}$, lines are <strong>parallel</strong>.</p>
+        <p><strong>Step 2:</strong> $\vec{c}-\vec{a} = \hat{i}-3\hat{j}-6\hat{k}$</p>
+        <div class="formula formula-desktop">
+          $$(\vec{c}-\vec{a}) \times \vec{b} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ 1 & -3 & -6 \\ -2 & 1 & -2 \end{vmatrix} = 12\hat{i}+14\hat{j}-5\hat{k}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$(\vec{c}\!-\!\vec{a}) \times \vec{b} = 12\hat{i}+14\hat{j}-5\hat{k}$$
+        </div>
+        <div class="formula highlight-box">$$\boxed{d = \frac{\sqrt{144+196+25}}{\sqrt{4+1+4}} = \frac{\sqrt{365}}{3}}$$</div>
+      </div>
+
+      <div class="flash warning-box">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col">
+          <div class="formula mini nope">
+            $$\text{Parallel lines: use } \frac{|(\vec{c}-\vec{a}) \cdot (\vec{b} \times \vec{d})|}{|\vec{b} \times \vec{d}|}$$
+            <span class="label-below">$\vec{b} \times \vec{d} = \vec{0}$ for parallel lines &mdash; division by zero!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{Parallel lines: use } \frac{|(\vec{c}-\vec{a}) \times \vec{b}|}{|\vec{b}|}$$
+            <span class="label-below">Correct formula for parallel lines</span>
+          </div>
+        </div>
+        <p style="margin-top:0.5rem" class="dim">Trap: The angle formula uses $|\vec{b} \cdot \vec{d}|$ (absolute value) to ensure the acute angle. When checking intersection, verify $s$ and $t$ satisfy ALL THREE coordinate equations.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="05-straight-line-3d.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot active" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="07-equation-of-plane.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "05-straight-line-3d.html";
+  if (e.key === "ArrowRight") window.location.href = "07-equation-of-plane.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

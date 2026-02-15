@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Reference &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:100%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">10 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card quickref">
+      <h2>Method Selector Flowchart</h2>
+
+      <div class="flowchart">
+        <div class="flow-node flow-start">Given: a 3D vector algebra problem</div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Is it about scalar/vector products?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method dot-cross-bg">Dot / Cross Product<br><span class="dim">$\vec{a}\!\cdot\!\vec{b}$ for projection/work, $\vec{a}\!\times\!\vec{b}$ for area/torque</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Volume or coplanarity of vectors?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method scalar-triple-bg">Scalar Triple Product<br><span class="dim">$[\vec{a},\vec{b},\vec{c}]$ = det. Volume = |det|. Coplanar $\iff$ det = 0</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Nested cross product $\vec{a} \times (\vec{b} \times \vec{c})$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method vector-triple-bg">BAC-CAB Rule<br><span class="dim">$(\vec{a}\!\cdot\!\vec{c})\vec{b} - (\vec{a}\!\cdot\!\vec{b})\vec{c}$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Straight line in 3D?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method straight-line-bg">Line Equation<br><span class="dim">$\vec{r}=\vec{a}+t\vec{b}$ or $\frac{x-x_1}{b_1}=\frac{y-y_1}{b_2}=\frac{z-z_1}{b_3}$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Angle or distance between lines?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method angle-distance-bg">Angle / Distance<br><span class="dim">Skew: $\frac{|(\vec{c}\!-\!\vec{a})\!\cdot\!(\vec{b}\!\times\!\vec{d})|}{|\vec{b}\!\times\!\vec{d}|}$, Parallel: $\frac{|(\vec{c}\!-\!\vec{a})\!\times\!\vec{b}|}{|\vec{b}|}$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Plane equation?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method equation-plane-bg">Plane Forms<br><span class="dim">Normal, 3-point, intercept, parametric</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Angle/distance involving planes, image, or intersection?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method angles-planes-bg">Plane Angles &amp; Image<br><span class="dim">$\cos^{-1}$ for planes, $\sin^{-1}$ for line-plane, reflection formula</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO</div>
+            <div class="flow-node flow-method other-bg">Review problem statement</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:1.5rem">
+        <h3>All Formulas at a Glance</h3>
+
+        <div class="formula formula-desktop">
+          $$\vec{a} \cdot \vec{b} = a_1b_1 + a_2b_2 + a_3b_3 = |\vec{a}||\vec{b}|\cos\theta$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\vec{a} \cdot \vec{b} = |\vec{a}||\vec{b}|\cos\theta$$
+        </div>
+
+        <div class="formula formula-desktop">
+          $$\vec{a} \times \vec{b} = \begin{vmatrix} \hat{i} & \hat{j} & \hat{k} \\ a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \end{vmatrix}, \quad |\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin\theta$$
+        </div>
+        <div class="formula formula-mobile">
+          $$|\vec{a} \times \vec{b}| = |\vec{a}||\vec{b}|\sin\theta$$
+        </div>
+
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$[\vec{a},\vec{b},\vec{c}] = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix} \qquad \vec{a} \times (\vec{b} \times \vec{c}) = (\vec{a} \cdot \vec{c})\vec{b} - (\vec{a} \cdot \vec{b})\vec{c}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} [\vec{a},\vec{b},\vec{c}] = \begin{vmatrix} a_1 & a_2 & a_3 \\ b_1 & b_2 & b_3 \\ c_1 & c_2 & c_3 \end{vmatrix} \\[8pt] \vec{a}\!\times\!(\vec{b}\!\times\!\vec{c}) = (\vec{a}\!\cdot\!\vec{c})\vec{b} - (\vec{a}\!\cdot\!\vec{b})\vec{c} \end{gathered}$$
+        </div>
+
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{\text{Line: } \vec{r} = \vec{a} + t\vec{b}}_{\text{Parametric}} \quad \longleftrightarrow \quad \underbrace{\frac{x-x_1}{b_1} = \frac{y-y_1}{b_2} = \frac{z-z_1}{b_3}}_{\text{Cartesian}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \vec{r} = \vec{a} + t\vec{b} \\[4pt] \frac{x\!-\!x_1}{b_1} = \frac{y\!-\!y_1}{b_2} = \frac{z\!-\!z_1}{b_3} \end{gathered}$$
+        </div>
+
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{\cos\theta = \frac{|\vec{b}\!\cdot\!\vec{d}|}{|\vec{b}||\vec{d}|}}_{\text{Angle between lines}} \qquad \underbrace{\delta_{\text{skew}} = \frac{|(\vec{c}\!-\!\vec{a})\!\cdot\!(\vec{b}\!\times\!\vec{d})|}{|\vec{b}\!\times\!\vec{d}|}}_{\text{Shortest distance (skew)}} \qquad \underbrace{d_{\parallel} = \frac{|(\vec{c}\!-\!\vec{a})\!\times\!\vec{b}|}{|\vec{b}|}}_{\text{Distance (parallel)}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \cos\theta = \frac{|\vec{b}\!\cdot\!\vec{d}|}{|\vec{b}||\vec{d}|} \\[8pt] \delta_{\text{skew}} = \frac{|(\vec{c}\!-\!\vec{a})\!\cdot\!(\vec{b}\!\times\!\vec{d})|}{|\vec{b}\!\times\!\vec{d}|} \\[8pt] d_{\parallel} = \frac{|(\vec{c}\!-\!\vec{a})\!\times\!\vec{b}|}{|\vec{b}|} \end{gathered}$$
+        </div>
+
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{\vec{r}\!\cdot\!\vec{n} = p}_{\text{Plane}} \qquad \underbrace{\theta_{\text{planes}} = \cos^{-1}\!\left(\frac{|\vec{n}_1\!\cdot\!\vec{n}_2|}{|\vec{n}_1||\vec{n}_2|}\right)}_{\text{Plane-plane angle}} \qquad \underbrace{\theta_{\text{line-plane}} = \sin^{-1}\!\left(\frac{|\vec{b}\!\cdot\!\vec{n}|}{|\vec{b}||\vec{n}|}\right)}_{\text{Line-plane angle}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \vec{r}\!\cdot\!\vec{n} = p \\[8pt] \theta_{\text{planes}} = \cos^{-1}\!\left(\frac{|\vec{n}_1\!\cdot\!\vec{n}_2|}{|\vec{n}_1||\vec{n}_2|}\right) \\[8pt] \theta_{\text{line-plane}} = \sin^{-1}\!\left(\frac{|\vec{b}\!\cdot\!\vec{n}|}{|\vec{b}||\vec{n}|}\right) \end{gathered}$$
+        </div>
+
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{\delta = \frac{|ax_1\!+\!by_1\!+\!cz_1\!+\!d|}{\sqrt{a^2\!+\!b^2\!+\!c^2}}}_{\text{Point-to-plane}} \qquad \underbrace{\delta = \frac{|d_1-d_2|}{\sqrt{a^2\!+\!b^2\!+\!c^2}}}_{\text{Parallel planes}} \qquad \underbrace{\vec{v} = \vec{u}+\frac{2(p-\vec{u}\!\cdot\!\vec{n})}{|\vec{n}|^2}\vec{n}}_{\text{Image of point}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \delta_{\text{pt-plane}} = \frac{|ax_1\!+\!by_1\!+\!cz_1\!+\!d|}{\sqrt{a^2\!+\!b^2\!+\!c^2}} \\[8pt] \delta_{\parallel\text{planes}} = \frac{|d_1-d_2|}{\sqrt{a^2\!+\!b^2\!+\!c^2}} \\[8pt] \vec{v} = \vec{u}+\frac{2(p\!-\!\vec{u}\!\cdot\!\vec{n})}{|\vec{n}|^2}\vec{n} \end{gathered}$$
+        </div>
+
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{(\vec{c}\!-\!\vec{a})\!\cdot\!(\vec{b}\!\times\!\vec{d})=0}_{\text{Coplanarity}} \qquad \underbrace{(\vec{r}\!\cdot\!\vec{n}_1\!-\!d_1)+\lambda(\vec{r}\!\cdot\!\vec{n}_2\!-\!d_2)=0}_{\text{Family of planes}} \qquad \underbrace{\vec{u}=\vec{a}+\frac{p-\vec{a}\!\cdot\!\vec{n}}{\vec{b}\!\cdot\!\vec{n}}\vec{b}}_{\text{Line-plane intersection}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} (\vec{c}\!-\!\vec{a})\!\cdot\!(\vec{b}\!\times\!\vec{d})=0 \;\text{(coplanar)} \\[8pt] (\vec{r}\!\cdot\!\vec{n}_1\!-\!d_1)+\lambda(\vec{r}\!\cdot\!\vec{n}_2\!-\!d_2)=0 \\[8pt] \vec{u}=\vec{a}+\frac{p-\vec{a}\!\cdot\!\vec{n}}{\vec{b}\!\cdot\!\vec{n}}\vec{b} \end{gathered}$$
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="09-coplanarity-intersection-image.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot active" href="10-quickref.html"></a>
+  </div>
+  <a href="01-overview.html" class="nav-btn">&#8634; Start Over</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "09-coplanarity-intersection-image.html";
+  if (e.key === "ArrowRight") window.location.href = "01-overview.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

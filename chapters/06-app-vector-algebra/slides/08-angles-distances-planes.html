@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Angles &amp; Distances with Planes &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:80%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">8 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card angles-distances-planes">
+      <h2>6.8 &nbsp; Angle Between Planes, Line-Plane Angle &amp; Distance</h2>
+
+      <div class="flash">
+        <h3>Core Idea</h3>
+        <p>The angle between two planes equals the angle between their <strong>normals</strong>. The angle between a line and a plane is the <strong>complement</strong> of the angle between the line's direction and the plane's normal. Distance formulas give perpendicular distances from points to planes and between parallel planes.</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\text{Angle between planes: } \theta = \cos^{-1}\!\left(\frac{|\vec{n}_1 \cdot \vec{n}_2|}{|\vec{n}_1||\vec{n}_2|}\right)}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\theta_{\text{planes}} = \cos^{-1}\!\left(\frac{|\vec{n}_1 \!\cdot\! \vec{n}_2|}{|\vec{n}_1||\vec{n}_2|}\right)}$$
+        </div>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\text{Line-plane angle: } \theta = \sin^{-1}\!\left(\frac{|\vec{b} \cdot \vec{n}|}{|\vec{b}||\vec{n}|}\right)}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\theta_{\text{line-plane}} = \sin^{-1}\!\left(\frac{|\vec{b} \!\cdot\! \vec{n}|}{|\vec{b}||\vec{n}|}\right)}$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Visual: Why $\sin^{-1}$ for Line-Plane Angle?</h3>
+        <div class="card-grid two-col">
+          <div style="text-align:center">
+            <svg viewBox="0 0 280 230" width="260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="aln" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#3b82f6"/></marker>
+                <marker id="anm" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#059669"/></marker>
+              </defs>
+              <polygon points="20,155 140,180 260,145 140,120" fill="rgba(59,130,246,0.07)" stroke="#94a3b8" stroke-width="1.3"/>
+              <line x1="140" y1="150" x2="140" y2="18" stroke="#059669" stroke-width="2" stroke-dasharray="5,3" marker-end="url(#anm)"/>
+              <line x1="55" y1="28" x2="225" y2="200" stroke="#3b82f6" stroke-width="2.5" marker-end="url(#aln)"/>
+              <circle cx="140" cy="114" r="4" fill="#ea580c"/>
+              <path d="M 140,85 A 30,30 0 0,1 122,93" fill="none" stroke="#ca8a04" stroke-width="2"/>
+              <text x="108" y="78" fill="#ca8a04" font-size="14" font-style="italic" font-family="Georgia,serif">&alpha;</text>
+              <path d="M 160,135 A 22,22 0 0,0 152,117" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+              <text x="164" y="124" fill="#ea580c" font-size="15" font-weight="bold" font-style="italic" font-family="Georgia,serif">&theta;</text>
+              <text x="148" y="13" fill="#059669" font-weight="bold" font-size="15" font-style="italic" font-family="Georgia,serif">n</text>
+              <text x="62" y="22" fill="#3b82f6" font-weight="bold" font-size="15" font-style="italic" font-family="Georgia,serif">b</text>
+              <text x="168" y="152" fill="#64748b" font-size="11" font-family="Georgia,serif">&alpha; + &theta; = 90&deg;</text>
+              <text x="260" y="138" fill="#94a3b8" font-size="11" font-style="italic" font-family="Georgia,serif">plane</text>
+            </svg>
+            <p class="dim"><strong>Line-plane angle $\theta$:</strong><br>$\alpha$ = angle with normal (from $\cos^{-1}$)<br>$\theta = 90° - \alpha$ = $\sin^{-1}\!\dfrac{|\vec{b}\cdot\vec{n}|}{|\vec{b}||\vec{n}|}$</p>
+          </div>
+          <div style="text-align:center">
+            <svg viewBox="0 0 280 230" width="260" xmlns="http://www.w3.org/2000/svg">
+              <defs>
+                <marker id="an1" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#3b82f6"/></marker>
+                <marker id="an2" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto"><path d="M0,1.5 L9,5 L0,8.5" fill="#059669"/></marker>
+              </defs>
+              <polygon points="35,195 140,140 140,30 35,85" fill="rgba(59,130,246,0.07)" stroke="#3b82f6" stroke-width="1.3"/>
+              <polygon points="140,140 245,195 245,85 140,30" fill="rgba(5,150,105,0.07)" stroke="#059669" stroke-width="1.3"/>
+              <line x1="140" y1="140" x2="140" y2="30" stroke="#334155" stroke-width="2" stroke-dasharray="5,3"/>
+              <line x1="140" y1="85" x2="62" y2="32" stroke="#3b82f6" stroke-width="2.2" marker-end="url(#an1)"/>
+              <line x1="140" y1="85" x2="218" y2="32" stroke="#059669" stroke-width="2.2" marker-end="url(#an2)"/>
+              <path d="M 105,55 A 42,42 0 0,1 175,55" fill="none" stroke="#ea580c" stroke-width="2.5"/>
+              <text x="136" y="48" fill="#ea580c" font-size="16" font-weight="bold" font-style="italic" font-family="Georgia,serif" text-anchor="middle">&theta;</text>
+              <text x="48" y="26" fill="#3b82f6" font-size="14" font-weight="bold" font-family="Georgia,serif">n&#x2081;</text>
+              <text x="222" y="26" fill="#059669" font-size="14" font-weight="bold" font-family="Georgia,serif">n&#x2082;</text>
+              <text x="140" y="220" fill="#64748b" font-size="12" font-family="Georgia,serif" text-anchor="middle">Two planes meeting at an edge</text>
+              <text x="148" y="155" fill="#334155" font-size="10" font-family="Georgia,serif">edge</text>
+            </svg>
+            <p class="dim"><strong>Plane-plane (dihedral) angle:</strong><br>$\theta = \cos^{-1}\!\dfrac{|\vec{n}_1\cdot\vec{n}_2|}{|\vec{n}_1||\vec{n}_2|}$</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash">
+        <h3>Distance Formulas</h3>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\text{Point to plane: } \delta = \frac{|ax_1+by_1+cz_1+d|}{\sqrt{a^2+b^2+c^2}}}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\delta = \frac{|ax_1\!+\!by_1\!+\!cz_1\!+\!d|}{\sqrt{a^2\!+\!b^2\!+\!c^2}}}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{\text{Between parallel planes: } \delta = \frac{|d_1 - d_2|}{\sqrt{a^2+b^2+c^2}}}$$
+        </div>
+        <div class="formula">$$\text{Vector form: } \delta = \frac{|\vec{u} \cdot \vec{n} - p|}{|\vec{n}|}$$</div>
+      </div>
+
+      <div class="flash">
+        <h3>Parallel &amp; Perpendicular Conditions</h3>
+        <div class="formula-row">
+          <div class="formula mini">$$\text{Planes } \parallel \iff \vec{n}_1 = \lambda\vec{n}_2$$<span class="label-below">Proportional normals</span></div>
+          <div class="formula mini">$$\text{Planes } \perp \iff \vec{n}_1 \cdot \vec{n}_2 = 0$$<span class="label-below">Orthogonal normals</span></div>
+        </div>
+        <div class="formula-row">
+          <div class="formula mini">$$\text{Line } \perp \text{ plane} \iff \vec{b} = \lambda\vec{n}$$<span class="label-below">Direction parallel to normal</span></div>
+          <div class="formula mini">$$\text{Line } \parallel \text{ plane} \iff \vec{b} \cdot \vec{n} = 0$$<span class="label-below">Direction perpendicular to normal</span></div>
+        </div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>"Angle between the planes" &rarr; extract normal vectors, use $\cos^{-1}$</li>
+          <li>"Angle between line and plane" &rarr; use $\sin^{-1}$ (NOT $\cos^{-1}$!)</li>
+          <li>"Distance from point to plane" &rarr; direct substitution</li>
+          <li>"Parallel planes" &rarr; same normal ratios; distance uses $|d_1 - d_2|$</li>
+        </ul>
+      </div>
+
+      <div class="flash example-box">
+        <h3>Ex: Point-to-Plane Distance (Ex 6.49)</h3>
+        <p>Point $(2,5,-3)$, plane $\vec{r} \cdot (6\hat{i}-3\hat{j}+2\hat{k}) = 5$</p>
+        <p><strong>Step 1:</strong> $\vec{u} \cdot \vec{n} = 12 - 15 - 6 = -9$</p>
+        <p><strong>Step 2:</strong> $|\vec{n}| = \sqrt{36+9+4} = 7$</p>
+        <div class="formula highlight-box">$$\boxed{\delta = \frac{|-9 - 5|}{7} = \frac{14}{7} = 2 \text{ units}}$$</div>
+      </div>
+
+      <div class="flash warning-box">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col">
+          <div class="formula mini nope">
+            $$\text{Line-plane angle } = \cos^{-1}\!\left(\frac{|\vec{b} \cdot \vec{n}|}{|\vec{b}||\vec{n}|}\right)$$
+            <span class="label-below">This gives the complement!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{Line-plane angle } = \sin^{-1}\!\left(\frac{|\vec{b} \cdot \vec{n}|}{|\vec{b}||\vec{n}|}\right)$$
+            <span class="label-below">Use $\sin^{-1}$ for line-plane</span>
+          </div>
+        </div>
+        <p style="margin-top:0.5rem" class="dim">Trap: For parallel planes $ax+by+cz+d_1=0$ and $2ax+2by+2cz+d_2=0$, you must first <strong>scale</strong> so the $a,b,c$ coefficients are identical before computing $|d_1-d_2|$.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="07-equation-of-plane.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot active" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="09-coplanarity-intersection-image.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "07-equation-of-plane.html";
+  if (e.key === "ArrowRight") window.location.href = "09-coplanarity-intersection-image.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vector Triple Product &mdash; Vector Algebra Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../06-app-vector-algebra.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:40%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 6 &mdash; Applications of Vector Algebra</span>
+  <span class="slide-badge">4 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card vector-triple-product">
+      <h2>6.4 &nbsp; Vector Triple Product &amp; Identities</h2>
+
+      <div class="flash">
+        <h3>Core Idea</h3>
+        <p>The vector triple product $\vec{a} \times (\vec{b} \times \vec{c})$ is a <strong>vector</strong> that lies in the plane of $\vec{b}$ and $\vec{c}$. It is <strong>NOT associative</strong>. The expansion follows the <strong>BAC-CAB rule</strong>.</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{\vec{a} \times (\vec{b} \times \vec{c}) = (\vec{a} \cdot \vec{c})\vec{b} - (\vec{a} \cdot \vec{b})\vec{c}}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\begin{aligned} &\vec{a} \times (\vec{b} \times \vec{c}) \\ &= (\vec{a} \cdot \vec{c})\vec{b} - (\vec{a} \cdot \vec{b})\vec{c} \end{aligned}}$$
+        </div>
+      </div>
+
+      <div class="flash">
+        <h3>Related Identities</h3>
+        <div class="formula formula-desktop">
+          $$(\vec{a} \times \vec{b}) \times \vec{c} = (\vec{a} \cdot \vec{c})\vec{b} - (\vec{b} \cdot \vec{c})\vec{a}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &(\vec{a} \times \vec{b}) \times \vec{c} \\ &= (\vec{a} \cdot \vec{c})\vec{b} - (\vec{b} \cdot \vec{c})\vec{a} \end{aligned}$$
+        </div>
+        <div class="formula formula-desktop">
+          $$\text{Jacobi: } \vec{a} \times (\vec{b} \times \vec{c}) + \vec{b} \times (\vec{c} \times \vec{a}) + \vec{c} \times (\vec{a} \times \vec{b}) = \vec{0}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{aligned} &\vec{a} \times (\vec{b} \times \vec{c}) + \vec{b} \times (\vec{c} \times \vec{a}) \\ &+ \vec{c} \times (\vec{a} \times \vec{b}) = \vec{0} \end{aligned}$$
+        </div>
+        <div class="formula formula-desktop">
+          $$\text{Lagrange: } (\vec{a} \times \vec{b}) \cdot (\vec{c} \times \vec{d}) = \begin{vmatrix} \vec{a} \cdot \vec{c} & \vec{a} \cdot \vec{d} \\ \vec{b} \cdot \vec{c} & \vec{b} \cdot \vec{d} \end{vmatrix}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$(\vec{a} \times \vec{b}) \cdot (\vec{c} \times \vec{d}) = \begin{vmatrix} \vec{a}\!\cdot\!\vec{c} & \vec{a}\!\cdot\!\vec{d} \\ \vec{b}\!\cdot\!\vec{c} & \vec{b}\!\cdot\!\vec{d} \end{vmatrix}$$
+        </div>
+        <div class="formula">$$[\vec{a} \times \vec{b},\; \vec{b} \times \vec{c},\; \vec{c} \times \vec{a}] = [\vec{a}, \vec{b}, \vec{c}]^2$$</div>
+      </div>
+
+      <div class="flash tip-box">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>Nested cross products like $\vec{a} \times (\vec{b} \times \vec{c})$ &rarr; expand using BAC-CAB</li>
+          <li>"Prove non-associativity" &rarr; compute both sides separately and show they differ</li>
+          <li><strong>Middle vector rule:</strong> result is a linear combination of the vectors INSIDE the inner bracket</li>
+          <li>Product of two cross products dotted together &rarr; Lagrange's identity</li>
+        </ul>
+      </div>
+
+      <div class="flash example-box">
+        <h3>Ex: Verify Non-Associativity (Ex 6.22)</h3>
+        <p>$\vec{a}=-2\hat{i}+3\hat{j}-2\hat{k}$, $\vec{b}=3\hat{i}-\hat{j}+3\hat{k}$, $\vec{c}=2\hat{i}-5\hat{j}+\hat{k}$</p>
+        <p><strong>Step 1:</strong> $\vec{a} \times \vec{b} = 7\hat{i}+0\hat{j}-7\hat{k}$</p>
+        <p><strong>Step 2:</strong> $(\vec{a} \times \vec{b}) \times \vec{c} = -35\hat{i}-21\hat{j}-35\hat{k}$</p>
+        <p><strong>Step 3:</strong> $\vec{b} \times \vec{c} = 14\hat{i}+3\hat{j}-13\hat{k}$</p>
+        <p><strong>Step 4:</strong> $\vec{a} \times (\vec{b} \times \vec{c}) = -33\hat{i}-54\hat{j}-48\hat{k}$</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{(\vec{a} \times \vec{b}) \times \vec{c} = -35\hat{i}-21\hat{j}-35\hat{k} \neq -33\hat{i}-54\hat{j}-48\hat{k} = \vec{a} \times (\vec{b} \times \vec{c})}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\begin{aligned} &(\vec{a}\!\times\!\vec{b})\!\times\!\vec{c} = -35\hat{i}\!-\!21\hat{j}\!-\!35\hat{k} \\ &\neq -33\hat{i}\!-\!54\hat{j}\!-\!48\hat{k} = \vec{a}\!\times\!(\vec{b}\!\times\!\vec{c}) \end{aligned}}$$
+        </div>
+      </div>
+
+      <div class="flash warning-box">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col">
+          <div class="formula mini nope">
+            $$\vec{a} \times (\vec{b} \times \vec{c}) = (\vec{a} \times \vec{b}) \times \vec{c}$$
+            <span class="label-below">NOT associative in general!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\vec{a} \times (\vec{b} \times \vec{c}) \neq (\vec{a} \times \vec{b}) \times \vec{c}$$
+            <span class="label-below">Always expand each side separately</span>
+          </div>
+        </div>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\begin{aligned} &\vec{a} \times (\vec{b} \times \vec{c}) \\ &= (\vec{a}\!\cdot\!\vec{c})\vec{a} - (\vec{a}\!\cdot\!\vec{b})\vec{a} \end{aligned}$$
+            <span class="label-below">Wrong vectors in result!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\begin{aligned} &\vec{a} \times (\vec{b} \times \vec{c}) \\ &= (\vec{a}\!\cdot\!\vec{c})\vec{b} - (\vec{a}\!\cdot\!\vec{b})\vec{c} \end{aligned}$$
+            <span class="label-below">Result uses $\vec{b}$ and $\vec{c}$ (inner bracket vectors)</span>
+          </div>
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="03-scalar-triple-product.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-dot-cross-products.html"></a>
+    <a class="slide-dot" href="03-scalar-triple-product.html"></a>
+    <a class="slide-dot active" href="04-vector-triple-product.html"></a>
+    <a class="slide-dot" href="05-straight-line-3d.html"></a>
+    <a class="slide-dot" href="06-angle-distance-between-lines.html"></a>
+    <a class="slide-dot" href="07-equation-of-plane.html"></a>
+    <a class="slide-dot" href="08-angles-distances-planes.html"></a>
+    <a class="slide-dot" href="09-coplanarity-intersection-image.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="05-straight-line-3d.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "03-scalar-triple-product.html";
+  if (e.key === "ArrowRight") window.location.href = "05-straight-line-3d.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>
