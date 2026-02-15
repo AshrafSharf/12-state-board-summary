@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Discrete CDF &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:40%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">4 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card discrete-cdf">
+      <h2>11.3 &nbsp; Cumulative Distribution Function (Discrete)</h2>
+
+      <div class="flash">
+        <h3>Core Concept &amp; Master Formula</h3>
+        <p>The <strong>CDF</strong> accumulates probability from left to right. For discrete RV with values $x_1 < x_2 < \cdots$:</p>
+        <div class="formula highlight-box">
+          $$\boxed{F(x) = P(X \le x) = \sum_{x_i \le x} P(X = x_i)}$$
+        </div>
+        <p>To recover the PMF from the CDF, take <strong>differences at jump points</strong>:</p>
+        <div class="formula highlight-box">
+          $$\boxed{f(x_i) = F(x_i) - F(x_{i-1})}$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Properties</h3>
+        <div class="formula-row">
+          <div class="formula mini">$$0 \le F(x) \le 1$$</div>
+          <div class="formula mini">$$F(-\infty) = 0$$</div>
+          <div class="formula mini">$$F(+\infty) = 1$$</div>
+        </div>
+        <div class="formula">$$P(x_1 < X \le x_2) = F(x_2) - F(x_1) \qquad P(X > x) = 1 - F(x)$$</div>
+        <p class="dim">CDF is a staircase function &mdash; each step height equals the pmf value at that point.</p>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>&ldquo;Find the CDF&rdquo; &rarr; accumulate pmf values left to right</li>
+          <li>Piecewise $F(x)$ given, &ldquo;find pmf&rdquo; &rarr; take differences at jump points</li>
+          <li>CDF is a staircase for discrete RV; each step = pmf value</li>
+        </ul>
+      </div>
+
+      <div class="flash example-box" style="margin-top:0.75rem">
+        <h3>Ex: PMF from a Piecewise CDF</h3>
+        <p>$F(x) = 0$ for $x < -2$; &nbsp;$0.25$ for $-2 \le x < -1$; &nbsp;$0.60$ for $-1 \le x < 0$; &nbsp;$0.90$ for $0 \le x < 1$; &nbsp;$1$ for $x \ge 1$.</p>
+        <p><strong>Jump points:</strong> $x = -2, -1, 0, 1$</p>
+        <div class="formula-row">
+          <div class="formula mini">$$f(-2) = 0.25 - 0 = 0.25$$</div>
+          <div class="formula mini">$$f(-1) = 0.60 - 0.25 = 0.35$$</div>
+        </div>
+        <div class="formula-row">
+          <div class="formula mini">$$f(0) = 0.90 - 0.60 = 0.30$$</div>
+          <div class="formula mini">$$f(1) = 1.00 - 0.90 = 0.10$$</div>
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{f(-2) = 0.25, \; f(-1) = 0.35, \; f(0) = 0.30, \; f(1) = 0.10}$$
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out &mdash; Equality Signs Matter!</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$P(X \ge 2) = F(2)$$
+            <span class="label-below">Wrong! $F(2) = P(X \le 2)$, not $P(X \ge 2)$.</span>
+          </div>
+          <div class="formula mini ok">
+            $$P(X \ge 2) = 1 - F(1)$$
+            <span class="label-below">$P(X \ge 2) = 1 - P(X \le 1) = 1 - F(1)$</span>
+          </div>
+        </div>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$P(X < 3) = F(3)$$
+            <span class="label-below">For discrete: $P(X \le 3) \neq P(X < 3)$ since $P(X=3) \neq 0$.</span>
+          </div>
+          <div class="formula mini ok">
+            $$P(X < 3) = F(3) - f(3)$$
+            <span class="label-below">Subtract the jump at $x = 3$ to exclude it.</span>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:0.5rem">Trap: For <em>continuous</em> RV, $P(X < a) = P(X \le a)$. For <em>discrete</em> RV, they are DIFFERENT.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="03-pmf.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot active" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="05-continuous-pdf-cdf.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "03-pmf.html";
+  if (e.key === "ArrowRight") window.location.href = "05-continuous-pdf-cdf.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

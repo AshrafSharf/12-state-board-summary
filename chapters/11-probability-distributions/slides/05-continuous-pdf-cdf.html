@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Continuous PDF vs CDF &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:50%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">5 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card continuous-pdf-cdf">
+      <h2>11.4 &nbsp; Continuous Distributions &mdash; PDF vs CDF</h2>
+
+      <div class="flash">
+        <h3>Core Concept &amp; Master Formulas</h3>
+        <p><strong>PDF</strong> $f(x)$: a density (NOT a probability). &nbsp; <strong>CDF</strong> $F(x)$: accumulated probability.</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{F(x) = \int_{-\infty}^{x} f(t)\,dt \quad \text{and} \quad P(a \le X \le b) = F(b) - F(a) = \int_a^b f(x)\,dx}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\begin{aligned} &F(x) = \int_{-\infty}^{x} f(t)\,dt \\[4pt] &P(a \le X \le b) = F(b) - F(a) \end{aligned}}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{f(x) = \frac{dF(x)}{dx} = F'(x)}$$
+        </div>
+        <p class="dim">For continuous RV, equality signs don&rsquo;t matter: $P(a < X < b) = P(a \le X \le b)$.</p>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>When to Use PDF vs CDF</h3>
+        <table class="if-table">
+          <thead>
+            <tr><th>Goal</th><th>Use PDF (integrate)</th><th>Use CDF (directly)</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Find $P(a \le X \le b)$</td><td>$\int_a^b f(x)\,dx$</td><td>$F(b) - F(a)$</td></tr>
+            <tr><td>Find $F(x)$ from $f(x)$</td><td>$F(x) = \int_{-\infty}^{x} f(u)\,du$</td><td>&mdash;</td></tr>
+            <tr><td>Find $f(x)$ from $F(x)$</td><td>&mdash;</td><td>$f(x) = F'(x)$</td></tr>
+            <tr><td>Find $P(X > a)$</td><td>$\int_a^{\infty} f(x)\,dx$</td><td>$1 - F(a)$</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>&ldquo;Given $f(x)$, find the distribution function&rdquo; &rarr; INTEGRATE piece by piece</li>
+          <li>&ldquo;Given $F(x)$, find the density function&rdquo; &rarr; DIFFERENTIATE</li>
+          <li>If $F(x)$ is already known, use $F(b) - F(a)$ &mdash; it&rsquo;s FASTER than integrating</li>
+          <li>If you need MULTIPLE probabilities, build $F(x)$ first, then reuse it</li>
+        </ul>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash example-box">
+          <h3>Ex: Find $C$ and $P(1.5 &lt; X &lt; 3.5)$</h3>
+          <p>Given $f(x) = Cx^2$ for $1 < x < 4$.</p>
+          <div class="formula mini">$$\int_1^4 Cx^2\,dx = C \cdot \frac{63}{3} = 21C = 1$$</div>
+          <div class="formula mini">$$C = \frac{1}{21}$$</div>
+          <div class="formula mini">$$P = \frac{1}{21}\!\int_{1.5}^{3.5}\!x^2\,dx = \frac{79}{126}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: CDF to PDF</h3>
+          <p>Given $F(x) = 0$ for $x < 0$; $x$ for $0 \le x < 1$; $1$ for $x \ge 1$.</p>
+          <div class="formula mini">$$f(x) = F'(x) = 1 \text{ for } 0 \le x < 1$$</div>
+          <div class="formula mini">$$P(0.2 \le X \le 0.7) = F(0.7) - F(0.2) = 0.5$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$f(a) = P(X = a)$$
+            <span class="label-below">$f(a)$ is a DENSITY, not a probability! For continuous RV, $P(X = a) = 0$ always.</span>
+          </div>
+          <div class="formula mini ok">
+            $$P(X = a) = 0 \text{ always}$$
+            <span class="label-below">Only $P(a \le X \le b) = \int_a^b f(x)\,dx$ gives a probability.</span>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:0.5rem">Trap: When $f(x)$ is piecewise, don&rsquo;t forget to <strong>split the integral</strong> at the breakpoints. Also, when building $F(x)$, each piece starts where the previous one ended.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="04-discrete-cdf.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot active" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="06-mean-variance.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "04-discrete-cdf.html";
+  if (e.key === "ArrowRight") window.location.href = "06-mean-variance.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

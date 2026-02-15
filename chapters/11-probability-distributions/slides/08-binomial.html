@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Binomial Distribution &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:80%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">8 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card binomial">
+      <h2>11.7 &nbsp; Binomial Distribution</h2>
+
+      <div class="flash">
+        <h3>Core Concept &amp; Master Formulas</h3>
+        <p>$X$ = number of successes in $n$ <strong>independent</strong> Bernoulli trials, each with constant probability $p$. Then $X \sim B(n, p)$.</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{P(X = x) = \binom{n}{x} p^x q^{n-x}, \quad q = 1-p, \quad x = 0, 1, \ldots, n}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{P(X\!=\!x) = \binom{n}{x} p^x q^{n-x}}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{\mu = np, \quad \sigma^2 = npq = np(1-p)}$$
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Conditions for Binomial</h3>
+        <ul>
+          <li>The $n$ trials are <strong>independent</strong> and $n$ is finite</li>
+          <li>Each trial has only <strong>two outcomes</strong>: success or failure</li>
+          <li>Probability of success $p$ <strong>remains constant</strong> across trials</li>
+        </ul>
+        <div class="formula-row" style="margin-top:0.5rem">
+          <div class="formula mini">$$P(X \ge 1) = 1 - q^n$$</div>
+          <div class="formula mini">$$P(X = 0) = q^n$$</div>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>&ldquo;Repeated independent trials&rdquo;, &ldquo;tossed $n$ times&rdquo;, &ldquo;selected at random&rdquo; with two outcomes</li>
+          <li>&ldquo;Exactly $k$ out of $n$&rdquo; &rarr; $P(X = k)$ with Binomial</li>
+          <li>Given mean and variance, find $n$ and $p$: $q = \frac{\text{Var}}{\text{Mean}} = \frac{npq}{np}$, then $p = 1-q$, then $n = \frac{\mu}{p}$</li>
+          <li>&ldquo;At least one&rdquo; = $1 - P(X = 0)$; &ldquo;at most one&rdquo; = $P(X=0) + P(X=1)$</li>
+        </ul>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash example-box">
+          <h3>Ex: From Mean &amp; Variance, Find the Distribution</h3>
+          <p>$np = 2$, $npq = 1.5$</p>
+          <div class="formula mini">$$q = \frac{1.5}{2} = \frac{3}{4}, \; p = \frac{1}{4}, \; n = 8$$</div>
+          <div class="formula mini">$$P(X\!=\!0) = \left(\frac{3}{4}\right)^{\!8}$$</div>
+          <div class="formula mini">$$P(X\!=\!1) = 8 \cdot \frac{1}{4}\left(\frac{3}{4}\right)^{\!7} = 2\!\left(\frac{3}{4}\right)^{\!7}$$</div>
+          <div class="formula mini">$$P(X \ge 1) = 1 - \left(\frac{3}{4}\right)^{\!8}$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: 20% Defective, Sample of 6</h3>
+          <p>$n = 6$, $p = \frac{1}{5}$, $q = \frac{4}{5}$</p>
+          <div class="formula mini">$$P(X\!=\!2) = \binom{6}{2}\!\left(\frac{1}{5}\right)^{\!2}\!\left(\frac{4}{5}\right)^{\!4}$$</div>
+          <div class="formula mini formula-desktop">$$P(X \le 1) = \left(\frac{4}{5}\right)^{\!6} + 6\!\cdot\!\frac{1}{5}\!\left(\frac{4}{5}\right)^{\!5} = 2\!\left(\frac{4}{5}\right)^{\!5}$$</div>
+          <div class="formula mini formula-mobile">$$P(X \le 1) = 2\!\left(\frac{4}{5}\right)^{\!5}$$</div>
+          <div class="formula mini">$$P(X \ge 2) = 1 - 2\!\left(\frac{4}{5}\right)^{\!5}$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$P(X = 3) = p^3 q^{n-3}$$
+            <span class="label-below">Forgot $\binom{n}{3}$! Must count the arrangements.</span>
+          </div>
+          <div class="formula mini ok">
+            $$P(X = 3) = \binom{n}{3} p^3 q^{n-3}$$
+            <span class="label-below">The $\binom{n}{x}$ counts ways to place $x$ successes among $n$ trials.</span>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:0.5rem">Trap: Binomial requires independence. Drawing WITHOUT replacement from a small population violates this. Drawing WITH replacement or from a large population is OK.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="07-bernoulli.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot active" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="09-counting.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "07-bernoulli.html";
+  if (e.key === "ArrowRight") window.location.href = "09-counting.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

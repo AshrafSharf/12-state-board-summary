@@ -1,0 +1,119 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Bernoulli Distribution &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:70%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">7 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card bernoulli">
+      <h2>11.6 &nbsp; Bernoulli Distribution</h2>
+
+      <div class="flash">
+        <h3>Core Concept &amp; Master Formula</h3>
+        <p>A <strong>Bernoulli trial</strong> has exactly two outcomes: success ($X = 1$, probability $p$) and failure ($X = 0$, probability $q = 1 - p$).</p>
+        <div class="formula">
+          $$f(x) = p^x (1-p)^{1-x}, \quad x = 0, 1$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{\mu = p, \quad \sigma^2 = pq = p(1-p)}$$
+        </div>
+        <p class="dim">When $p = q = \frac{1}{2}$: mean $= \frac{1}{2}$, variance $= \frac{1}{4}$.</p>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>CDF of Bernoulli</h3>
+        <div class="formula">
+          $$F(x) = \begin{cases} 0 & x < 0 \\ q = 1-p & 0 \le x < 1 \\ 1 & x \ge 1 \end{cases}$$
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>A <strong>single trial</strong> with two outcomes &rarr; Bernoulli</li>
+          <li>&ldquo;Defective or not&rdquo;, &ldquo;pass or fail&rdquo;, &ldquo;heads or tails&rdquo; for ONE trial</li>
+          <li>If it&rsquo;s a single trial, it&rsquo;s Bernoulli. If it&rsquo;s $n$ repeated trials, it&rsquo;s <strong>Binomial</strong></li>
+        </ul>
+      </div>
+
+      <div class="flash example-box" style="margin-top:0.75rem">
+        <h3>Ex: $\text{Var}(2X - 3)$ where $X \sim \text{Ber}(0.4)$</h3>
+        <p><strong>Step 1:</strong> $\mu = p = 0.4$, so $q = 0.6$</p>
+        <p><strong>Step 2:</strong> $\text{Var}(X) = pq = 0.4 \times 0.6 = 0.24$</p>
+        <p><strong>Step 3:</strong> $\text{Var}(2X - 3) = 2^2 \cdot \text{Var}(X) = 4 \times 0.24$</p>
+        <div class="formula highlight-box">
+          $$\boxed{\text{Var}(2X - 3) = 0.96}$$
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\text{Var}(2X - 3) = 4pq - 3$$
+            <span class="label-below">The constant $-3$ does NOT affect variance!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{Var}(2X - 3) = 4 \cdot pq$$
+            <span class="label-below">$\text{Var}(aX + b) = a^2 \text{Var}(X)$. The $b$ drops out.</span>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:0.5rem">Key: $\text{Bernoulli}(p) = B(1, p)$. The Binomial with $n = 1$ IS the Bernoulli distribution.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="06-mean-variance.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot active" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="08-binomial.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "06-mean-variance.html";
+  if (e.key === "ArrowRight") window.location.href = "08-binomial.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

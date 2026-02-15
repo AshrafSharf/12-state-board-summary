@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Quick Reference &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:100%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">10 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card quickref">
+      <h2>Distribution Selector Flowchart</h2>
+
+      <div class="flowchart">
+        <div class="flow-node flow-start">Given: a random variable $X$</div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">Is $X$ counting discrete outcomes (finite/countable)?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES &mdash; Discrete</div>
+            <div class="flow-arrow">&darr;</div>
+            <div class="flow-decision">Single trial, two outcomes?</div>
+            <div class="flow-branches">
+              <div class="flow-yes">
+                <div class="flow-label">YES</div>
+                <div class="flow-node flow-method bernoulli-bg">Bernoulli<br><span class="dim">$\mu = p$, $\sigma^2 = pq$</span></div>
+              </div>
+              <div class="flow-no">
+                <div class="flow-label">NO &darr;</div>
+                <div class="flow-decision">$n$ independent trials, constant $p$?</div>
+                <div class="flow-branches">
+                  <div class="flow-yes">
+                    <div class="flow-label">YES</div>
+                    <div class="flow-node flow-method binomial-bg">Binomial<br><span class="dim">$\binom{n}{x}p^x q^{n-x}$, $\mu\!=\!np$</span></div>
+                  </div>
+                  <div class="flow-no">
+                    <div class="flow-label">NO</div>
+                    <div class="flow-node flow-method pmf-bg">General Discrete<br><span class="dim">Build pmf, $\sum f(x) = 1$</span></div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &mdash; Continuous</div>
+            <div class="flow-arrow">&darr;</div>
+            <div class="flow-decision">Is $f(x)$ (PDF) given?</div>
+            <div class="flow-branches">
+              <div class="flow-yes">
+                <div class="flow-label">YES</div>
+                <div class="flow-node flow-method continuous-pdf-cdf-bg">Integrate PDF<br><span class="dim">$\int f(x)\,dx = 1$, then $\int_a^b f(x)\,dx$</span></div>
+              </div>
+              <div class="flow-no">
+                <div class="flow-label">$F(x)$ given</div>
+                <div class="flow-node flow-method discrete-cdf-bg">Differentiate CDF<br><span class="dim">$f(x) = F'(x)$, $P = F(b) - F(a)$</span></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Finding Mean &amp; Variance</h3>
+        <table class="if-table">
+          <thead>
+            <tr><th>Type</th><th>Mean $\mu = E(X)$</th><th>Variance $\sigma^2 = V(X)$</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>General Discrete</td><td>$\sum x\,f(x)$</td><td>$\sum x^2 f(x) - \mu^2$</td></tr>
+            <tr><td>General Continuous</td><td>$\int x\,f(x)\,dx$</td><td>$\int x^2 f(x)\,dx - \mu^2$</td></tr>
+            <tr><td>Bernoulli$(p)$</td><td>$p$</td><td>$pq$</td></tr>
+            <tr><td>Binomial$(n,p)$</td><td>$np$</td><td>$npq$</td></tr>
+          </tbody>
+        </table>
+        <p class="dim" style="margin-top:0.5rem">Given mean &amp; variance (Binomial): $q = \frac{\sigma^2}{\mu}$, then $p = 1 - q$, then $n = \frac{\mu}{p}$.</p>
+      </div>
+
+      <div class="flash" style="margin-top:1.5rem">
+        <h3>All Formulas at a Glance</h3>
+        <div class="formula formula-desktop">
+          $$\underbrace{f(x_k) \ge 0, \quad \sum_k f(x_k) = 1}_{\text{PMF conditions}} \qquad \underbrace{F(x) = P(X \le x) = \sum_{x_i \le x} f(x_i)}_{\text{Discrete CDF}}$$
+        </div>
+        <div class="formula formula-mobile">
+          $$\begin{gathered} \underbrace{f(x_k) \ge 0, \; \sum_k f(x_k) = 1}_{\text{PMF conditions}} \\[8pt] \underbrace{F(x) = \sum_{x_i \le x} f(x_i)}_{\text{Discrete CDF}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{f(x_i) = F(x_i) - F(x_{i-1})}_{\text{PMF from CDF}} \qquad \underbrace{P(a \le X \le b) = \int_a^b f(x)\,dx}_{\text{Continuous probability}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{f(x_i) = F(x_i) - F(x_{i-1})}_{\text{PMF from CDF}} \\[8pt] \underbrace{P(a \le X \le b) = \int_a^b f(x)\,dx}_{\text{Continuous probability}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{F(x) = \int_{-\infty}^{x} f(t)\,dt}_{\text{Continuous CDF}} \qquad \underbrace{f(x) = F'(x)}_{\text{PDF from CDF}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{F(x) = \int_{-\infty}^{x} f(t)\,dt}_{\text{Continuous CDF}} \\[8pt] \underbrace{f(x) = F'(x)}_{\text{PDF from CDF}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{E(X) = \sum x f(x) \;\text{ or }\; \int x f(x)\,dx}_{\text{Mean}} \qquad \underbrace{V(X) = E(X^2) - [E(X)]^2}_{\text{Variance shortcut}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{E(X) = \sum x f(x) \;\text{ or }\; \int x f(x)\,dx}_{\text{Mean}} \\[8pt] \underbrace{V(X) = E(X^2) - [E(X)]^2}_{\text{Variance shortcut}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{E(aX+b) = aE(X)+b}_{\text{Linearity}} \qquad \underbrace{\text{Var}(aX+b) = a^2 \text{Var}(X)}_{\text{Variance scaling}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{E(aX+b) = aE(X)+b}_{\text{Linearity}} \\[8pt] \underbrace{\text{Var}(aX+b) = a^2 \text{Var}(X)}_{\text{Variance scaling}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{f(x) = p^x q^{1-x},\;\mu=p,\;\sigma^2=pq}_{\text{Bernoulli}} \qquad \underbrace{f(x) = \binom{n}{x}p^x q^{n-x},\;\mu=np,\;\sigma^2=npq}_{\text{Binomial}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{f(x) = p^x q^{1-x},\;\mu\!=\!p,\;\sigma^2\!=\!pq}_{\text{Bernoulli}} \\[8pt] \underbrace{f(x) = \binom{n}{x}p^x q^{n-x},\;\mu\!=\!np,\;\sigma^2\!=\!npq}_{\text{Binomial}} \end{gathered}$$
+        </div>
+        <div class="formula formula-desktop" style="margin-top:0.75rem">
+          $$\underbrace{\binom{n}{r} = \frac{n!}{r!(n-r)!}}_{\text{Combinations}} \qquad \underbrace{P(X \ge 1) = 1 - q^n}_{\text{Binomial shortcut}}$$
+        </div>
+        <div class="formula formula-mobile" style="margin-top:0.75rem">
+          $$\begin{gathered} \underbrace{\binom{n}{r} = \frac{n!}{r!(n-r)!}}_{\text{Combinations}} \\[8pt] \underbrace{P(X \ge 1) = 1 - q^n}_{\text{Binomial shortcut}} \end{gathered}$$
+        </div>
+        <div class="formula" style="margin-top:0.75rem">
+          $$\text{For continuous RV: } P(X = a) = 0, \quad P(a < X < b) = P(a \le X \le b)$$
+        </div>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="09-counting.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot active" href="10-quickref.html"></a>
+  </div>
+  <a href="01-overview.html" class="nav-btn">&#8634; Start Over</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "09-counting.html";
+  if (e.key === "ArrowRight") window.location.href = "01-overview.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

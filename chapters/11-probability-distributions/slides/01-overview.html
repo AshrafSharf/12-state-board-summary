@@ -1,0 +1,122 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Overview &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:10%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">1 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card overview">
+      <h2>Chapter 11 &nbsp; Probability Distributions &mdash; Overview</h2>
+
+      <div class="flash">
+        <h3>What This Chapter Covers</h3>
+        <p>Random variables map sample-space outcomes to real numbers, creating <strong>probability distributions</strong> (discrete and continuous). The exam tests your ability to construct PMFs and CDFs, convert between them, compute mean &amp; variance, and apply the Bernoulli and Binomial models.</p>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash">
+          <h3>Discrete World</h3>
+          <ul>
+            <li><strong>Random Variables</strong> &mdash; defining $X : S \to \mathbb{R}$</li>
+            <li><strong>PMF</strong> &mdash; $f(x) = P(X = x)$, with $\sum f(x) = 1$</li>
+            <li><strong>CDF</strong> &mdash; $F(x) = P(X \le x)$, staircase function</li>
+            <li><strong>Bernoulli</strong> &mdash; single trial, two outcomes</li>
+            <li><strong>Binomial</strong> &mdash; $n$ independent trials, $X \sim B(n,p)$</li>
+          </ul>
+        </div>
+        <div class="flash">
+          <h3>Continuous World</h3>
+          <ul>
+            <li><strong>PDF</strong> &mdash; $f(x) \ge 0$, $\int f(x)\,dx = 1$</li>
+            <li><strong>CDF</strong> &mdash; $F(x) = \int_{-\infty}^{x} f(t)\,dt$</li>
+            <li><strong>PDF &harr; CDF</strong> &mdash; integrate or differentiate</li>
+            <li>$P(X = a) = 0$ always &mdash; equality signs don&rsquo;t matter</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Mean &amp; Variance &mdash; The Common Thread</h3>
+        <p>Every distribution has a mean $\mu = E(X)$ and variance $\sigma^2 = E(X^2) - [E(X)]^2$. Special formulas exist for Bernoulli ($\mu = p$, $\sigma^2 = pq$) and Binomial ($\mu = np$, $\sigma^2 = npq$).</p>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Counting Principles</h3>
+        <p>Throughout this chapter, counting techniques ($\binom{n}{r}$, $n^r$, $2^n$) are used to determine sample space sizes and the number of favorable outcomes. A dedicated slide covers when to use each formula.</p>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Slide Roadmap</h3>
+        <table class="if-table">
+          <thead>
+            <tr><th>Slide</th><th>Topic</th></tr>
+          </thead>
+          <tbody>
+            <tr><td><span class="tag tag-blue">2</span></td><td>Random Variables &amp; Types</td></tr>
+            <tr><td><span class="tag tag-green">3</span></td><td>Probability Mass Function (PMF)</td></tr>
+            <tr><td><span class="tag tag-yellow">4</span></td><td>Discrete CDF</td></tr>
+            <tr><td><span class="tag tag-red">5</span></td><td>Continuous PDF vs CDF</td></tr>
+            <tr><td><span class="tag tag-blue">6</span></td><td>Mean &amp; Variance</td></tr>
+            <tr><td><span class="tag tag-green">7</span></td><td>Bernoulli Distribution</td></tr>
+            <tr><td><span class="tag tag-yellow">8</span></td><td>Binomial Distribution</td></tr>
+            <tr><td><span class="tag tag-red">9</span></td><td>Counting Principles</td></tr>
+            <tr><td><span class="tag tag-blue">10</span></td><td>Quick Reference</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a class="nav-btn disabled">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot active" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="02-random-variables.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowRight") window.location.href = "02-random-variables.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

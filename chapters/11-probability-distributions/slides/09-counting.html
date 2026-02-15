@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Counting Principles &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:90%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">9 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card counting">
+      <h2>11.8 &nbsp; Counting Principles &amp; Choosing the Right Formula</h2>
+
+      <div class="flash">
+        <h3>Core Concept</h3>
+        <p>Counting techniques determine sample space sizes, inverse image sizes, and the number of favorable outcomes in probability distribution problems.</p>
+        <div class="formula highlight-box">
+          $$\boxed{\binom{n}{r} = \frac{n!}{r!(n-r)!}} \quad \text{(selection, order doesn't matter)}$$
+        </div>
+        <div class="formula-row">
+          <div class="formula mini">$$P(n,r) = \frac{n!}{(n-r)!}$$<span class="label-below">Arrangement, order matters</span></div>
+          <div class="formula mini">$$n^r$$<span class="label-below">$r$ choices from $n$ options, with repetition</span></div>
+          <div class="formula mini">$$2^n$$<span class="label-below">Binary choices for $n$ items</span></div>
+        </div>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Comparison Table</h3>
+        <table class="if-table">
+          <thead>
+            <tr><th>Scenario</th><th>Formula</th><th>Order?</th><th>Example</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Toss $n$ coins, total outcomes</td><td>$2^n$</td><td>No (binary)</td><td>2 coins: $2^2 = 4$</td></tr>
+            <tr><td>Roll $k$ dice, total outcomes</td><td>$6^k$</td><td>Yes (ordered)</td><td>2 dice: $6^2 = 36$</td></tr>
+            <tr><td>Choose $r$ from $n$ (no order)</td><td>$\binom{n}{r}$</td><td>No</td><td>3 from 5: $\binom{5}{3} = 10$</td></tr>
+            <tr><td>$x$ successes in $n$ trials (Binomial)</td><td>$\binom{n}{x}$</td><td>No</td><td>$\binom{n}{x}$ in Binomial pmf</td></tr>
+            <tr><td>Arrange $r$ from $n$ (order matters)</td><td>$P(n,r)$</td><td>Yes</td><td>Permutation contexts</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Decision Guide</h3>
+        <ul>
+          <li><strong>&ldquo;How many total outcomes?&rdquo;</strong> &mdash; coins $\to 2^n$, dice $\to 6^k$, general $\to n^r$</li>
+          <li><strong>&ldquo;How many ways to choose/select?&rdquo;</strong> (no arrangement) &mdash; $\binom{n}{r}$. Key words: <em>choose, select, pick, committee</em></li>
+          <li><strong>&ldquo;How many ways to arrange/order?&rdquo;</strong> &mdash; $P(n,r)$. Key words: <em>arrange, sequence, rank</em></li>
+          <li><strong>Binary decision for each item?</strong> &mdash; pass/fail for $n$ students $\to 2^n$</li>
+          <li>In <strong>Binomial pmf</strong>, $\binom{n}{x}$ counts ways to place $x$ successes among $n$ trials</li>
+        </ul>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\text{Choose 3 from 10} = P(10,3) = 720$$
+            <span class="label-below">Used permutations, but order doesn&rsquo;t matter in selection!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{Choose 3 from 10} = \binom{10}{3} = 120$$
+            <span class="label-below">Selection = combinations. $P(n,r) = r! \cdot \binom{n}{r}$.</span>
+          </div>
+        </div>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\text{2 dice outcomes} = \binom{6}{2} = 15$$
+            <span class="label-below">Dice produce ORDERED pairs, not combinations!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{2 dice outcomes} = 6^2 = 36$$
+            <span class="label-below">Each die is distinguishable. Use $n^r$ for ordered choices with repetition.</span>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:0.5rem">Trap: Choosing &ldquo;exactly 2 red from 3 red and 2 white&rdquo; uses the product $\binom{3}{2}\binom{2}{1}$ (hypergeometric-style counting).</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="08-binomial.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot active" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="10-quickref.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "08-binomial.html";
+  if (e.key === "ArrowRight") window.location.href = "10-quickref.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mean &amp; Variance &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:60%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">6 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card mean-variance">
+      <h2>11.5 &nbsp; Mathematical Expectation (Mean &amp; Variance)</h2>
+
+      <div class="flash">
+        <h3>Core Concept &amp; Master Formulas</h3>
+        <p><strong>Mean</strong> $E(X) = \mu$ measures central tendency. <strong>Variance</strong> $V(X) = \sigma^2$ measures spread.</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\boxed{E(X) = \mu = \begin{cases} \sum_x x \cdot f(x) & \text{discrete} \\ \int_{-\infty}^{\infty} x \cdot f(x)\,dx & \text{continuous} \end{cases}}$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\boxed{\begin{aligned} &\text{Discrete: } E(X) = \sum_x x \cdot f(x) \\ &\text{Continuous: } E(X) = \int x \cdot f(x)\,dx \end{aligned}}$$
+        </div>
+        <div class="formula highlight-box">
+          $$\boxed{V(X) = \sigma^2 = E(X^2) - [E(X)]^2}$$
+        </div>
+        <p class="dim">Standard deviation: $\sigma = \sqrt{V(X)}$</p>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>Properties of $E$ and $V$</h3>
+        <table class="if-table">
+          <thead>
+            <tr><th>Property</th><th>Formula</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Linearity of $E$</td><td>$E(aX + b) = aE(X) + b$</td></tr>
+            <tr><td>Scaling $E$</td><td>$E(aX) = aE(X)$</td></tr>
+            <tr><td>Constant</td><td>$E(b) = b$</td></tr>
+            <tr><td>Variance scaling</td><td>$\text{Var}(aX + b) = a^2 \text{Var}(X)$</td></tr>
+            <tr><td>Constant variance</td><td>$V(b) = 0$</td></tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>&ldquo;Find mean and variance&rdquo; &rarr; build $\sum xf(x)$ and $\sum x^2 f(x)$ columns in a table</li>
+          <li>Shortcut $V(X) = E(X^2) - [E(X)]^2$ is almost always faster than $E(X - \mu)^2$</li>
+          <li>Given $E(X + 3) = 10$: use $E(X) + 3 = 10 \Rightarrow \mu = 7$</li>
+          <li>$\text{Var}(X + 3) = \text{Var}(X)$ &mdash; adding a constant does NOT change variance</li>
+        </ul>
+      </div>
+
+      <div class="card-grid two-col" style="margin-top:0.75rem">
+        <div class="flash example-box">
+          <h3>Ex: Discrete &mdash; Find $c$, $E(X)$, $V(X)$</h3>
+          <p>$f(x) = c^2, 2c^2, 3c^2, 4c^2, c, 2c$ for $x = 1,\ldots,6$.</p>
+          <div class="formula mini">$$10c^2 + 3c = 1 \implies c = \tfrac{1}{5}$$</div>
+          <div class="formula mini">$$E(X) = 4.6, \quad E(X^2) = 23.4$$</div>
+          <div class="formula mini">$$V(X) = 23.4 - (4.6)^2 = 2.24$$</div>
+        </div>
+        <div class="flash example-box">
+          <h3>Ex: Continuous &mdash; Exponential</h3>
+          <p>$f(x) = \lambda e^{-\lambda x}$ for $x \ge 0$.</p>
+          <div class="formula mini">$$E(X) = \frac{1}{\lambda}$$</div>
+          <div class="formula mini">$$E(X^2) = \frac{2}{\lambda^2}$$</div>
+          <div class="formula mini">$$V(X) = \frac{2}{\lambda^2} - \frac{1}{\lambda^2} = \frac{1}{\lambda^2}$$</div>
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$E(X^2) = [E(X)]^2$$
+            <span class="label-below">These are DIFFERENT! $E(X^2) \ge [E(X)]^2$ always.</span>
+          </div>
+          <div class="formula mini ok">
+            $$V(X) = E(X^2) - [E(X)]^2$$
+            <span class="label-below">Compute $E(X)$ and $E(X^2)$ separately, then subtract.</span>
+          </div>
+        </div>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$\text{Var}(aX + b) = a^2 V(X) + b$$
+            <span class="label-below">The constant $b$ does NOT affect variance!</span>
+          </div>
+          <div class="formula mini ok">
+            $$\text{Var}(aX + b) = a^2 V(X)$$
+            <span class="label-below">Only the scaling factor $a$ matters (squared).</span>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:0.5rem">Trap: Variance is always $\ge 0$. A negative result means a computational error.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="05-continuous-pdf-cdf.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot active" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="07-bernoulli.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "05-continuous-pdf-cdf.html";
+  if (e.key === "ArrowRight") window.location.href = "07-bernoulli.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>

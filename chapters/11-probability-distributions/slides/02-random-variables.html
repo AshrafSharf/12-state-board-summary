@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Random Variables &mdash; Probability Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../11-probability-distributions.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:20%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 11 &mdash; Probability Distributions</span>
+  <span class="slide-badge">2 / 10</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card random-variables">
+      <h2>11.1 &nbsp; Random Variables &amp; Types</h2>
+
+      <div class="flash">
+        <h3>Core Concept</h3>
+        <p>A <strong>random variable</strong> $X$ is a function from the sample space $S$ into $\mathbb{R}$. Each outcome $\omega \in S$ maps to a real number $X(\omega)$.</p>
+        <div class="formula">
+          $$X : S \to \mathbb{R}$$
+        </div>
+        <p>The <strong>range set</strong>: $R_X = \{X(\omega) \mid \omega \in S\}$</p>
+      </div>
+
+      <div class="card-grid two-col">
+        <div class="flash">
+          <h3>Discrete RV</h3>
+          <p>Range of $X$ is <strong>countable</strong> (finite or countably infinite).</p>
+          <ul>
+            <li>Used for <strong>counting</strong> quantities</li>
+            <li>&ldquo;Number of heads&rdquo;, &ldquo;number of defectives&rdquo;</li>
+          </ul>
+          <div class="formula mini">$$X = 0, 1, 2, \ldots, n$$</div>
+        </div>
+        <div class="flash">
+          <h3>Continuous RV</h3>
+          <p>$X$ takes any value in an interval $I \subseteq \mathbb{R}$, with $P(X = x) = 0$ for every single point.</p>
+          <ul>
+            <li>Used for <strong>measuring</strong> quantities</li>
+            <li>&ldquo;Lifetime&rdquo;, &ldquo;length&rdquo;, &ldquo;distance&rdquo;</li>
+          </ul>
+          <div class="formula mini">$$X \in [a, b] \text{ or } [0, \infty)$$</div>
+        </div>
+      </div>
+
+      <div class="flash tip-box" style="margin-top:0.75rem">
+        <h3>Spot the Clue</h3>
+        <ul>
+          <li>&ldquo;Find the values of the random variable&rdquo; &rarr; define $X$ and list its range</li>
+          <li>&ldquo;Number of ...&rdquo; &rarr; <strong>discrete</strong> (counting)</li>
+          <li>&ldquo;Lifetime&rdquo;, &ldquo;length&rdquo;, &ldquo;distance&rdquo;, &ldquo;amount&rdquo; &rarr; <strong>continuous</strong> (measuring)</li>
+          <li>Coin tosses, dice rolls, ball draws &rarr; assign a number to each outcome</li>
+        </ul>
+      </div>
+
+      <div class="flash example-box" style="margin-top:0.75rem">
+        <h3>Ex: Two Coins Tossed &mdash; Number of Tails</h3>
+        <p><strong>Step 1:</strong> $S = \{TT, TH, HT, HH\}$</p>
+        <p><strong>Step 2:</strong> $X(TT) = 2$, $X(TH) = 1$, $X(HT) = 1$, $X(HH) = 0$</p>
+        <p><strong>Step 3:</strong> $X$ takes values $0, 1, 2$.</p>
+        <div class="formula highlight-box">
+          $$\boxed{\text{Values: } 0, 1, 2 \quad \text{Inverse image sizes: } 1, 2, 1}$$
+        </div>
+      </div>
+
+      <div class="flash warning-box" style="margin-top:0.75rem">
+        <h3>Watch Out</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini nope">
+            $$S = \{HH, HT, TT\}$$
+            <span class="label-below">Forgot $TH$! Two coins have $2^2 = 4$ outcomes, not 3.</span>
+          </div>
+          <div class="formula mini ok">
+            $$S = \{HH, HT, TH, TT\}$$
+            <span class="label-below">Always enumerate the FULL sample space first.</span>
+          </div>
+        </div>
+        <p class="dim" style="margin-top:0.5rem">Trap: A discrete RV CAN be defined on a continuous sample space. E.g., $S = [0,1]$ with $X(\omega) = 10$ for all $\omega$ is discrete.</p>
+      </div>
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="01-overview.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-overview.html"></a>
+    <a class="slide-dot active" href="02-random-variables.html"></a>
+    <a class="slide-dot" href="03-pmf.html"></a>
+    <a class="slide-dot" href="04-discrete-cdf.html"></a>
+    <a class="slide-dot" href="05-continuous-pdf-cdf.html"></a>
+    <a class="slide-dot" href="06-mean-variance.html"></a>
+    <a class="slide-dot" href="07-bernoulli.html"></a>
+    <a class="slide-dot" href="08-binomial.html"></a>
+    <a class="slide-dot" href="09-counting.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+  </div>
+  <a href="03-pmf.html" class="nav-btn">Next &#8594;</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "01-overview.html";
+  if (e.key === "ArrowRight") window.location.href = "03-pmf.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>
