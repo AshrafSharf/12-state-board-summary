@@ -52,6 +52,11 @@ body {
   font-weight: 600;
 }
 
+.slide-header .spacer {
+  width: 0;
+  visibility: hidden;
+}
+
 /* ─── SLIDE CONTAINER ─── */
 .slide-container {
   flex: 1;

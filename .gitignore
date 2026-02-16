@@ -1,6 +1,10 @@
 # Ignore everything
-*
-
+node_modules
+.env
+package-lock.json
+build
+.claude
+.DS_Store
 # Allow these
 !.gitignore
 !index.html
