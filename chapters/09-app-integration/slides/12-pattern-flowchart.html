@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Pattern Flowchart — Integration Slides</title>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.css">
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/katex.min.js"></script>
+<script src="https://cdn.jsdelivr.net/npm/katex@0.16.28/dist/contrib/auto-render.min.js"></script>
+<link rel="stylesheet" href="../09-app-integration.css">
+<link rel="stylesheet" href="slides.css">
+</head>
+<body>
+
+<div class="slide-progress" style="width:100%"></div>
+
+<div class="slide-header">
+  <a href="../../../index.html" class="back-link">&larr; All Chapters</a>
+  <span class="chapter-title">Ch 9 &mdash; Applications of Integration</span>
+  <span class="slide-badge">12 / 12</span>
+</div>
+
+<div class="slide-container">
+  <div class="slide-content">
+    <section class="card quickref">
+      <h2>Pattern Recognition Flowchart &mdash; "What Derivative Made This?"</h2>
+
+      <!-- ─── PRIMARY FLOWCHART (compact vertical flow) ─── -->
+      <div class="flowchart">
+        <div class="flow-node flow-start">START: "What derivative would produce this?"</div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">CHECK 1: Is it a simple power of $x$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method indefinite-bg">Power Rule<br><span class="dim">$\int x^n\,dx = \frac{x^{n+1}}{n+1}+C \;\;(n\neq -1)$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">CHECK 2: Is it exactly $1/x$ or $x^{-1}$?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method indefinite-bg">Log Rule<br><span class="dim">$\int \frac{1}{x}\,dx = \ln|x|+C$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">CHECK 3: Is numerator the derivative of denominator? ($f'/f$)</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method ftc-bg">Log of denominator<br><span class="dim">$\int\frac{f'(x)}{f(x)}\,dx = \ln|f(x)|+C$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+        <div class="flow-arrow">&darr;</div>
+
+        <div class="flow-decision">CHECK 4: Inner function with its derivative present?</div>
+        <div class="flow-branches">
+          <div class="flow-yes">
+            <div class="flow-label">YES</div>
+            <div class="flow-node flow-method properties-bg">U-Substitution<br><span class="dim">Chain rule in reverse: $u = g(x)$</span></div>
+          </div>
+          <div class="flow-no">
+            <div class="flow-label">NO &darr;</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── CHECKS 5 & 6 (condensed format) ─── -->
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>CHECK 5: Does it match special trig/inverse-trig structures?</h3>
+        <table class="int-table">
+          <thead>
+            <tr><th>You see</th><th>Result</th></tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>$\dfrac{1}{a^2+x^2}$</td>
+              <td>$\dfrac{1}{a}\tan^{-1}\!\dfrac{x}{a}+C$</td>
+            </tr>
+            <tr>
+              <td>$\dfrac{1}{\sqrt{a^2-x^2}}$</td>
+              <td>$\sin^{-1}\!\dfrac{x}{a}+C$</td>
+            </tr>
+            <tr>
+              <td>$\dfrac{1}{a^2-x^2}$</td>
+              <td>$\dfrac{1}{2a}\ln\!\left|\dfrac{a+x}{a-x}\right|+C$</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+
+      <div class="flash" style="margin-top:0.75rem">
+        <h3>CHECK 6: Is it a product of two different types?</h3>
+        <p>($x\cdot e^x$, &nbsp; $x\cdot\sin x$, &nbsp; $\ln x\cdot x$, etc.)</p>
+        <div class="formula highlight-box formula-desktop">
+          $$\text{Use Integration by Parts:}\quad \int u\,dv = uv - \int v\,du$$
+        </div>
+        <div class="formula highlight-box formula-mobile">
+          $$\int u\,dv = uv - \int v\,du$$
+        </div>
+        <p>Choose $u$ using <strong>LIATE</strong>: Log &succ; Inverse trig &succ; Algebraic &succ; Trig &succ; Exponential</p>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini ok">
+            $$\int x\,e^x\,dx$$
+            <span class="label-below">Product of $x$ (A) and $e^x$ (E) &rarr; IBP works</span>
+          </div>
+          <div class="formula mini nope">
+            $$\int x\,e^{x^2}\,dx$$
+            <span class="label-below">Hidden substitution! $u=x^2$ is better</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── SECONDARY DETECTION ─── -->
+      <div class="flash tip-box" style="margin-top:1rem">
+        <h3>Secondary Detection &mdash; If Nothing Above Worked</h3>
+        <ul>
+          <li><strong>Rational function?</strong> &rarr; Partial fractions / algebraic manipulation</li>
+          <li><strong>Square root of quadratic?</strong> &rarr; Trig substitution ($x=a\sin\theta$, $a\tan\theta$, $a\sec\theta$)</li>
+          <li><strong>Even/odd trig powers?</strong> &rarr; Use identities (half-angle, Pythagorean)</li>
+          <li><strong>Completely unfamiliar?</strong> &rarr; Might be non-elementary (e.g., $\int e^{x^2}\,dx$)</li>
+        </ul>
+      </div>
+
+      <!-- ─── MICRO-PATTERN MEMORY ─── -->
+      <div class="flash" style="margin-top:1rem;border-left:3px solid var(--bernoulli)">
+        <h3>Micro-Pattern Memory &mdash; 5 Derivatives That Solve Most Integrals</h3>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div>
+            <div class="formula mini">$$1)\;\frac{d}{dx}(\ln x) = \frac{1}{x}$$</div>
+            <div class="formula mini">$$2)\;\frac{d}{dx}(\tan^{-1} x) = \frac{1}{1+x^2}$$</div>
+            <div class="formula mini">$$3)\;\frac{d}{dx}(\sin x) = \cos x$$</div>
+          </div>
+          <div>
+            <div class="formula mini">$$4)\;\frac{d}{dx}(e^x) = e^x$$</div>
+            <div class="formula mini">$$5)\;\frac{d}{dx}(\ln|f(x)|) = \frac{f'(x)}{f(x)}$$</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── COMMON TRAPS ─── -->
+      <div class="flash warning-box" style="margin-top:1rem">
+        <h3>Common Traps</h3>
+        <ul>
+          <li><strong>Looks like log?</strong> &rarr; Check numerator carefully &mdash; is it really $f'(x)$?</li>
+          <li><strong>Looks like product?</strong> &rarr; Check for hidden substitution first before IBP</li>
+          <li><strong>Looks like inverse trig?</strong> &rarr; Compare sign inside the square root / denominator</li>
+          <li><strong>Power rule?</strong> &rarr; Check if exponent is $-1$ (power rule fails, log appears)</li>
+        </ul>
+        <div class="card-grid two-col" style="margin-top:0.5rem">
+          <div class="formula mini ok">
+            $$\int\frac{2x}{x^2+1}\,dx \to \ln(x^2+1)+C$$
+            <span class="label-below">Numerator IS derivative of denom</span>
+          </div>
+          <div class="formula mini nope">
+            $$\int\frac{1}{x^2+1}\,dx \neq \ln(x^2+1)$$
+            <span class="label-below">No derivative on top! It's $\tan^{-1}\!x$</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- ─── FINAL MASTER FLOW ─── -->
+      <div class="flash tip-box" style="margin-top:1rem">
+        <h3>Master Flow &mdash; 6-Step Priority</h3>
+        <ol style="padding-left:1.4rem;margin-top:0.5rem">
+          <li><strong>Simplify first</strong> &mdash; expand, factor, reduce</li>
+          <li><strong>Scan for $f'/f$</strong> &mdash; derivative-over-function &rarr; $\ln$</li>
+          <li><strong>Scan for inner function</strong> &mdash; u-substitution</li>
+          <li><strong>Check standard trig forms</strong> &mdash; $\frac{1}{a^2+x^2}$, $\frac{1}{\sqrt{a^2-x^2}}$</li>
+          <li><strong>Try parts if product</strong> &mdash; use LIATE to choose $u$</li>
+          <li><strong>Only then</strong> go to advanced techniques (partial fractions, trig sub, etc.)</li>
+        </ol>
+        <p style="margin-top:0.75rem;font-style:italic;text-align:center"><strong>"Integration is not about memorizing 100 formulas. It is about recognizing 10 derivative patterns."</strong></p>
+      </div>
+
+    </section>
+  </div>
+</div>
+
+<nav class="slide-nav">
+  <a href="11-technique-guide.html" class="nav-btn">&#8592; Prev</a>
+  <div class="slide-dots">
+    <a class="slide-dot" href="01-indefinite.html"></a>
+    <a class="slide-dot" href="02-riemann.html"></a>
+    <a class="slide-dot" href="03-ftc.html"></a>
+    <a class="slide-dot" href="04-properties.html"></a>
+    <a class="slide-dot" href="05-bernoulli.html"></a>
+    <a class="slide-dot" href="06-improper.html"></a>
+    <a class="slide-dot" href="07-reduction.html"></a>
+    <a class="slide-dot" href="08-area.html"></a>
+    <a class="slide-dot" href="09-volume.html"></a>
+    <a class="slide-dot" href="10-quickref.html"></a>
+    <a class="slide-dot" href="11-technique-guide.html"></a>
+    <a class="slide-dot active" href="12-pattern-flowchart.html"></a>
+  </div>
+  <a href="01-indefinite.html" class="nav-btn">&#8634; Start Over</a>
+</nav>
+
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  renderMathInElement(document.body, {
+    delimiters: [
+      {left: "$$", right: "$$", display: true},
+      {left: "$", right: "$", display: false}
+    ],
+    throwOnError: false,
+    trust: true
+  });
+});
+document.addEventListener("keydown", function(e) {
+  if (e.key === "ArrowLeft") window.location.href = "11-technique-guide.html";
+  if (e.key === "ArrowRight") window.location.href = "01-indefinite.html";
+});
+</script>
+<script>(function(){var sx,sy;document.addEventListener("touchstart",function(e){sx=e.touches[0].clientX;sy=e.touches[0].clientY},{passive:true});document.addEventListener("touchend",function(e){var dx=e.changedTouches[0].clientX-sx,dy=e.changedTouches[0].clientY-sy;if(Math.abs(dx)>50&&Math.abs(dx)>Math.abs(dy)*1.5){var b=document.querySelectorAll(".nav-btn");if(dx<0&&b[1]&&!b[1].classList.contains("disabled"))window.location.href=b[1].href;if(dx>0&&b[0]&&!b[0].classList.contains("disabled"))window.location.href=b[0].href;}},{passive:true});})();</script>
+</body>
+</html>
