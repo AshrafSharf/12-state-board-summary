@@ -201,17 +201,34 @@ const html = `<!DOCTYPE html>
         .slide.active {
             display: block;
         }
+
+        /* Standalone: hide header bar */
+        .slide-header {
+            display: none;
+        }
+
+        /* Standalone: slide badge in bottom nav */
+        .slide-nav-center {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            gap: 0.35rem;
+        }
+
+        .slide-nav-center .slide-badge {
+            font-size: 0.72rem;
+            padding: 0.2rem 0.6rem;
+            background: var(--accent);
+            color: #fff;
+            border-radius: 99px;
+            font-weight: 600;
+        }
+
     </style>
 </head>
 <body>
 
 <div class="slide-progress" id="slide-progress" style="width:${(100 / totalSlides).toFixed(1)}%"></div>
-
-<div class="slide-header">
-  <span class="spacer"></span>
-  <span class="chapter-title">${chapterTitle}</span>
-  <span class="slide-badge" id="slide-badge">1 / ${totalSlides}</span>
-</div>
 
 <div class="slide-container">
   <div class="slide-content" id="slide-content">
@@ -221,8 +238,11 @@ ${slideSections}
 
 <nav class="slide-nav">
   <a id="prev-btn" class="nav-btn disabled">&#8592; Prev</a>
-  <div class="slide-dots" id="slide-dots">
+  <div class="slide-nav-center">
+    <div class="slide-dots" id="slide-dots">
 ${slideDots}
+    </div>
+    <span class="slide-badge" id="slide-badge">1 / ${totalSlides}</span>
   </div>
   <a id="next-btn" href="#slide-2" class="nav-btn">Next &#8594;</a>
 </nav>
@@ -271,6 +291,9 @@ function showSlide(slideNum) {
   if (currentSlideEl) {
     currentSlideEl.classList.add('active');
   }
+
+  // Scroll to top of page
+  window.scrollTo(0, 0);
 
   // Update progress bar
   const progress = (currentSlide / totalSlides) * 100;

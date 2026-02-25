@@ -51,15 +51,16 @@ header {
 
 .header-top {
   display: flex;
-  align-items: center;
   gap: 1rem;
   flex-wrap: wrap;
+  align-items: center;
 }
 
 .header-top h1 {
   font-size: 1.6rem;
   font-weight: 700;
   flex: 1;
+  text-align: center;
 }
 
 .back-link {
@@ -245,8 +246,10 @@ main {
   .formula, .highlight-box { overflow-x: auto; -webkit-overflow-scrolling: touch; }
   .highlight-box { padding: 0.6rem; }
 
-  .if-table { font-size: 0.82rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-  .if-table th, .if-table td { padding: 0.35rem 0.5rem; white-space: nowrap; }
+
+  .if-table { font-size: 0.82rem; display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; max-width: 100%; }
+  .if-table th, .if-table td { padding: 0.35rem 0.5rem; }
+
 
   .flow-node { max-width: 100%; font-size: 0.82rem; padding: 0.5rem 0.7rem; }
   .flow-decision { font-size: 0.8rem; padding: 0.4rem 0.7rem; }

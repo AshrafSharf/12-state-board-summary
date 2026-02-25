@@ -1,8 +1,26 @@
 {
+  "11-probability-distributions": {
+    "fileName": "11-probability-distributions_standalone-56805c21-743e-4cc5-a7db-6ddd332f5d00.html",
+    "s3Key": "html/CHAPTER_SUMMARY/11-probability-distributions_standalone-56805c21-743e-4cc5-a7db-6ddd332f5d00.html",
+    "url": "https://robogebra-dev-assets.s3.amazonaws.com/html/CHAPTER_SUMMARY/11-probability-distributions_standalone-56805c21-743e-4cc5-a7db-6ddd332f5d00.html",
+    "lastUpdated": "2026-02-17T13:17:26.072Z"
+  },
+  "10-ordinary-differential-equations": {
+    "fileName": "10-ordinary-differential-equations_standalone-d88cd41e-ae63-4c73-8fcb-efc8cf7b8da4.html",
+    "s3Key": "html/CHAPTER_SUMMARY/10-ordinary-differential-equations_standalone-d88cd41e-ae63-4c73-8fcb-efc8cf7b8da4.html",
+    "url": "https://robogebra-dev-assets.s3.amazonaws.com/html/CHAPTER_SUMMARY/10-ordinary-differential-equations_standalone-d88cd41e-ae63-4c73-8fcb-efc8cf7b8da4.html",
+    "lastUpdated": "2026-02-17T13:17:30.224Z"
+  },
+  "09-app-integration": {
+    "fileName": "09-app-integration_standalone-4fcbff2b-2dad-4d27-ba55-b4f09509dd48.html",
+    "s3Key": "html/CHAPTER_SUMMARY/09-app-integration_standalone-4fcbff2b-2dad-4d27-ba55-b4f09509dd48.html",
+    "url": "https://robogebra-dev-assets.s3.amazonaws.com/html/CHAPTER_SUMMARY/09-app-integration_standalone-4fcbff2b-2dad-4d27-ba55-b4f09509dd48.html",
+    "lastUpdated": "2026-02-17T13:17:35.262Z"
+  },
   "06-app-vector-algebra": {
-    "fileName": "06-app-vector-algebra_standalone-1b2c7be3-4628-4ec7-b660-383e15f709a1.html",
-    "s3Key": "html/CHAPTER_SUMMARY/06-app-vector-algebra_standalone-1b2c7be3-4628-4ec7-b660-383e15f709a1.html",
-    "url": "https://robogebra-dev-assets.s3.amazonaws.com/html/CHAPTER_SUMMARY/06-app-vector-algebra_standalone-1b2c7be3-4628-4ec7-b660-383e15f709a1.html",
-    "lastUpdated": "2026-02-16T12:47:53.995Z"
+    "fileName": "06-app-vector-algebra_standalone-53a5c437-0bd7-4348-a950-f33807581422.html",
+    "s3Key": "html/CHAPTER_SUMMARY/06-app-vector-algebra_standalone-53a5c437-0bd7-4348-a950-f33807581422.html",
+    "url": "https://robogebra-dev-assets.s3.amazonaws.com/html/CHAPTER_SUMMARY/06-app-vector-algebra_standalone-53a5c437-0bd7-4348-a950-f33807581422.html",
+    "lastUpdated": "2026-02-17T13:17:40.409Z"
   }
 }
